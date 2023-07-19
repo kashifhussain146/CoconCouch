@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\AssignmentCategoryController;
 use App\Http\Controllers\AdminAuth\LoginController as AdminLoginController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\AssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,7 @@ use App\Http\Controllers\Backend\DashboardController;
 
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/assignment-help', [AssignmentController::class, 'index'])->name('assignment.help');
 
 
 
@@ -53,5 +56,17 @@ Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('admi
         Route::get('/admin/category/edit/{id}', [CategoryController::class,'edit'])->name('category-edit');//->middleware(['permission:Category Edit']);
         Route::post('/admin/category/update/{id}', [CategoryController::class,'update'])->name('category-update');//->middleware(['permission:Category Edit']);
         Route::get('/admin/ajax/category/view/{id}', [CategoryController::class,'show'])->name('category-view');//->middleware(['permission:Category View']);
+
+    });
+
+    // Category Master
+    Route::group([], function() {
+
+        Route::get('/admin/assignment-category', [AssignmentCategoryController::class,'index'])->name('assignment-category-list');//->middleware(['permission:Category List']);
+        Route::get('/admin/assignment-category/create', [AssignmentCategoryController::class,'create'])->name('assignment-category-create');//->middleware(['permission:Category Create']);
+        Route::post('/admin/assignment-category/store', [AssignmentCategoryController::class,'store'])->name('assignment-category-store');//->middleware(['permission:Category Create']);
+        Route::get('/admin/assignment-category/edit/{id}', [AssignmentCategoryController::class,'edit'])->name('assignment-category-edit');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/assignment-category/update/{id}', [AssignmentCategoryController::class,'update'])->name('assignment-category-update');//->middleware(['permission:Category Edit']);
+        Route::get('/admin/ajax/assignment-category/view/{id}', [AssignmentCategoryController::class,'show'])->name('assignment-category-view');//->middleware(['permission:Category View']);
 
     });

@@ -23,11 +23,11 @@
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                             class="menu-title">Banner</span></a><!--end:Menu link--></div>
                                 <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="ourservices.html"><span
+                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="{{route('category-list')}}"><span
                                             class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                             class="menu-title">Our Services</span></a><!--end:Menu link--></div>
                                 <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="assenment.html"><span
+                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="{{route('assignment-category-list')}}"><span
                                     class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
                                     class="menu-title">Assignments</span></a><!--end:Menu link--></div>
                                 <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="quickform.html"><span
