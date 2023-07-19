@@ -192,7 +192,7 @@
                                 </li>
                                 <li class=""><a href="#">About Us</a>
                                 </li>
-                                <li class=""><a href="#">Assignment Help</a></li>
+                                <li class=""><a href="{{route('assignment.help')}}">Assignment Help</a></li>
                                 <li class=""><a href="#">Take My Online Class</a></li>
                                 <li class=""><a href="#">Solution Library</a></li>
                                 <li class=""><a href="#">Services</a></li>
