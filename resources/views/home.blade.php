@@ -571,9 +571,9 @@
             <span class="sub-title">TAGLINE HEADING</span>
             <h2 class="work-section-head">Why Choose Us</h2>
         </div>
-        <div class="py-4 row">
-            <div class="card sm-col-12 col-lg mx-4 why-us-card-org">
-                <div class="card-body">
+        <div class="row">
+            <div class="card col-sm-4 col-lg p-3">
+                <div class="card-body why-us-card-org">
                     <img class="mb-4" src="{{ asset('assets/images/trial17.png') }}" alt="">
                     <h5 class="card-title fw-bold text-white fs-2 pb-3">High Quality</h5>
                     <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
@@ -587,8 +587,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card sm-col-12 col-lg mx-4 why-us-card-blk">
-                <div class="card-body">
+            <div class="card col-sm-4 col-lg p-3">
+                <div class="card-body why-us-card-blk">
                     <img class="mb-4" src="{{ asset('assets/images/trial18.png') }}" alt="">
                     <h5 class="card-title fw-bold text-white fs-2 pb-3">Assured Grade A or B</h5>
                     <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
@@ -602,8 +602,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card sm-col-12 col-lg mx-4 why-us-card-org">
-                <div class="card-body">
+            <div class="card col-sm-4 col-lg p-3">
+                <div class="card-body why-us-card-org">
                     <img class="mb-4" src="{{ asset('assets/images/trial19.png') }}" alt="">
                     <h5 class="card-title fw-bold text-white fs-2 pb-3">Safety</h5>
                     <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
@@ -618,9 +618,9 @@
                 </div>
             </div>
         </div>
-        <div class="py-4 row">
-            <div class="card col-sm-12 col-lg mx-4 why-us-card-blk">
-                <div class="card-body">
+        <div class="row">
+            <div class="card col-sm-4 col-lg p-3">
+                <div class="card-body why-us-card-blk">
                     <img class="mb-4" src="{{ asset('assets/images/trial20.png') }}" alt="">
                     <h5 class="card-title fw-bold text-white fs-2 pb-3">Subject Expert</h5>
                     <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
@@ -634,8 +634,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card col-sm-12 col-lg mx-4 why-us-card-org">
-                <div class="card-body">
+            <div class="card col-sm-4 col-lg p-3">
+                <div class="card-body why-us-card-org">
                     <img class="mb-4" src="{{ asset('assets/images/trial21.png') }}" alt="">
                     <h5 class="card-title fw-bold text-white fs-2 pb-3">100% Refundable</h5>
                     <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
@@ -649,8 +649,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card col-sm-12 col-lg mx-4 why-us-card-blk">
-                <div class="card-body">
+            <div class="card col-sm-4 col-lg p-3">
+                <div class="card-body why-us-card-blk">
                     <img class="mb-4" src="{{ asset('assets/images/trial22.png') }}" alt="">
                     <h5 class="card-title fw-bold text-white fs-2 pb-3">Affordable Price</h5>
                     <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
@@ -858,7 +858,6 @@
 
         </ul>
         <!-- <img class="w-full" src="trial27.png')}}" alt=""> -->
-        <img class="w-full" src="{{ asset('assets/images/trial28.png') }}" alt="">
     </div>
 
 

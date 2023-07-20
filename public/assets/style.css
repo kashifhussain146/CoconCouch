@@ -139,13 +139,16 @@ body {
   }
 
   .why-us-card-org {
-    width: 22rem !important;
+    /*width: 22rem !important;*/
     background-color: #ff7707 !important;
     margin-bottom: 2rem;
   }
+  .card{
+      border: none !important;
+  }
 
   .why-us-card-blk {
-    width: 22rem !important;
+    /*width: 22rem !important;*/
     background-color: black !important;
     margin-bottom: 2rem;
   }
@@ -184,7 +187,7 @@ body {
 }
 
 .orange-section-bg {
-  background-image: url(./assets/images/trial29.png) !important;
+  background-image: url(./images/trial29.png) !important;
   padding: 6rem 0 !important;
   top: 29px !important;
 }
@@ -259,12 +262,12 @@ body {
   }
 
   .why-us-card-org {
-    width: 18rem !important;
+    /*width: 18rem !important;*/
     background-color: #ff7707 !important;
   }
 
   .why-us-card-blk {
-    width: 18rem !important;
+    /*width: 18rem !important;*/
     background-color: black !important;
   }
 
@@ -292,7 +295,7 @@ body {
   }
 
   .orange-section-bg {
-    background-image: url(./assets/images/trial29.png) !important;
+    background-image: url(./images/trial29.png) !important;
     padding: 6rem 3rem !important;
     top: 29px !important;
   }
@@ -335,7 +338,7 @@ body {
 
 
 .home-card-img {
-  background-image: url('./assets/images/trial9_new.png');
+  background-image: url('./images/trial9_new.png');
   background-repeat: no-repeat;
 }
 
@@ -351,7 +354,7 @@ body {
 
 
 .home-pattern {
-  background-image: url(./assets/images/patter_home.png);
+  background-image: url(./images/patter_home.png);
   background-size: cover;
 }
 
@@ -552,7 +555,7 @@ body {
 }
 
 .economics {
-  background-image: url('./assets/images/acc-pic-4.jpg');
+  background-image: url('./images/acc-pic-4.jpg');
   background-size: cover;
   position: relative;
   isolation: isolate;
@@ -569,7 +572,7 @@ body {
 }
 
 .maths {
-  background-image: url('./assets/images/acc-maths.jpg');
+  background-image: url('./images/acc-maths.jpg');
   background-size: cover;
   position: relative;
   isolation: isolate;
@@ -1057,4 +1060,9 @@ body {
 .slider .slide {
   height: auto;
   width: 100%;
+}
+
+/*****CUSTOM CSS******/
+.tp-caption img{
+    height: auto !important;
 }

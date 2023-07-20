@@ -40,6 +40,8 @@
     <link href="{{asset('admin/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
+    <link href="{{asset('admin/bower_components/jquery.filer/css/jquery.filer.css')}}" type="text/css" rel="stylesheet" />
+    <link href="{{asset('admin/bower_components/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css')}}" type="text/css" rel="stylesheet" />
 
     @yield('inlinecss')
 
@@ -2234,6 +2236,10 @@
                                             </script>
 
                                             <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+                                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+                                            <script src="{{asset('admin/bower_components/jquery.filer/js/jquery.filer.min.js')}}"></script>
+
+
                                             <script src="{{asset('admin/assets/plugins/global/plugins.bundle.js')}}"></script>
                                             <script src="{{asset('admin/assets/js/scripts.bundle.js')}}"></script>
                                             <!--end::Global Javascript Bundle-->
@@ -2241,11 +2247,7 @@
                                             <!--begin::Vendors Javascript(used for this page only)-->
                                             <script src="{{asset('admin/assets/plugins/custom/fslightbox/fslightbox.bundle.js')}}"></script>
                                             <script src="{{asset('admin/assets/plugins/custom/typedjs/typedjs.bundle.js')}}"></script>
-                                            {{-- <script src="../../../../cdn.amcharts.com/lib/5/index.js')}}"></script>
-                                            <script src="../../../../cdn.amcharts.com/lib/5/xy.js')}}"></script>
-                                            <script src="../../../../cdn.amcharts.com/lib/5/percent.js')}}"></script>
-                                            <script src="../../../../cdn.amcharts.com/lib/5/radar.js')}}"></script>
-                                            <script src="../../../../cdn.amcharts.com/lib/5/themes/Animated.js')}}"></script> --}}
+                                          
                                             <script src="{{asset('admin/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
                                             <!--end::Vendors Javascript-->
 
@@ -2275,6 +2277,7 @@
                                             <script src="{{asset('admin/assets/js/custom/utilities/modals/bidding.js')}}"></script>
                                             <script src="{{asset('admin/assets/js/custom/utilities/modals/users-search.js')}}"></script>
                                             <script src="{{asset('admin/assets/js/custom/utilities/modals/create-app.js')}}"></script>
+                                               
                                             @yield('inlinejs')
                                             <!--end::Custom Javascript-->
                                             <!--end::Javascript-->

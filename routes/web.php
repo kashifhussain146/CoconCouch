@@ -8,6 +8,15 @@ use App\Http\Controllers\Backend\AssignmentCategoryController;
 use App\Http\Controllers\AdminAuth\LoginController as AdminLoginController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\CKEditorController;
+use App\Http\Controllers\FilerController;
+
+use App\Http\Controllers\Backend\ModulesDataController;
+use App\Http\Controllers\Backend\ModulesController;
+use App\Http\Controllers\Backend\WidgetPagesController;
+use App\Http\Controllers\Backend\WidgetsController;
+use App\Http\Controllers\Backend\WidgetDataController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +41,7 @@ Route::get('/admin/login', [AdminLoginController::class,'showAdminLoginForm'])->
 Route::post('/admin/login', [AdminLoginController::class,'adminLogin'])->name('admin.post.login');
 Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('admin.dashboard');
 
+Route::group(['middleware' => ['auth:admin']], function() {
     //Banner Master
     Route::group([], function() {
 
@@ -70,3 +80,92 @@ Route::get('/admin/dashboard', [DashboardController::class,'index'])->name('admi
         Route::get('/admin/ajax/assignment-category/view/{id}', [AssignmentCategoryController::class,'show'])->name('assignment-category-view');//->middleware(['permission:Category View']);
 
     });
+    
+    
+    
+    
+   
+
+
+     /*Modules Data routes Start*/
+    
+    
+     Route::get('/module/add', [ModulesController::class,'add'])->name('admin.modules.add');
+    
+     Route::post('/module/store', [ModulesDataController::class,'store'])->name('admin.modules.store');
+    
+     Route::post('/module/{module}/update', [ModulesDataController::class,'update'])->name('admin.modules.update');
+    
+     Route::get('/module/{module}/edit/{id}', [ModulesDataController::class,'edit'])->name('admin.modules.edit');
+    
+     Route::get('/module/{module}/delete/{id}', [ModulesDataController::class,'destroy'])->name('admin.modules.delete');
+    
+     Route::get('/admin/data-status/{module}/{status}', [ModulesDataController::class,'update_status']);
+     
+    
+     Route::get('/module/{module}', [ModulesDataController::class,'index'])->name('admin.modules.data');
+    
+     Route::get('/module/{module}/add', [ModulesDataController::class,'add'])->name('admin.modules.data.add');
+    
+     Route::post('/module/{module}/store', [ModulesDataController::class,'store'])->name('admin.modules.data.store');
+    
+     Route::post('/module/{module}/update', [ModulesDataController::class,'update'])->name('admin.modules.data.update');
+    
+     Route::get('/module/{module}/edit/{id}', [ModulesDataController::class,'edit'])->name('admin.modules.data.edit');
+    
+     Route::get('/module/{module}/delete/{id}', [ModulesDataController::class,'destroy'])->name('admin.modules.data.delete');
+    
+    
+     /*Modules Data routes End*/
+    
+     /*Widget Page routes Start*/
+    
+     Route::get('/admin/widget-pages', [WidgetPagesController::class,'index'])->name('admin.widget_pages');
+    
+     Route::get('/admin/add-widget-page', [WidgetPagesController::class,'add'])->name('admin.widget_pages.add');
+    
+     Route::post('/admin/store-widget-page', [WidgetPagesController::class,'store'])->name('admin.widget_pages.store');
+    
+     Route::post('/admin/update-widget-page', [WidgetPagesController::class,'update'])->name('admin.widget_pages.update');
+    
+     Route::get('/admin/edit-widget-page/{widget_page}', [WidgetPagesController::class,'edit'])->name('admin.widget_pages.edit');
+    
+     Route::get('/admin/delete-widget-page/{widget_page}', [WidgetPagesController::class,'destroy'])->name('admin.widget_pages.delete');
+    
+     /*Widget Page routes End*/
+    
+     /*Widget routes Start*/
+    
+     Route::get('/admin/widgets', [WidgetsController::class,'index'])->name('admin.widgets');
+    
+     Route::get('/admin/add-widget', [WidgetsController::class,'add'])->name('admin.widgets.add');
+    
+     Route::post('/admin/store-widget', [WidgetsController::class,'store'])->name('admin.widgets.store');
+    
+     Route::post('/admin/update-widget', [WidgetsController::class,'update'])->name('admin.widgets.update');
+    
+     Route::get('/admin/edit-widget/{widget}', [WidgetsController::class,'edit'])->name('admin.widgets.edit');
+    
+     Route::get('/admin/delete-widget/{widget}', [WidgetsController::class,'destroy'])->name('admin.widgets.delete');
+    
+     /*Widget routes End*/
+    
+     /*Widget data routes Start*/
+    
+     Route::get('/page/{page}', [WidgetDataController::class,'index'])->name('admin.widgets_data');
+    
+    
+     Route::post('/store-widget-data/{id}', [WidgetDataController::class,'store'])->name('admin.widget_data.store');
+    
+     Route::post('/update-widget-page', [WidgetDataController::class,'update'])->name('admin.widget_pages.update');
+     
+     
+    
+    
+     Route::get('/delete-widget-page/{widget_page}', [WidgetPagesController::class,'destroy'])->name('admin.widget_pages.delete');
+    
+
+    
+
+    
+});
