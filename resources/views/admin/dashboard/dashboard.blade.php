@@ -10,28 +10,23 @@
 
 @section('breadcrum')
 
-<h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">
-   Bidding Dashboard
-</h1>
-<ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-   <li class="breadcrumb-item text-muted">
-      <a href="../index.html" class="text-muted text-hover-primary">
-          Home </a>
-   </li>
-   <!--end::Item-->
-   <!--begin::Item-->
-   <li class="breadcrumb-item">
-      <span class="bullet bg-gray-400 w-5px h-2px"></span>
-   </li>
-   <!--end::Item-->
-   
-   <!--begin::Item-->
-   <li class="breadcrumb-item text-muted">
-      Banner </li>
-   <!--end::Item-->
-</ul>
-
+<div class="content-header">
+   <div class="container-fluid">
+     <div class="row mb-2">
+       <div class="col-sm-6">
+         <h1 class="m-0">Dashboard</h1>
+       </div><!-- /.col -->
+       <div class="col-sm-6">
+         <ol class="breadcrumb float-sm-right">
+           <li class="breadcrumb-item"><a href="#">Home</a></li>
+           <li class="breadcrumb-item active">Dashboard v1</li>
+         </ol>
+       </div><!-- /.col -->
+     </div><!-- /.row -->
+   </div><!-- /.container-fluid -->
+ </div>
 @stop
+
 @section('content')
 
 

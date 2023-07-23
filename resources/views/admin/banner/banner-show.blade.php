@@ -14,7 +14,7 @@
 </ol>
 @stop
 @section('content')
-<div class="app-content">
+<div class="content-header">
     <div class="side-app">
         
            

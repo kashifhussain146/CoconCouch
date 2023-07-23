@@ -1,728 +1,231 @@
-<div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper hover-scroll-overlay-y my-5"
-                    data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto"
-                    data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
-                    data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px"
-                    data-kt-scroll-save-state="true">
-                    <!--begin::Menu-->
-                    <div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu"
-                        data-kt-menu="true" data-kt-menu-expand="false">
-                        <!--begin:Menu item-->
-                        <!--end:Menu item--><!--begin:Menu item-->
-                        <div class="menu-item pt-5"><!--begin:Menu content-->
-                            <div class="menu-content"><span
-                                    class="menu-heading fw-bold text-uppercase fs-7">Menus</span></div>
-                            <!--end:Menu content-->
-                        </div><!--end:Menu item--><!--begin:Menu item-->
-                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion"><!--begin:Menu link--><span
-                                class="menu-link"><span class="menu-icon"><i class="ki-duotone ki-element-7 fs-2"><span
-                                            class="path1"></span><span class="path2"></span></i></span><span
-                                    class="menu-title">Home Page</span><span
-                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="{{route('banner-list')}}"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Banner</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="{{route('category-list')}}"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Our Services</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="{{route('assignment-category-list')}}"><span
-                                    class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                    class="menu-title">Assignments</span></a><!--end:Menu link--></div>
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="quickform.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Quick Form</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="howwework.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">How we Work</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="why-choose-us.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Why Choose Us</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="faq.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">FAQ"S</span></a><!--end:Menu link--></div>
-                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link" href="achievement.html"><span
-                                            class="menu-bullet"><span class="bullet bullet-dot"></span></span><span
-                                            class="menu-title">Achievements</span></a><!--end:Menu link--></div>
-                                <!--end:Menu item-->
-                            </div><!--end:Menu item--><!--begin:Menu item-->
-                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                            class="ki-duotone ki-element-7 fs-2"><span class="path1"></span><span
-                                                class="path2"></span></i></span><span class="menu-title">About
-                                        Us</span><span
-                                        class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                            href="../widgets/lists.html"><span class="menu-bullet"><span
-                                                    class="bullet bullet-dot"></span></span><span
-                                                class="menu-title">Lists</span></a><!--end:Menu link--></div>
-                                    <!--end:Menu item--><!--begin:Menu item-->
-                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                            href="../widgets/statistics.html"><span class="menu-bullet"><span
-                                                    class="bullet bullet-dot"></span></span><span
-                                                class="menu-title">Statistics</span></a><!--end:Menu link--></div>
-                                    <!--end:Menu item--><!--begin:Menu item-->
-                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                            href="../widgets/charts.html"><span class="menu-bullet"><span
-                                                    class="bullet bullet-dot"></span></span><span
-                                                class="menu-title">Charts</span></a><!--end:Menu link--></div>
-                                    <!--end:Menu item--><!--begin:Menu item-->
-                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                            href="../widgets/mixed.html"><span class="menu-bullet"><span
-                                                    class="bullet bullet-dot"></span></span><span
-                                                class="menu-title">Mixed</span></a><!--end:Menu link--></div>
-                                    <!--end:Menu item--><!--begin:Menu item-->
-                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                            href="../widgets/tables.html"><span class="menu-bullet"><span
-                                                    class="bullet bullet-dot"></span></span><span
-                                                class="menu-title">Tables</span></a><!--end:Menu link--></div>
-                                    <!--end:Menu item--><!--begin:Menu item-->
-                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                            href="../widgets/feeds.html"><span class="menu-bullet"><span
-                                                    class="bullet bullet-dot"></span></span><span
-                                                class="menu-title">Feeds</span></a><!--end:Menu link--></div>
-                                    <!--end:Menu item-->
-                                </div><!--end:Menu item--><!--begin:Menu item-->
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <!--end:Menu item--><!--begin:Menu item-->
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                class="ki-duotone ki-element-7 fs-2"><span class="path1"></span><span
-                                                    class="path2"></span></i></span><span class="menu-title">Assignment
-                                            Help</span><span
-                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="../widgets/lists.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Lists</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="../widgets/statistics.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Statistics</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="../widgets/charts.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Charts</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="../widgets/mixed.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Mixed</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="../widgets/tables.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Tables</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item--><!--begin:Menu item-->
-                                        <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                href="../widgets/feeds.html"><span class="menu-bullet"><span
-                                                        class="bullet bullet-dot"></span></span><span
-                                                    class="menu-title">Feeds</span></a><!--end:Menu link--></div>
-                                        <!--end:Menu item-->
-                                    </div><!--end:Menu item--><!--begin:Menu item-->
-                                    <!--end:Menu item--><!--begin:Menu item-->
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                        <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                    class="ki-duotone ki-element-7 fs-2"><span
-                                                        class="path1"></span><span class="path2"></span></i></span><span
-                                                class="menu-title">Take My Online Class</span><span
-                                                class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                        <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="../widgets/lists.html"><span class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Lists</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="../widgets/statistics.html"><span class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                            </div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="../widgets/charts.html"><span class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Charts</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="../widgets/mixed.html"><span class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Mixed</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="../widgets/tables.html"><span class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Tables</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item--><!--begin:Menu item-->
-                                            <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                    href="../widgets/feeds.html"><span class="menu-bullet"><span
-                                                            class="bullet bullet-dot"></span></span><span
-                                                        class="menu-title">Feeds</span></a><!--end:Menu link--></div>
-                                            <!--end:Menu item-->
-                                        </div><!--end:Menu item--><!--begin:Menu item-->
-                                        <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                            <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                        class="ki-duotone ki-element-7 fs-2"><span
-                                                            class="path1"></span><span
-                                                            class="path2"></span></i></span><span
-                                                    class="menu-title">Solution Library</span><span
-                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                            <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="../widgets/lists.html"><span class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                </div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="../widgets/statistics.html"><span
-                                                            class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                </div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="../widgets/charts.html"><span class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                </div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="../widgets/mixed.html"><span class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                </div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="../widgets/tables.html"><span class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                </div>
-                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                        href="../widgets/feeds.html"><span class="menu-bullet"><span
-                                                                class="bullet bullet-dot"></span></span><span
-                                                            class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                </div>
-                                                <!--end:Menu item-->
-                                            </div><!--end:Menu item--><!--begin:Menu item-->
-                                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                            class="ki-duotone ki-element-7 fs-2"><span
-                                                                class="path1"></span><span
-                                                                class="path2"></span></i></span><span
-                                                        class="menu-title">Services</span><span
-                                                        class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/lists.html"><span class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/statistics.html"><span
-                                                                class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/charts.html"><span
-                                                                class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/mixed.html"><span class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/tables.html"><span
-                                                                class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/feeds.html"><span class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item-->
-                                                </div><!--end:Menu sub-->
-                                            </div>
-                                            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                                                            class="ki-duotone ki-element-7 fs-2"><span
-                                                                class="path1"></span><span
-                                                                class="path2"></span></i></span><span
-                                                        class="menu-title">Get quote</span><span
-                                                        class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/lists.html"><span class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/statistics.html"><span
-                                                                class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/charts.html"><span
-                                                                class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/mixed.html"><span class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/tables.html"><span
-                                                                class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                    <div class="menu-item"><!--begin:Menu link--><a class="menu-link"
-                                                            href="../widgets/feeds.html"><span class="menu-bullet"><span
-                                                                    class="bullet bullet-dot"></span></span><span
-                                                                class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                    </div>
-                                                    <!--end:Menu item-->
-                                                </div>
-                                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                    <!--begin:Menu link--><span class="menu-link"><span
-                                                            class="menu-icon"><i
-                                                                class="ki-duotone ki-element-7 fs-2"><span
-                                                                    class="path1"></span><span
-                                                                    class="path2"></span></i></span><span
-                                                            class="menu-title">FAQ's</span><span
-                                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                    <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link" href="../widgets/lists.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                        </div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link"
-                                                                href="../widgets/statistics.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                        </div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link" href="../widgets/charts.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                        </div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link" href="../widgets/mixed.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                        </div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link" href="../widgets/tables.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                        </div>
-                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                class="menu-link" href="../widgets/feeds.html"><span
-                                                                    class="menu-bullet"><span
-                                                                        class="bullet bullet-dot"></span></span><span
-                                                                    class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                        </div>
-                                                        <!--end:Menu item-->
-                                                    </div>
+ <!-- Main Sidebar Container -->
+ <aside class="main-sidebar sidebar-dark-primary elevation-4">
+     <!-- Brand Logo -->
+     <a href="index3.html" class="brand-link">
+         <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+             class="brand-image img-circle elevation-3" style="opacity: .8">
+         <span class="brand-text font-weight-light">AdminLTE 3</span>
+     </a>
 
-                                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                                                        <!--begin:Menu link--><span class="menu-link"><span
-                                                                class="menu-icon"><i
-                                                                    class="ki-duotone ki-element-7 fs-2"><span
-                                                                        class="path1"></span><span
-                                                                        class="path2"></span></i></span><span
-                                                                class="menu-title">Blog</span><span
-                                                                class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                        <div class="menu-sub menu-sub-accordion"><!--begin:Menu item-->
-                                                            <div class="menu-item"><!--begin:Menu link--><a
-                                                                    class="menu-link" href="../widgets/lists.html"><span
-                                                                        class="menu-bullet"><span
-                                                                            class="bullet bullet-dot"></span></span><span
-                                                                        class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                            </div>
-                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                            <div class="menu-item"><!--begin:Menu link--><a
-                                                                    class="menu-link"
-                                                                    href="../widgets/statistics.html"><span
-                                                                        class="menu-bullet"><span
-                                                                            class="bullet bullet-dot"></span></span><span
-                                                                        class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                            </div>
-                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                            <div class="menu-item"><!--begin:Menu link--><a
-                                                                    class="menu-link"
-                                                                    href="../widgets/charts.html"><span
-                                                                        class="menu-bullet"><span
-                                                                            class="bullet bullet-dot"></span></span><span
-                                                                        class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                            </div>
-                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                            <div class="menu-item"><!--begin:Menu link--><a
-                                                                    class="menu-link" href="../widgets/mixed.html"><span
-                                                                        class="menu-bullet"><span
-                                                                            class="bullet bullet-dot"></span></span><span
-                                                                        class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                            </div>
-                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                            <div class="menu-item"><!--begin:Menu link--><a
-                                                                    class="menu-link"
-                                                                    href="../widgets/tables.html"><span
-                                                                        class="menu-bullet"><span
-                                                                            class="bullet bullet-dot"></span></span><span
-                                                                        class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                            </div>
-                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                            <div class="menu-item"><!--begin:Menu link--><a
-                                                                    class="menu-link" href="../widgets/feeds.html"><span
-                                                                        class="menu-bullet"><span
-                                                                            class="bullet bullet-dot"></span></span><span
-                                                                        class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                            </div>
-                                                            <!--end:Menu item-->
-                                                        </div>
-                                                        <div data-kt-menu-trigger="click"
-                                                            class="menu-item menu-accordion"><!--begin:Menu link--><span
-                                                                class="menu-link"><span class="menu-icon"><i
-                                                                        class="ki-duotone ki-element-7 fs-2"><span
-                                                                            class="path1"></span><span
-                                                                            class="path2"></span></i></span><span
-                                                                    class="menu-title">Testimonial</span><span
-                                                                    class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                            <div class="menu-sub menu-sub-accordion">
-                                                                <!--begin:Menu item-->
-                                                                <div class="menu-item"><!--begin:Menu link--><a
-                                                                        class="menu-link"
-                                                                        href="../widgets/lists.html"><span
-                                                                            class="menu-bullet"><span
-                                                                                class="bullet bullet-dot"></span></span><span
-                                                                            class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                                </div>
-                                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                                <div class="menu-item"><!--begin:Menu link--><a
-                                                                        class="menu-link"
-                                                                        href="../widgets/statistics.html"><span
-                                                                            class="menu-bullet"><span
-                                                                                class="bullet bullet-dot"></span></span><span
-                                                                            class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                                </div>
-                                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                                <div class="menu-item"><!--begin:Menu link--><a
-                                                                        class="menu-link"
-                                                                        href="../widgets/charts.html"><span
-                                                                            class="menu-bullet"><span
-                                                                                class="bullet bullet-dot"></span></span><span
-                                                                            class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                                </div>
-                                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                                <div class="menu-item"><!--begin:Menu link--><a
-                                                                        class="menu-link"
-                                                                        href="../widgets/mixed.html"><span
-                                                                            class="menu-bullet"><span
-                                                                                class="bullet bullet-dot"></span></span><span
-                                                                            class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                                </div>
-                                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                                <div class="menu-item"><!--begin:Menu link--><a
-                                                                        class="menu-link"
-                                                                        href="../widgets/tables.html"><span
-                                                                            class="menu-bullet"><span
-                                                                                class="bullet bullet-dot"></span></span><span
-                                                                            class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                                </div>
-                                                                <!--end:Menu item--><!--begin:Menu item-->
-                                                                <div class="menu-item"><!--begin:Menu link--><a
-                                                                        class="menu-link"
-                                                                        href="../widgets/feeds.html"><span
-                                                                            class="menu-bullet"><span
-                                                                                class="bullet bullet-dot"></span></span><span
-                                                                            class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                                </div>
-                                                                <!--end:Menu item-->
-                                                            </div>
-                                                            <div data-kt-menu-trigger="click"
-                                                                class="menu-item menu-accordion">
-                                                                <!--begin:Menu link--><span class="menu-link"><span
-                                                                        class="menu-icon"><i
-                                                                            class="ki-duotone ki-element-7 fs-2"><span
-                                                                                class="path1"></span><span
-                                                                                class="path2"></span></i></span><span
-                                                                        class="menu-title">Contact Us</span><span
-                                                                        class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                                <div class="menu-sub menu-sub-accordion">
-                                                                    <!--begin:Menu item-->
-                                                                    <div class="menu-item"><!--begin:Menu link--><a
-                                                                            class="menu-link"
-                                                                            href="../widgets/lists.html"><span
-                                                                                class="menu-bullet"><span
-                                                                                    class="bullet bullet-dot"></span></span><span
-                                                                                class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                                    </div>
-                                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                                    <div class="menu-item"><!--begin:Menu link--><a
-                                                                            class="menu-link"
-                                                                            href="../widgets/statistics.html"><span
-                                                                                class="menu-bullet"><span
-                                                                                    class="bullet bullet-dot"></span></span><span
-                                                                                class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                                    </div>
-                                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                                    <div class="menu-item"><!--begin:Menu link--><a
-                                                                            class="menu-link"
-                                                                            href="../widgets/charts.html"><span
-                                                                                class="menu-bullet"><span
-                                                                                    class="bullet bullet-dot"></span></span><span
-                                                                                class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                                    </div>
-                                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                                    <div class="menu-item"><!--begin:Menu link--><a
-                                                                            class="menu-link"
-                                                                            href="../widgets/mixed.html"><span
-                                                                                class="menu-bullet"><span
-                                                                                    class="bullet bullet-dot"></span></span><span
-                                                                                class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                                    </div>
-                                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                                    <div class="menu-item"><!--begin:Menu link--><a
-                                                                            class="menu-link"
-                                                                            href="../widgets/tables.html"><span
-                                                                                class="menu-bullet"><span
-                                                                                    class="bullet bullet-dot"></span></span><span
-                                                                                class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                                    </div>
-                                                                    <!--end:Menu item--><!--begin:Menu item-->
-                                                                    <div class="menu-item"><!--begin:Menu link--><a
-                                                                            class="menu-link"
-                                                                            href="../widgets/feeds.html"><span
-                                                                                class="menu-bullet"><span
-                                                                                    class="bullet bullet-dot"></span></span><span
-                                                                                class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                                    </div>
-                                                                    <!--end:Menu item-->
-                                                                </div>
-                                                                <div data-kt-menu-trigger="click"
-                                                                    class="menu-item menu-accordion">
-                                                                    <!--begin:Menu link--><span class="menu-link"><span
-                                                                            class="menu-icon"><i
-                                                                                class="ki-duotone ki-element-7 fs-2"><span
-                                                                                    class="path1"></span><span
-                                                                                    class="path2"></span></i></span><span
-                                                                            class="menu-title">Term &
-                                                                            conditions</span><span
-                                                                            class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                                    <div class="menu-sub menu-sub-accordion">
-                                                                        <!--begin:Menu item-->
-                                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                                class="menu-link"
-                                                                                href="../widgets/lists.html"><span
-                                                                                    class="menu-bullet"><span
-                                                                                        class="bullet bullet-dot"></span></span><span
-                                                                                    class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                                        </div>
-                                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                                class="menu-link"
-                                                                                href="../widgets/statistics.html"><span
-                                                                                    class="menu-bullet"><span
-                                                                                        class="bullet bullet-dot"></span></span><span
-                                                                                    class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                                        </div>
-                                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                                class="menu-link"
-                                                                                href="../widgets/charts.html"><span
-                                                                                    class="menu-bullet"><span
-                                                                                        class="bullet bullet-dot"></span></span><span
-                                                                                    class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                                        </div>
-                                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                                class="menu-link"
-                                                                                href="../widgets/mixed.html"><span
-                                                                                    class="menu-bullet"><span
-                                                                                        class="bullet bullet-dot"></span></span><span
-                                                                                    class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                                        </div>
-                                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                                class="menu-link"
-                                                                                href="../widgets/tables.html"><span
-                                                                                    class="menu-bullet"><span
-                                                                                        class="bullet bullet-dot"></span></span><span
-                                                                                    class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                                        </div>
-                                                                        <!--end:Menu item--><!--begin:Menu item-->
-                                                                        <div class="menu-item"><!--begin:Menu link--><a
-                                                                                class="menu-link"
-                                                                                href="../widgets/feeds.html"><span
-                                                                                    class="menu-bullet"><span
-                                                                                        class="bullet bullet-dot"></span></span><span
-                                                                                    class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                                        </div>
-                                                                        <!--end:Menu item-->
-                                                                    </div>
-                                                                    <div data-kt-menu-trigger="click"
-                                                                        class="menu-item menu-accordion">
-                                                                        <!--begin:Menu link--><span
-                                                                            class="menu-link"><span class="menu-icon"><i
-                                                                                    class="ki-duotone ki-element-7 fs-2"><span
-                                                                                        class="path1"></span><span
-                                                                                        class="path2"></span></i></span><span
-                                                                                class="menu-title">Privacy
-                                                                                Policy</span><span
-                                                                                class="menu-arrow"></span></span><!--end:Menu link--><!--begin:Menu sub-->
-                                                                        <div class="menu-sub menu-sub-accordion">
-                                                                            <!--begin:Menu item-->
-                                                                            <div class="menu-item">
-                                                                                <!--begin:Menu link--><a
-                                                                                    class="menu-link"
-                                                                                    href="../widgets/lists.html"><span
-                                                                                        class="menu-bullet"><span
-                                                                                            class="bullet bullet-dot"></span></span><span
-                                                                                        class="menu-title">Lists</span></a><!--end:Menu link-->
-                                                                            </div>
-                                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                                            <div class="menu-item">
-                                                                                <!--begin:Menu link--><a
-                                                                                    class="menu-link"
-                                                                                    href="../widgets/statistics.html"><span
-                                                                                        class="menu-bullet"><span
-                                                                                            class="bullet bullet-dot"></span></span><span
-                                                                                        class="menu-title">Statistics</span></a><!--end:Menu link-->
-                                                                            </div>
-                                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                                            <div class="menu-item">
-                                                                                <!--begin:Menu link--><a
-                                                                                    class="menu-link"
-                                                                                    href="../widgets/charts.html"><span
-                                                                                        class="menu-bullet"><span
-                                                                                            class="bullet bullet-dot"></span></span><span
-                                                                                        class="menu-title">Charts</span></a><!--end:Menu link-->
-                                                                            </div>
-                                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                                            <div class="menu-item">
-                                                                                <!--begin:Menu link--><a
-                                                                                    class="menu-link"
-                                                                                    href="../widgets/mixed.html"><span
-                                                                                        class="menu-bullet"><span
-                                                                                            class="bullet bullet-dot"></span></span><span
-                                                                                        class="menu-title">Mixed</span></a><!--end:Menu link-->
-                                                                            </div>
-                                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                                            <div class="menu-item">
-                                                                                <!--begin:Menu link--><a
-                                                                                    class="menu-link"
-                                                                                    href="../widgets/tables.html"><span
-                                                                                        class="menu-bullet"><span
-                                                                                            class="bullet bullet-dot"></span></span><span
-                                                                                        class="menu-title">Tables</span></a><!--end:Menu link-->
-                                                                            </div>
-                                                                            <!--end:Menu item--><!--begin:Menu item-->
-                                                                            <div class="menu-item">
-                                                                                <!--begin:Menu link--><a
-                                                                                    class="menu-link"
-                                                                                    href="../widgets/feeds.html"><span
-                                                                                        class="menu-bullet"><span
-                                                                                            class="bullet bullet-dot"></span></span><span
-                                                                                        class="menu-title">Feeds</span></a><!--end:Menu link-->
-                                                                            </div>
-                                                                            <!--end:Menu item-->
-                                                                        </div><!--end:Menu sub-->
-                                                                    </div>
-                                                                </div>
-                                                                <!--end::Menu-->
-                                                            </div>
-                                                            <!--end::Menu wrapper-->
-                                                        </div>
-                                                        <!--end::sidebar menu-->
-                                                        <!--begin::Footer-->
+     <!-- Sidebar -->
+     <div class="sidebar">
+         <!-- Sidebar user panel (optional) -->
+         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+             <div class="image">
+                 <img src="{{ asset('admin/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                     alt="User Image">
+             </div>
+             <div class="info">
+                 <a href="#" class="d-block">{{ auth()->guard('admin')->user()->name }}</a>
+             </div>
+         </div>
 
-                                                        <!--end::Footer-->
-                                                    </div>
-                                                    <!--end::Sidebar-->
+         <!-- Sidebar Menu -->
+         <nav class="mt-2">
+             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                 data-accordion="false">
+                 <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+
+
+                 <li class="nav-item">
+                     <a href="#" class="nav-link">
+                         <i class="nav-icon fas fa-circle"></i>
+                         <p>
+                             Site Management
+                             <i class="right fas fa-angle-left"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                          <a href="#" class="nav-link">
+
+                              <p>
+                                  Banner Management
+                                  <i class="fas fa-angle-left right"></i>
+
+                              </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+
+                              <li class="nav-item">
+                                  <a href="{{ route('admin.modules.data.add', ['module' => 'slider']) }}"
+                                      class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>Add Banner</p>
+                                  </a>
+                              </li>
+
+                              <li class="nav-item">
+                                  <a href="{{ route('admin.modules.data', ['module' => 'slider']) }}" class="nav-link">
+                                      <i class="far fa-circle nav-icon"></i>
+                                      <p>List Banner</p>
+                                  </a>
+                              </li>
+
+                          </ul>
+
+                        </li>
+                      
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+
+                                 <p>
+                                     Assignment Mangement
+                                     <i class="right fas fa-angle-left"></i>
+                                 </p>
+                             </a>
+
+                             <ul class="nav nav-treeview">
+                                 <li class="nav-item">
+                                     <a href="{{ route('assignment-category-list') }}" class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>Category</p>
+                                     </a>
+                                 </li>
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data', ['module' => 'collegess']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>Colleges</p>
+                                     </a>
+                                 </li>
+
+                             </ul>
+
+                         </li>
+
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+
+                                 <p>
+                                     How we Work
+                                     <i class="fas fa-angle-left right"></i>
+
+                                 </p>
+                             </a>
+                             <ul class="nav nav-treeview">
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data.add', ['module' => 'how-work']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>Add Work</p>
+                                     </a>
+                                 </li>
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data', ['module' => 'how-work']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>List Work</p>
+                                     </a>
+                                 </li>
+
+                             </ul>
+                         </li>
+
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+
+                                 <p>
+                                    Why Choose Us
+                                     <i class="fas fa-angle-left right"></i>
+
+                                 </p>
+                             </a>
+                             <ul class="nav nav-treeview">
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data.add', ['module' => 'choose-us']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>Add Choose</p>
+                                     </a>
+                                 </li>
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data', ['module' => 'choose-us']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>List Choose</p>
+                                     </a>
+                                 </li>
+
+                             </ul>
+                         </li>
+
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+
+                                 <p>
+                                     Faq
+                                     <i class="fas fa-angle-left right"></i>
+
+                                 </p>
+                             </a>
+                             <ul class="nav nav-treeview">
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data.add', ['module' => 'faqs']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>Add Faq</p>
+                                     </a>
+                                 </li>
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data', ['module' => 'faqs']) }}" class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>List Faq</p>
+                                     </a>
+                                 </li>
+
+                             </ul>
+                         </li>
+
+                         <li class="nav-item">
+                             <a href="#" class="nav-link">
+
+                                 <p>
+                                     Testimonials
+                                     <i class="fas fa-angle-left right"></i>
+
+                                 </p>
+                             </a>
+                             <ul class="nav nav-treeview">
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data.add', ['module' => 'testimonials']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>Add Testimonials</p>
+                                     </a>
+                                 </li>
+
+                                 <li class="nav-item">
+                                     <a href="{{ route('admin.modules.data', ['module' => 'testimonials']) }}"
+                                         class="nav-link">
+                                         <i class="far fa-circle nav-icon"></i>
+                                         <p>List Testimonials</p>
+                                     </a>
+                                 </li>
+
+                             </ul>
+                         </li>
+
+                     </ul>
+                 </li>
 
 
 
-                                                    <!--end::Content container-->
-                                                </div>
-                                                <!--end::Content-->
-                                            </div>
-                                            <!--end::Content wrapper-->
 
 
-                                            <!--begin::Footer-->
-                                            <div id="kt_app_footer" class="app-footer ">
-                                                <!--begin::Footer container-->
-                                                <div
-                                                    class="app-container  container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3 ">
-                                                    <!--begin::Copyright-->
-                                                    <div class="text-dark order-2 order-md-1">
-                                                        <span class="text-muted fw-semibold me-1">2023&copy;</span>
-                                                        <a href="#" target="_blank"
-                                                            class="text-gray-800 text-hover-primary">CoachOnCouch</a>
-                                                    </div>
-                                                    <!--end::Copyright-->
 
-                                                    <!--begin::Menu-->
-
-                                                    <!--end::Menu-->
-                                                </div>
-
-                                                <!--end::Footer container-->
-                                            </div>
-                                            <!--end::Footer-->
-
-                                        </div>
-                                        <!--end:::Main-->
-
-
-                                    </div>
-                                    <!--end::Wrapper-->
-
-
-                                </div>
-                                <!--end::Page-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+             </ul>
+         </nav>
+         <!-- /.sidebar-menu -->
+     </div>
+     <!-- /.sidebar -->
+ </aside>
