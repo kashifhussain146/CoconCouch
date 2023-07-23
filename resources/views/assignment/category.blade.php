@@ -76,7 +76,7 @@
 							<div class="icon-box">
 								<div class="icon lnr-icon-book"></div>
 							</div>
-							<h4><a href="">{{$v->title}}</a></h4>
+							<h4><a href="{{route('assignment.help.details',['module_data_id'=>$v->id])}}">{{$v->title}}</a></h4>
 							<div class="text">{{$v->description}}</div>
 						</div>
 					</div>
@@ -213,58 +213,46 @@
 
 				<div class="row justify-content-center">
 					<!-- Category Block -->
+
+					@foreach($work as $k=>$v)
 					<div class="category-block-current col-xl-3 col-lg-3 col-md-4 col-sm-6">
 						<div class="inner-box">
 							<div class="icon-box">
-								<i class="icon flaticon-student-2"></i>
+								<i class="icon  {{ ($v->icon!='')?$v->icon:'flaticon-student-2'}}"></i>
 							</div>
-							<h6 class="title"><a href="">Business <br>Management</a></h6>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+						
+							<h6 class="title">{{$v->title}}</h6>
+							<p >{!! strip_tags($v->description) !!}</p>
 						</div>
 					</div>
-
-					<!-- Category Block -->
-					<div class="category-block-current col-xl-3 col-lg-3 col-md-4 col-sm-6">
-						<div class="inner-box">
-							<div class="icon-box">
-								<i class="icon flaticon-stationary"></i>
-							</div>
-							<h6 class="title"><a href="">Arts and <br>Design</a></h6>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-						</div>
-					</div>
-
-					<!-- Category Block -->
-					<div class="category-block-current col-xl-3 col-lg-3 col-md-4 col-sm-6">
-						<div class="inner-box">
-							<div class="icon-box">
-								<i class="icon flaticon-online-learning"></i>
-							</div>
-							<h6 class="title"><a href="">Computer <br>Science</a></h6>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-						</div>
-					</div>
-
-					<!-- Category Block -->
-					<div class="category-block-current col-xl-3 col-lg-3 col-md-4 col-sm-6">
-						<div class="inner-box">
-							<div class="icon-box">
-								<i class="icon flaticon-study"></i>
-							</div>
-							<h6 class="title"><a href="">Personal <br>Development</a></h6>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
-						</div>
-					</div>
-
+					@endforeach
 				</div>
 			</div>
 		</section>
 		<!-- End Product Categories -->
 
 
-        @include('sections.clients')
+		<!-- Clients Section   -->
+		<section class="clients-section">
+			<div class="auto-container">
+				<!-- Sponsors Outer -->
+				<div class="sponsors-outer">
+					<!--clients carousel-->
+					<ul class="clients-carousel owl-carousel owl-theme">
+						@foreach($amenities as $K=>$v)
+						<li class="slide-item"> <a href="#"><img src="{{asset('images/'.$v->image)}}" alt=""></a> </li>
+						@endforeach
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		@include('sections.faq',['faq'=>$helpFaqs,'tag_line'=>'FAQ','heading'=>'Faq','col'=>'col-md-12'])
+		@include('sections.testimonials',['type'=>2,'tagline'=>'TAGLINE HEADING','heading'=>'Testimonials','testimonial'=>$testimonial])
+		
+        {{-- @include('sections.clients')
         @include('sections.faq')
-        @include('sections.testimonials')
+        @include('sections.testimonials') --}}
 
 @endsection
 

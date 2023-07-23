@@ -3,60 +3,26 @@
     <div class="container">
         <div class="row">
             <div class="sec-title text-center">
-                <span class="sub-title">TAGLINE HEADING</span>
-                <h2>Frequently Asked Questions</h2>
+                <span class="sub-title">{{$tag_line}}</span>
+                <h2>{{$heading}}</h2>
             </div>
 
-            <div class="col">
+            <div class="col {{(isset($col))?$col:''}}">
                 <ul class="accordion-box wow fadeInRight">
                     <!--Block-->
-                    <li class="accordion block active-block">
-                        <div class="acc-btn active">Lorem Ipsum is simply dummy text ?
+                    @foreach($faq as $k=>$v)
+                    <li class="accordion block {{($k==0)?'active-block':''}}">
+                        <div class="acc-btn {{($k==0)?'active':''}}">{{$v->title}}
                             <div class="icon fa fa-plus"></div>
                         </div>
-                        <div class="acc-content current">
+                        <div class="acc-content {{($k==0)?'current':''}}">
                             <div class="content">
-                                <div class="text">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                                <div class="text">{!! strip_tags($v->description) !!}</div>
                             </div>
                         </div>
                     </li>
-                    <!--Block-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Lorem Ipsum is simply dummy text ?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-                            </div>
-                        </div>
-                    </li>
-                    <!--Block-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Lorem Ipsum is simply dummy text ?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-                            </div>
-                        </div>
-                    </li>
-                    <!--Block-->
-                    <li class="accordion block">
-                        <div class="acc-btn">Lorem Ipsum is simply dummy text ?
-                            <div class="icon fa fa-plus"></div>
-                        </div>
-                        <div class="acc-content">
-                            <div class="content">
-                                <div class="text">Lorem Ipsum is simply dummy text of the printing and
-                                    typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
-                            </div>
-                        </div>
-                    </li>
+                    @endforeach
+                    
                 </ul>
             </div>
         </div>

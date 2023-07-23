@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Banner;
 use App\Models\Category;
-
+use App\Models\AssignmentCategory;
 class HomeController extends Controller
 {
     /**
@@ -25,9 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $banner = Banner::where('status',1)->get();
+        $banner = module(18);
         $category = Category::where('status','active')->latest()->limit(3)->get();
-        
-        return view('home',compact('banner','category'));
+        $testimonial = module(12);
+        $howWork =   module(10);
+        $chooseUs =    module(20);
+        $helpFaqs =    module(19);
+
+
+        return view('home',compact('banner','category','testimonial','howWork','chooseUs','helpFaqs'));
     }
 }

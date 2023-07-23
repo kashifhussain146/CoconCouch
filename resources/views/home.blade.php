@@ -143,7 +143,7 @@
                                                         style="visibility: inherit; transition: none 0s ease 0s; text-align: inherit; line-height: 0px; border-width: 0px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 18px; white-space: nowrap; min-height: 0px; min-width: 0px; max-height: none; max-width: none; opacity: 1; transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform-origin: 50% 50% 0px;">
                                                         <figure class="main-image"
                                                             style="transition: none 0s ease 0s; text-align: inherit; line-height: 0px; border-width: 0px; margin: 0px; padding: 30px; letter-spacing: 0px; font-weight: 400; font-size: 18px;">
-                                                            <img src="{{ asset(''.$item->web_banner) }}"
+                                                            <img src="{{ asset('images/'.$item->image) }}"
                                                                 alt=""
                                                                 style="width: 569px; height: 567px; transition: none 0s ease 0s; text-align: inherit; line-height: 0px; border-width: 9px; margin: 0px; padding: 0px; letter-spacing: 0px; font-weight: 400; font-size: 18px;">
                                                         </figure>
@@ -220,7 +220,9 @@
                                                         <p class="text-black-50 ntext mt-5 mb-4">
                                                             {!! $item->description !!}
                                                         </p>
-                                                        <button class="home-button theme-btn btn-style-one bg-theme-color4 bg-dark" type="submit" name="submit-form">{{$item->link}}</button>
+                                                       <a target="_blank" href="{{ ($item->extra_field_2!='')?$item->extra_field_2:'#'}}">
+                                                        <button class="home-button theme-btn btn-style-one bg-theme-color4 bg-dark" type="submit" name="submit-form">{{$item->extra_field_1}}</button>
+                                                       </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -382,100 +384,19 @@
 
                                 <!-- Indicators/dots -->
                                 <div class="carousel-indicators home-form-carousel">
-                                    <button type="button" data-bs-target="#demonw" data-bs-slide-to="0"
-                                        class="active home-form-carousel-button"></button>
-                                    <button type="button" data-bs-target="#demonw" data-bs-slide-to="1"
+                                    @foreach($testimonial as $K=>$v)
+                                    <button type="button" data-bs-target="#demonw" data-bs-slide-to="{{$K}}"
+                                        class="{{ ($K==0)?'active':'' }} home-form-carousel-button"></button>
+                                    @endforeach
+                                    {{-- <button type="button" data-bs-target="#demonw" data-bs-slide-to="1"
                                         class="home-form-carousel-button"></button>
                                     <button type="button" data-bs-target="#demonw" data-bs-slide-to="2"
-                                        class="home-form-carousel-button"></button>
+                                        class="home-form-carousel-button"></button> --}}
                                 </div>
 
                                 <!-- The slideshow/carousel -->
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <div class="bg-white px-4 position-relative carousel-icon">
-                                            <svg class="home-card-icon" xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor" viewBox="0 0 975.036 975.036">
-                                                <path
-                                                    d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
-                                                </path>
-                                            </svg>
-                                            <div class="row pt-4">
-                                                <img class="col-4 carousel-img"
-                                                    src="https://1.bp.blogspot.com/-bo50-jrhUoA/XpWrJsMPVFI/AAAAAAAATRU/D5KtkduEKqIgzxA4KSjRPbZIKwmPPZH2wCLcBGAsYHQ/s400/krishna.jpg"
-                                                    alt="">
-                                                <div class="col-8">
-                                                    <p class="black fw-bold mb-0">Martha
-                                                        Maldonado
-                                                    </p>
-                                                    <p class="mb-0">Executive Chairman @ Google
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <p class="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                                Esse
-                                                architecto tenetur ipsa minus, autem similique quos ab aliquam dicta
-                                                dolore
-                                                neque, deleniti hic. Eaque nam neque sint veniam? Nobis, ab.</p>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="bg-white px-4 position-relative carousel-icon">
-                                            <svg class="home-card-icon" xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor" viewBox="0 0 975.036 975.036">
-                                                <path
-                                                    d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
-                                                </path>
-                                            </svg>
-                                            <div class="row pt-4">
-                                                <img class="col-4 carousel-img"
-                                                    src="https://1.bp.blogspot.com/-bo50-jrhUoA/XpWrJsMPVFI/AAAAAAAATRU/D5KtkduEKqIgzxA4KSjRPbZIKwmPPZH2wCLcBGAsYHQ/s400/krishna.jpg"
-                                                    alt="">
-                                                <div class="col-8">
-                                                    <p class="black fw-bold mb-0">Martha
-                                                        Maldonado
-                                                    </p>
-                                                    <p class="mb-0">Executive Chairman @ Google
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <p class="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                                Esse
-                                                architecto tenetur ipsa minus, autem similique quos ab aliquam dicta
-                                                dolore
-                                                neque, deleniti hic. Eaque nam neque sint veniam? Nobis, ab.</p>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="bg-white px-4 position-relative carousel-icon">
-                                            <svg class="home-card-icon" xmlns="http://www.w3.org/2000/svg"
-                                                fill="currentColor" viewBox="0 0 975.036 975.036">
-                                                <path
-                                                    d="M925.036 57.197h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.399 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l36 76c11.6 24.399 40.3 35.1 65.1 24.399 66.2-28.6 122.101-64.8 167.7-108.8 55.601-53.7 93.7-114.3 114.3-181.9 20.601-67.6 30.9-159.8 30.9-276.8v-239c0-27.599-22.401-50-50-50zM106.036 913.497c65.4-28.5 121-64.699 166.9-108.6 56.1-53.7 94.4-114.1 115-181.2 20.6-67.1 30.899-159.6 30.899-277.5v-239c0-27.6-22.399-50-50-50h-304c-27.6 0-50 22.4-50 50v304c0 27.601 22.4 50 50 50h145.5c-1.9 79.601-20.4 143.3-55.4 191.2-27.6 37.8-69.4 69.1-125.3 93.8-25.7 11.3-36.8 41.7-24.8 67.101l35.9 75.8c11.601 24.399 40.501 35.2 65.301 24.399z">
-                                                </path>
-                                            </svg>
-                                            <div class="row pt-4">
-                                                <img class="col-4 carousel-img"
-                                                    src="https://1.bp.blogspot.com/-bo50-jrhUoA/XpWrJsMPVFI/AAAAAAAATRU/D5KtkduEKqIgzxA4KSjRPbZIKwmPPZH2wCLcBGAsYHQ/s400/krishna.jpg"
-                                                    alt="">
-                                                <div class="col-8">
-                                                    <p class="black fw-bold mb-0">Martha
-                                                        Maldonado
-                                                    </p>
-                                                    <p class="mb-0">Executive Chairman @ Google
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <p class="py-4">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                                Esse
-                                                architecto tenetur ipsa minus, autem similique quos ab aliquam dicta
-                                                dolore
-                                                neque, deleniti hic. Eaque nam neque sint veniam? Nobis, ab.</p>
-                                        </div>
-                                    </div>
+                                   @include('sections.testimonials',['type'=>1,'tagline'=>'','heading'=>'','testimonial'=>$testimonial])
                                 </div>
                             </div>
                         </div>
@@ -515,55 +436,9 @@
 
 
     <!-- How We Work -->
-
-
-    <section class="categories-section-current bg-white">
-        <div class="work-section">
-            <div class="sec-title text-center">
-                <span class="sub-title">TAGLINE HEADING</span>
-                <h2 class="work-section-head">How we Work</h2>
-            </div>
-
-            <div class="row justify-content-center">
-                <!-- Category Block -->
-                <div class="category-block-current col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                    <div class="inner-box">
-                        <img class="mx-auto pb-3" src="{{ asset('assets/images/trial13.png') }}" alt="">
-                        <h6 class="pt-4 pb-2 fs-2 color2 fw-bold">135,00 courses</h6>
-                        <p class="work-section-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repudiandae, odio inventore
-                            perferendis distinctio quidem ab.</p>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block-current col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                    <div class="inner-box">
-                        <img class="mx-auto pb-3" src="{{ asset('assets/images/trial14.png') }}" alt="">
-                        <h6 class="pt-4 pb-2 fs-2 color2 fw-bold">Industry Instructors</h6>
-                        <p class="work-section-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repudiandae, odio inventore
-                            perferendis distinctio quidem ab.</p>
-                    </div>
-                </div>
-
-                <!-- Category Block -->
-                <div class="category-block-current col-xl-4 col-lg-4 col-md-4 col-sm-6">
-                    <div class="inner-box">
-                        <img class="mx-auto" src="{{ asset('assets/images/trial15.png') }}" alt="">
-                        <h6 class="pt-4 pb-2 fs-2 color2 fw-bold">Lifetime Access</h6>
-                        <p class="work-section-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Repudiandae, odio inventore
-                            perferendis distinctio quidem ab.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    @include('sections.works',['works'=>$howWork,'tag_line'=>'TAGLINE HEADING','heading'=>'How we Work','columns'=>'col-xl-4 col-lg-4 col-md-4 col-sm-6','media'=>'image'])
 
     <!-- Why Choose US -->
-
     <div class="px-lg-5 bg-light py-3 position-relative">
         <img class="why-us-img1" src="{{ asset('assets/images/trial11_new.png') }}" alt="">
         <img class="why-us-img2" src="{{ asset('assets/images/trial16.png') }}" alt="">
@@ -572,110 +447,28 @@
             <h2 class="work-section-head">Why Choose Us</h2>
         </div>
         <div class="row">
+            @foreach ($chooseUs as $k=>$item)
             <div class="card col-sm-4 col-lg p-3">
-                <div class="card-body why-us-card-org">
-                    <img class="mb-4" src="{{ asset('assets/images/trial17.png') }}" alt="">
-                    <h5 class="card-title fw-bold text-white fs-2 pb-3">High Quality</h5>
-                    <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Exercitationem voluptatem dolores tempore impedit optio natus
-                        corporis nisi iusto delectus, fuga ullam recusandae, reprehenderit consequatur voluptatibus
-                        id
-                        inventore beatae, doloribus repudiandae.</p>
+                <div class="card-body {{ ($k%2!=0)?'why-us-card-blk':'why-us-card-org' }}  ">
+                    <img class="mb-4" src="{{asset('images/'.$item->image)}}" alt="{{$item->title}}">
+                    <h5 class="card-title fw-bold text-white fs-2 pb-3">{{$item->title}}</h5>
+                    <p class="home-work-card-txt card-text text-white pb-4">{!! strip_tags($item->description) !!}</p>
                     <div class="btn-box pb-3">
                         <a href="page-about.html" class="px-4 py-2 rounded-pill bg-white"><span
                                 class="fs-6 black fw-bold">KNOW MORE</span></a>
                     </div>
                 </div>
             </div>
-            <div class="card col-sm-4 col-lg p-3">
-                <div class="card-body why-us-card-blk">
-                    <img class="mb-4" src="{{ asset('assets/images/trial18.png') }}" alt="">
-                    <h5 class="card-title fw-bold text-white fs-2 pb-3">Assured Grade A or B</h5>
-                    <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Exercitationem voluptatem dolores tempore impedit optio natus
-                        corporis nisi iusto delectus, fuga ullam recusandae, reprehenderit consequatur voluptatibus
-                        id
-                        inventore beatae, doloribus repudiandae.</p>
-                    <div class="btn-box pb-3">
-                        <a href="page-about.html" class="px-4 py-2 rounded-pill bg-white"><span
-                                class="fs-6 black fw-bold">KNOW MORE</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-sm-4 col-lg p-3">
-                <div class="card-body why-us-card-org">
-                    <img class="mb-4" src="{{ asset('assets/images/trial19.png') }}" alt="">
-                    <h5 class="card-title fw-bold text-white fs-2 pb-3">Safety</h5>
-                    <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Exercitationem voluptatem dolores tempore impedit optio natus
-                        corporis nisi iusto delectus, fuga ullam recusandae, reprehenderit consequatur voluptatibus
-                        id
-                        inventore beatae, doloribus repudiandae.</p>
-                    <div class="btn-box pb-3">
-                        <a href="page-about.html" class="px-4 py-2 rounded-pill bg-white"><span
-                                class="fs-6 black fw-bold">KNOW MORE</span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card col-sm-4 col-lg p-3">
-                <div class="card-body why-us-card-blk">
-                    <img class="mb-4" src="{{ asset('assets/images/trial20.png') }}" alt="">
-                    <h5 class="card-title fw-bold text-white fs-2 pb-3">Subject Expert</h5>
-                    <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Exercitationem voluptatem dolores tempore impedit optio natus
-                        corporis nisi iusto delectus, fuga ullam recusandae, reprehenderit consequatur voluptatibus
-                        id
-                        inventore beatae, doloribus repudiandae.</p>
-                    <div class="btn-box pb-3">
-                        <a href="page-about.html" class="px-4 py-2 rounded-pill bg-white"><span
-                                class="fs-6 black fw-bold">KNOW MORE</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-sm-4 col-lg p-3">
-                <div class="card-body why-us-card-org">
-                    <img class="mb-4" src="{{ asset('assets/images/trial21.png') }}" alt="">
-                    <h5 class="card-title fw-bold text-white fs-2 pb-3">100% Refundable</h5>
-                    <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Exercitationem voluptatem dolores tempore impedit optio natus
-                        corporis nisi iusto delectus, fuga ullam recusandae, reprehenderit consequatur voluptatibus
-                        id
-                        inventore beatae, doloribus repudiandae.</p>
-                    <div class="btn-box pb-3">
-                        <a href="page-about.html" class="px-4 py-2 rounded-pill bg-white"><span
-                                class="fs-6 black fw-bold">KNOW MORE</span></a>
-                    </div>
-                </div>
-            </div>
-            <div class="card col-sm-4 col-lg p-3">
-                <div class="card-body why-us-card-blk">
-                    <img class="mb-4" src="{{ asset('assets/images/trial22.png') }}" alt="">
-                    <h5 class="card-title fw-bold text-white fs-2 pb-3">Affordable Price</h5>
-                    <p class="home-work-card-txt card-text text-white pb-4">Lorem ipsum dolor sit amet
-                        consectetur, adipisicing elit. Exercitationem voluptatem dolores tempore impedit optio natus
-                        corporis nisi iusto delectus, fuga ullam recusandae, reprehenderit consequatur voluptatibus
-                        id
-                        inventore beatae, doloribus repudiandae.</p>
-                    <div class="btn-box pb-3">
-                        <a href="page-about.html" class="px-4 py-2 rounded-pill bg-white"><span
-                                class="fs-6 black fw-bold">KNOW MORE</span></a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
 
+    
 
-
-    <!-- Frequently Asked Question  -->
-
-    <!-- Do My Assignment Section Three -->
     <section class="about-section-three position-relative p-0">
-        <img class="home-faq-img1" src="{{ asset('assets/images/trial25.png') }}" alt="">
-        <img class="home-faq-img2" src="{{ asset('assets/images/trial24.png') }}" alt="">
+        <img class="home-faq-img1" src="{{asset('/assets/images/trial25.png')}}" alt="">
+        <img class="home-faq-img2" src="{{asset('/assets/images/trial24.png')}}" alt="">
         <div class="auto-container">
             <div class="row">
                 <div class="content-column col-lg-6 col-md-12 order-2 wow fadeInRight" data-wow-delay="600ms">
@@ -698,109 +491,29 @@
                                                 <div class="product-description">
                                                     <div class="row">
                                                         <div class="accordion" id="accordionFaq">
+
+                                                            @foreach($helpFaqs as $k=>$v)
                                                             <div class="home-faq">
-                                                                <h2 class="accordion-header" id="headingOne">
+                                                                <h2 class="accordion-header" id="headingOne{{$v->id}}">
                                                                     <button class="accordion-button fw-bold collapsed"
                                                                         type="button" data-bs-toggle="collapse"
-                                                                        data-bs-target="#collapseOne"
+                                                                        data-bs-target="#collapseOne{{$v->id}}"
                                                                         aria-expanded="false"
                                                                         aria-controls="collapseOne">
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing
+                                                                        {{$v->title}}
                                                                     </button>
                                                                 </h2>
-                                                                <div id="collapseOne"
+                                                                <div id="collapseOne{{$v->id}}"
                                                                     class="accordion-collapse collapse fw-bold"
-                                                                    aria-labelledby="headingOne"
+                                                                    aria-labelledby="headingOne{{$v->id}}"
                                                                     data-bs-parent="#accordionFaq">
                                                                     <div class="accordion-body">
-                                                                        <p>Lorem Ipsum is simply dummy text of the
-                                                                            printing Lorem
-                                                                            Ipsum
-                                                                            is simply dummy text of the printing and
-                                                                            typesetting industryLorem Ipsum is
-                                                                            simply
-                                                                            dummy text of the printing and
-                                                                            typesetting
-                                                                            industry</p>
+                                                                        <p>{!!strip_tags($v->description)!!}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="home-faq">
-                                                                <h2 class="accordion-header" id="headingTwo">
-                                                                    <button class="accordion-button collapsed fw-bold"
-                                                                        type="button" data-bs-toggle="collapse"
-                                                                        data-bs-target="#collapseTwo"
-                                                                        aria-expanded="false"
-                                                                        aria-controls="collapseTwo">
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing
-                                                                    </button>
-                                                                </h2>
-                                                                <div id="collapseTwo"
-                                                                    class="accordion-collapse collapse fw-bold"
-                                                                    aria-labelledby="headingTwo"
-                                                                    data-bs-parent="#accordionFaq">
-                                                                    <div class="accordion-body">
-                                                                        <p>Lorem Ipsum is simply dummy text of the
-                                                                            printing Lorem
-                                                                            Ipsum
-                                                                            is simply dummy text of the printing and
-                                                                            typesetting industry</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="home-faq">
-                                                                <h2 class="accordion-header" id="headingThree">
-                                                                    <button class="accordion-button collapsed fw-bold"
-                                                                        type="button" data-bs-toggle="collapse"
-                                                                        data-bs-target="#collapseThree"
-                                                                        aria-expanded="false"
-                                                                        aria-controls="collapseThree">
+                                                            @endforeach
 
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing
-                                                                    </button>
-                                                                </h2>
-                                                                <div id="collapseThree"
-                                                                    class="accordion-collapse collapse fw-bold"
-                                                                    aria-labelledby="headingThree"
-                                                                    data-bs-parent="#accordionFaq">
-                                                                    <div class="accordion-body">
-                                                                        <p>Lorem Ipsum is simply dummy text of the
-                                                                            printing Lorem
-                                                                            Ipsum
-                                                                            is simply dummy text of the printing and
-                                                                            typesetting industry</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="home-faq">
-                                                                <h2 class="accordion-header" id="headingFour">
-                                                                    <button class="accordion-button collapsed fw-bold"
-                                                                        type="button" data-bs-toggle="collapse"
-                                                                        data-bs-target="#collapseFour"
-                                                                        aria-expanded="false"
-                                                                        aria-controls="collapseFour">
-
-                                                                        Lorem Ipsum is simply dummy text of the
-                                                                        printing
-
-                                                                    </button>
-                                                                </h2>
-                                                                <div id="collapseFour"
-                                                                    class="accordion-collapse collapse fw-bold"
-                                                                    aria-labelledby="headingFour"
-                                                                    data-bs-parent="#accordionFaq">
-                                                                    <div class="accordion-body">
-                                                                        <p>Lorem Ipsum is simply dummy text of the
-                                                                            printing Lorem
-                                                                            Ipsum
-                                                                            is simply dummy text of the printing and
-                                                                            typesetting industry</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -820,7 +533,7 @@
                 <div class="image-column col-lg-6 col-md-12">
                     <div class="inner-column wow fadeInLeft">
                         <figure class="image overlay-anim wow fadeInUp"><img class="w-100"
-                                src="{{ asset('assets/images/trial23.png') }}" alt="">
+                                src="assets/images/trial23.png" alt="">
                         </figure>
 
                     </div>
@@ -828,8 +541,10 @@
             </div>
         </div>
     </section>
-    <!--Emd Do My Assignment Section -->
 
+
+    <!-- Frequently Asked Question  -->
+   
 
 
     <div class="pt-4">
