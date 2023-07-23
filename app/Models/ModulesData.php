@@ -13,6 +13,11 @@ class ModulesData extends Model
         return $this->hasMany('App\Models\ModulesData','category');
     }
 
+    public function category_data()
+    {
+        return $this->hasOne('App\Models\ModulesData','id','category');
+    }
+
     public function count()
     {
         return $this->results()->count();

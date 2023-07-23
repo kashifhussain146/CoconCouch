@@ -63,6 +63,14 @@ class ModulesDataController extends Controller
         ], [
             'title.required' => 'Title is required.',
         ]);
+
+
+        $check = ModulesData::where('module_id',4)->where('title',$request->title)->where('category',$request->category)->count();
+        if($check > 0){
+                \Session::flash('error','There is already exists expert name of category ! Please try another one');
+                return redirect()->back()->withInput();
+        }
+
         $slug = $request->slug;
         $slugs = unique_slug($slug, 'modules_data', $field = 'slug', $key = NULL, $value = NULL);
         $data = new ModulesData();
@@ -99,6 +107,26 @@ class ModulesDataController extends Controller
         $data->extra_field_13 = $request->extra_field_13;
         $data->extra_field_14 = $request->extra_field_14;
         $data->extra_field_15 = $request->extra_field_15;
+
+        $data->extra_field_date_1 = $request->extra_field_date_1;
+        $data->extra_field_date_2 = $request->extra_field_date_2;
+        $data->extra_field_date_3 = $request->extra_field_date_3;
+
+        for($i=1;$i<=5;$i++){
+            $desc = 'extra_field_desc_'.$i;
+            $data->$desc = $request->$desc;
+        }
+
+        for($i=1;$i<=5;$i++){
+            if($request->has('extra_field_files_'.$i)){
+                $filesname = $request->file('extra_field_files_'.$i);
+                $files = 'files_'.$i.time().'.'.$filesname->extension();
+                $filesname->move(public_path('uploads/images'),$files);
+                $files = "uploads/images/".$files;
+                $column = 'extra_field_files_'.$i;
+                $data->$column = $files;
+            }
+        }
 
         if (null!==($request->tag_ids)) {
             $data->tag_ids = implode(",", $request->tag_ids);
@@ -148,6 +176,15 @@ class ModulesDataController extends Controller
         ], [
             'title.required' => 'Title is required.',
         ]);
+
+        $check = ModulesData::where('module_id',4)->where('title',$request->title)->where('id','!=',$request->id)->where('category',$request->category)->count();
+        if($check > 0){
+                \Session::flash('error','There is already exists expert name of category ! Please try another one');
+                return redirect()->back()->withInput();
+        }
+
+        
+
         $slug = $request->slug;
         //$slugs = unique_slug($slug, 'modules_data', $field = 'slug', $key = NULL, $value = NULL);
         $data = ModulesData::findorFail($request->id);
@@ -193,6 +230,28 @@ class ModulesDataController extends Controller
             $data->tag_ids = implode(",", $request->tag_ids);
         }
 
+        $data->extra_field_date_1 = $request->extra_field_date_1;
+        $data->extra_field_date_2 = $request->extra_field_date_2;
+        $data->extra_field_date_3 = $request->extra_field_date_3;
+
+
+        for($i=1;$i<=5;$i++){
+            if($request->has('extra_field_files_'.$i)){
+                
+                $filesname = $request->file('extra_field_files_'.$i);
+                $files = 'files_'.$i.time().'.'.$filesname->extension();
+                $filesname->move(public_path('uploads/images'),$files);
+                $files = "uploads/images/".$files;
+                $column = 'extra_field_files_'.$i;
+                $data->$column = $files;
+            }
+        }
+
+        for($i=1;$i<=5;$i++){
+            $desc = 'extra_field_desc_'.$i;
+            $data->$desc = $request->$desc;
+        }
+        
         $data->meta_title = $request->meta_title;
         $data->meta_keywords = $request->meta_keywords;
         $data->meta_description = $request->meta_description;

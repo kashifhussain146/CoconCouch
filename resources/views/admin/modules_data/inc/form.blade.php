@@ -13,14 +13,14 @@
   <div class="col-md-12">
      <div class="form-group">
         {!! Form::label('title', $module->term.' Title', ['class' => 'font-weight-bold']) !!}
-        {!! Form::text('title', null, array('class'=>'form-control', 'id'=>'title', 'placeholder'=>$module->term.' Title', 'required'=>'required')) !!}
+        {!! Form::text('title', old('title'), array('class'=>'form-control', 'id'=>'title', 'placeholder'=>$module->term.' Title', 'required'=>'required')) !!}
      </div>
   </div>
   @if($module->is_slug)
   <div class="col-md-12">
      <div class="form-group">
         {!! Form::label('term', $module->term.' Slug', ['class' => 'font-weight-bold']) !!}
-        {!! Form::text('slug', null, array('class'=>'form-control', 'id'=>'slug', 'placeholder'=>$module->term.' Slug', 'required'=>'required')) !!}
+        {!! Form::text('slug', old('slug'), array('class'=>'form-control', 'id'=>'slug', 'placeholder'=>$module->term.' Slug', 'required'=>'required')) !!}
      </div>
   </div>
   @endif
@@ -30,7 +30,7 @@
   <div class="col-md-12">
     <div class="form-group">
        {!! Form::label('category', $module->term.' Category', ['class' => 'font-weight-bold']) !!}
-       {!! Form::select('category', [''=>'Select Category']+$categories, null, array('class'=>'form-control', 'id'=>'category', 'required'=>'required')) !!}
+       {!! Form::select('category', [''=>'Select Category']+$categories, old('category'), array('class'=>'form-control', 'id'=>'category', 'required'=>'required')) !!}
        {!! APFrmErrHelp::showErrors($errors, 'category') !!}
     </div>
  </div>
@@ -64,7 +64,15 @@
 
         <select name="category_ids[{{$v1->id}}][]" class="form-control select2" id="{{$v1->name}}" multiple>
             @foreach($v1->modules_data as $k2=>$v2)
-            <option @if( in_array($v2->id,$categoriesids) ) selected @endif value="{{$v2->id}}">{{$v2->title}}</option>
+                @php 
+                    $category = null;
+
+                    if($v2->category_data!=''){
+                        $category = $v2->category_data->title;
+                    }                    
+
+                @endphp
+            <option @if( in_array($v2->id,$categoriesids) ) selected @endif value="{{$v2->id}}">{{$v2->title}} {{ ($category!='')?'('.$category.')':'' }} </option>
             @endforeach
         </select>
       @endforeach
@@ -85,10 +93,42 @@
   <div class="col-md-12">
      <div class="form-group">
         {!! Form::label('description', $module->term.' Description', ['class' => 'font-weight-bold']) !!}
-        {!! Form::textarea('description', null, array('class'=>'form-control summernote', 'id'=>'editor1', 'placeholder'=>$module->term.' Description', 'required'=>'required')) !!}
+        {!! Form::textarea('description', old('description'), array('class'=>'form-control summernote', 'id'=>'editor1', 'placeholder'=>$module->term.' Description', 'required'=>'required')) !!}
      </div>
   </div>
   @endif
+
+
+  @for($i=1;$i<=$module->extra_desc_fields;$i++)
+  <div class="col-md-12">
+    <div class="form-group">
+      @php
+      $label = 'extra_field_desc_'.$i;
+      $name = 'extra_field_desc_'.$i;
+      @endphp
+    {!! Form::label($name, $module->$label, ['class' => 'font-weight-bold']) !!}
+    {!! Form::textarea($name, null, array('class'=>'form-control summernote', 'id'=>$name, 'placeholder'=>$module->$label)) !!}
+
+  </div>
+</div>
+@endfor
+
+
+@if($module->is_datepicker)
+@for($i = 1 ; $i<=$module->extra_date_fields; $i++)
+  <div class="col-md-12">
+    <div class="form-group">
+      @php
+      $label = 'extra_field_date_'.$i;
+      $name = 'extra_field_date_'.$i;
+      @endphp
+    {!! Form::label($name, $module->$label, ['class' => 'font-weight-bold']) !!}
+    {!! Form::date($name, null, array('class'=>'form-control', 'id'=>$name, 'placeholder'=>$module->$label, 'required'=>'required')) !!}
+  </div>
+</div>
+@endfor
+@endif
+
 
   @if($module->extra_fields)
   @for($i = 1 ; $i<=$module->extra_fields; $i++)
@@ -112,6 +152,55 @@
 	    <input type="file" name="image" id="filer_input1">
 	  </div>
 	</div>
+
+
+    @for($i = 1 ; $i<=$module->extra_files_fields; $i++)
+            <div class="col-md-12">
+              <div class="form-group">
+                @php
+                $label = 'extra_field_files_'.$i;
+                $name = 'extra_field_files_'.$i;
+                @endphp
+                <div class="row">
+                  <div class="col-md-9">
+                        <div class="form-group">
+                        {!! Form::label($name, $module->$label, ['class' => 'font-weight-bold']) !!}
+                        <input type="file" name="{{$name}}" class="form-control" id="filer_input{{$i}}">
+                      </div>
+                  </div>
+
+                  <div class="col-md-3 bg-gray">
+                    @if(isset($module_data->$name))
+                      @php 
+                        $infoPath = pathinfo(asset(''.$module_data->$name));
+                        $extension = $infoPath['extension'];
+                      @endphp
+
+                      @if(in_array($extension,['jpg','png','jpeg','svg']))
+                        <img style="height: 100px;" src="{{asset(''.$module_data->$name)}}" alt="">
+                        <p class="text-danger">Please select only (png,svg,jpg,jpeg)</p>
+                      @elseif(in_array($extension,['pdf']))
+                      <iframe src="{{asset(''.$module_data->$name)}}" frameborder="0"></iframe>
+                      
+                      <p class="text-danger">Please select only (PDF)</p>
+                      <a href="{{asset(''.$module_data->$name)}}">View Document <i class="fa fa-eye"></i></a>
+                      @else
+                      <video width="320" height="240" controls>
+                        <source src="{{asset(''.$module_data->$name)}}" type="video/mp4">
+                        <source src="{{asset(''.$module_data->$name)}}" type="video/ogg">
+                      </video>
+                      <a href="{{asset(''.$module_data->$name)}}">View Video <i class="fa fa-eye"></i></a>
+                      @endif
+
+                      @endif
+                  </div>
+
+                </div>
+
+            </div>
+          </div>
+        @endfor
+        
   @endif
 
   @if($module->tags)
@@ -154,7 +243,7 @@
 </div>
 @push('js')
 {{-- <script src="{{asset('admin/bower_components/ckeditor/ckeditor.js')}}"></script> --}}
-<script src="{{asset('js/jquery.validate.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {{-- @include('admin.ckeditor.index') --}}
 
 

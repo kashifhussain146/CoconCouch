@@ -1,10 +1,20 @@
 @extends('admin.layouts.app')
 @section('breadcrum')
-<h1 class="page-title">{{$module->term}} </h1>
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">{{$module->term}} </a></li>
-    <li class="breadcrumb-item active" aria-current="page">Create</li>
-</ol>
+<div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">{{$module->term}} </h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">{{$module->term}} </li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
 @stop
 
 @section('title')
@@ -14,14 +24,20 @@
 @push('css')
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<link href="{{asset('admin/assets/pages/filer/jquery.filer.css')}}" type="text/css" rel="stylesheet" />
+<link href="{{asset('admin/assets/pages/filer/jquery.filer-dragdropbox-theme.css')}}" type="text/css" rel="stylesheet" />
 @endpush
 
 @section('content')
-<div class="app-content">
+<div class="content-header">
    <div class="side-app">
        
         <div class="col-lg-12">
            <div class="card">
+              @if(\Session::has('error'))
+                <div class="alert alert-danger">{{\Session::get('error')}}</div>
+              @endif
+              
               <div class="card-header">
                  <h3 class="card-title">{{$module->term}} Inputs</h3>
               </div>
@@ -43,7 +59,7 @@
 
 @endsection
 
-@push('js')
+@section('inlinejs')
 <script src="{{asset('admin/assets/pages/filer/jquery.fileuploads.init.js')}}" type="text/javascript"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -133,4 +149,4 @@ $("#title").keyup(function(){
         $("#slug").val(Text);        
 });
 </script>
-@endpush
+@endsection

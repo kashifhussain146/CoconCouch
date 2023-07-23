@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
 @section('content')
-<div class="app-content">
+<div class="content-header">
    <div class="side-app">
        @include('admin.layouts.pagehead')
         <div class="col-lg-8">

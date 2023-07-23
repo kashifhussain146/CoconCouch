@@ -33,8 +33,12 @@ use App\Http\Controllers\Backend\WidgetDataController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/assignment-help', [AssignmentController::class, 'index'])->name('assignment.help');
+Route::get('/assignment/help/{module_data_id}', [AssignmentController::class, 'assignmentDetails'])->name('assignment.help.details')->where(['slug' => '[a-z]+']);
 
 
+Route::post('ckeditor/upload',[CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
+Route::post('ajax_upload_file',[FilerController::class, 'upload'])->name('filer.image-upload');
+Route::post('ajax_remove_file',[FilerController::class, 'fileDestroy'])->name('filer.image-remove');
 
 
 Route::get('/admin/login', [AdminLoginController::class,'showAdminLoginForm'])->name('admin.login');

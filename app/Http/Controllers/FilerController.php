@@ -26,12 +26,12 @@ class FilerController extends Controller
 
                     $fileName = $fileName.'_cms_'.time().'.'.$extension;
                     $destinationPath = public_path('/images/thumb');
-                    if($extension !=='ico'){
-                        $img = Image::make($image->getRealPath());
-                        $img->resize($width, $height, function ($constraint) {
-                            $constraint->aspectRatio();
-                        })->save($destinationPath . '/' . $fileName);
-                    } 
+                    // if($extension !=='ico'){
+                    //     $img = Image::make($image->getRealPath());
+                    //     $img->resize($width, $height, function ($constraint) {
+                    //         $constraint->aspectRatio();
+                    //     })->save($destinationPath . '/' . $fileName);
+                    // } 
                     $file->move(public_path('images'), $fileName); 
 
                     $data['single'] = $fileName;
@@ -52,12 +52,12 @@ class FilerController extends Controller
 
                 $fileName = $fileName.'_'.time().'.'.$extension;
                 $destinationPath = public_path('/images/thumb');
-                if($extension !=='ico'){
-                    $img = Image::make($image->getRealPath());
-                    $img->resize($width, $height, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->save($destinationPath . '/' . $fileName);
-                }
+                // if($extension !=='ico'){
+                //     $img = Image::make($image->getRealPath());
+                //     $img->resize($width, $height, function ($constraint) {
+                //         $constraint->aspectRatio();
+                //     })->save($destinationPath . '/' . $fileName);
+                // }
 
                 $request->file('image')->move(public_path('images'), $fileName);
 
