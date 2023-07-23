@@ -168,6 +168,9 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        //Intervention\Image\ImageManagerStatic::class,
+        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -183,10 +186,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
-        
+        'DataTables'=>Yajra\DataTables\DataTablesServiceProvider::class,
         'APFrmErrHelp' => App\Helpers\FormErrorHelper::class,
         'ImgUploader' => App\Helpers\ImageUploadingHelper::class,
-        'Image' => Intervention\Image\Facades\Image::class,
+        //'Image' => Intervention\Image\ImageManagerStatic::class,
         
     ])->toArray(),
 
