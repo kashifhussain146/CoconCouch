@@ -31,17 +31,25 @@ class AssignmentCategoryController extends Controller
                     ->addColumn('action', function($row)
                     {
                         $btn =' ';
-                        if(Auth()->user()->can('Category Edit'))
-                        {
-                            $btn .= '<a href="'.route("category-edit", $row->id).'" class="edit btn btn-primary btn-sm">Edit</a>';
-                        }
+                        // if(Auth()->user()->can('Category Edit'))
+                        // {
+                            $btn .= '<a href="'.route("assignment-category-edit", $row->id).'" class="edit btn btn-primary btn-sm">Edit</a>';
+                        // }
 
-                        if(Auth()->user()->can('Category View')){
-                        $btn .= ' <button type="button" data-url="'.route('category-view', $row->id).'" class="edit btn btn-primary btn-sm viewDetail">View</a>';
-                        }
+                        // if(Auth()->user()->can('Category View')){
+                        //$btn .= ' <button type="button" data-url="'.route('category-view', $row->id).'" class="edit btn btn-warning btn-sm viewDetail">View</a>';
+                        //}
                         return $btn;
                     })
-                    ->rawColumns(['action'])
+                    ->addColumn('created_at',function($row){
+                            return date('d/m/Y H:i:s',strtotime($row->created_at));
+                    })
+                    ->addColumn('image',function($row){
+                        $image = '';
+                        $image.='<img style="height: 70px;" src="'.asset(''.$row->image).'" />';
+                        return $image;
+                     })
+                    ->rawColumns(['action','image'])
                     ->make(true);
         }
         $data = AssignmentCategory::latest()->get();
@@ -56,8 +64,8 @@ class AssignmentCategoryController extends Controller
      */
     public function create()
     {
-        $industry = Industry::get();
-        return view('admin.assignment-category.category-create',compact('industry'));
+        
+        return view('admin.assignment-category.category-create');
     }
 
 
@@ -73,8 +81,8 @@ class AssignmentCategoryController extends Controller
         // exit;
         $validator = Validator::make($request->all(), [
             'title' => 'required|unique:assignment_category,title',
-            'image'=>'required|mimes:jpg,jpeg,png,svg',
-
+            'icon'=>'required',//|mimes:jpg,jpeg,png,svg
+             'description'=>'required'
         ]);
 
         if ($validator->fails()) 
@@ -92,6 +100,7 @@ class AssignmentCategoryController extends Controller
 
         $category->title = $request->title;
         $category->slug = Str::slug($request->title);
+        $category->icon = $request->icon;
         if($request->hasFile('image'))
         {
             $image = 'assignment-category_'.time().'.'.$request->image->extension();
@@ -123,7 +132,7 @@ class AssignmentCategoryController extends Controller
      */
     public function show($id)
     {
-       $loan = AssignmentCategory::with('industry')->find($id);
+       $loan = AssignmentCategory::find($id);
     //    prd($loan);
         return view('admin.assignment-category.category-show',compact('loan'));
     }
@@ -138,8 +147,8 @@ class AssignmentCategoryController extends Controller
     public function edit($id)
     {
         $loan = AssignmentCategory::find($id);
-        $industry = Industry::get();
-        return view('admin.assignment-category.category-edit',compact('loan','industry'));
+       
+        return view('admin.assignment-category.category-edit',compact('loan'));
     }
 
 
@@ -154,7 +163,8 @@ class AssignmentCategoryController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'title' => 'required|unique:assignment_category,title,'.$id,
-            'image'=>'required|mimes:jpg,jpeg,png,svg',
+            'icon'=>'required',//|mimes:jpg,jpeg,png,svg
+            'description'=>'required'
         ]);
 
         if ($validator->fails()) 
@@ -168,6 +178,7 @@ class AssignmentCategoryController extends Controller
 
         $category = AssignmentCategory::find($id);
         $category->title = $request->title;
+        $category->icon = $request->icon;
         $category->slug = Str::slug($request->title);
         if($request->hasFile('image'))
         {

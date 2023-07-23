@@ -8,11 +8,7 @@
             <table class="table table-bordered data-table" id="data">
                 <tbody>
 
-                     <tr>
-                       <th>Industry</th>
-                       <td colspan="12"><span class="badge badge-success text-capitalize"><b>{{ (isset($loan->industry))?$loan->industry->title:'N/A'}}</b></span></td>
-                     </tr>
-
+                    
                      <tr>
                        <th>Title</th>
                        <td colspan="12"> {{$loan->title}}</td>
