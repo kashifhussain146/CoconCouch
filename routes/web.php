@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AssignmentCategoryController;
+use App\Http\Controllers\Backend\SubjectCategoryController;
+use App\Http\Controllers\Backend\SubjectController;
 use App\Http\Controllers\AdminAuth\LoginController as AdminLoginController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\AssignmentController;
@@ -76,7 +78,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
 
     });
 
-    // Category Master
+    //assignment Category Master
     Route::group([], function() {
 
         Route::get('/admin/assignment-category', [AssignmentCategoryController::class,'index'])->name('assignment-category-list');//->middleware(['permission:Category List']);
@@ -90,6 +92,33 @@ Route::group(['middleware' => ['auth:admin']], function() {
     
     
     
+    //Subject Category Master
+    Route::group([], function() {
+
+        Route::get('/admin/subject-category', [SubjectCategoryController::class,'index'])->name('subject-category-list');//->middleware(['permission:Category List']);
+        Route::get('/admin/subject-category/create', [SubjectCategoryController::class,'create'])->name('subject-category-create');//->middleware(['permission:Category Create']);
+        Route::post('/admin/subject-category/store', [SubjectCategoryController::class,'store'])->name('subject-category-store');//->middleware(['permission:Category Create']);
+        Route::get('/admin/subject-category/edit/{id}', [SubjectCategoryController::class,'edit'])->name('subject-category-edit');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/subject-category/update/{id}', [SubjectCategoryController::class,'update'])->name('subject-category-update');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/subject-category/delete/{id}', [SubjectCategoryController::class,'destroy'])->name('subject-category-destroy');//->middleware(['permission:Category Edit']);
+
+        Route::get('/admin/ajax/subject-category/view/{id}', [SubjectCategoryController::class,'show'])->name('subject-category-view');//->middleware(['permission:Category View']);
+
+    });
+
+
+    //Subject Master
+    Route::group([], function() {
+
+        Route::get('/admin/subjects', [SubjectController::class,'index'])->name('subject-list');//->middleware(['permission:Category List']);
+        Route::get('/admin/subjects/create', [SubjectController::class,'create'])->name('subject-create');//->middleware(['permission:Category Create']);
+        Route::post('/admin/subjects/store', [SubjectController::class,'store'])->name('subject-store');//->middleware(['permission:Category Create']);
+        Route::get('/admin/subjects/edit/{id}', [SubjectController::class,'edit'])->name('subject-edit');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/subjects/update/{id}', [SubjectController::class,'update'])->name('subject-update');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/subjects/delete/{id}', [SubjectController::class,'destroy'])->name('subject-destroy');//->middleware(['permission:Category Edit']);
+        Route::get('/admin/ajax/subjects/view/{id}', [SubjectController::class,'show'])->name('subject-view');//->middleware(['permission:Category View']);
+
+    });
     
    
 

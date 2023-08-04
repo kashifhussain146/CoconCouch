@@ -29,7 +29,7 @@
   
   <link href="{{asset('admin/bower_components/jquery.filer/css/jquery.filer.css')}}" type="text/css" rel="stylesheet" />
   <link href="{{asset('admin/bower_components/jquery.filer/css/themes/jquery.filer-dragdropbox-theme.css')}}" type="text/css" rel="stylesheet" />
-
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   
 @stack('css')
@@ -42,6 +42,9 @@
     }
     #editor1-error{
         display: block;
+    }
+    .select2-container .select2-selection--single{
+      height: auto!important;
     }
 </style>
 <script type="text/javascript">
@@ -58,7 +61,7 @@
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">
-    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    <img class="animation__shake" src="{{asset('admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
   </div>
 
   @include('admin.layouts.pagehead')  
@@ -95,10 +98,14 @@
 
 <!-- jQuery -->
 <script src="{{asset('admin/plugins/jquery/jquery.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="{{asset('admin/plugins/jquery-ui/jquery-ui.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
+  
+  $('.select2').select2();
+
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <!-- Bootstrap 4 -->
@@ -154,6 +161,93 @@
                 }
             })
     }
+
+
+
+  
+    $(document).on('click','.deleteButton', function(){
+          // Show SweetAlert popup with confirm button
+          var url = $(this).attr('data-url');
+
+          Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action cannot be undone!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, do it!',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Show loader on confirm
+              Swal.fire({
+                title: 'Loading...',
+                allowOutsideClick: false,
+                onBeforeOpen: () => {
+                  Swal.showLoading();
+                },
+              });
+
+              // Perform the action (API call, etc.)
+              performApiCall(url)
+                .then(() => {
+                  // Close the SweetAlert popup after the action is complete
+                  Swal.close();
+
+                  // Show a success message (optional)
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Action completed successfully!',
+                    showConfirmButton: false,
+                    timer: 1500 // Adjust the time according to your preference
+                  });
+
+                  row = $(this).closest('tr');
+                  row.remove();
+                })
+                .catch((error) => {
+                  // Close the SweetAlert popup after the action is complete
+                  Swal.close();
+
+                  // Show an error message (optional)
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Error performing action',
+                    text: error.message // Display an appropriate error message
+                  });
+                });
+            }
+          });
+  });
+
+
+  function performApiCall(url) {
+  // Replace the URL with your API endpoint
+  const apiUrl = url;//'https://api.example.com/endpoint';
+
+  // Replace this data with your actual payload for the API call (if needed)
+  const requestData = {
+    '_token':'{{csrf_token()}}'
+  };
+
+  // Return a Promise that resolves when the API call is completed successfully
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: apiUrl,
+      type: 'POST', // Change the HTTP method as per your API requirements
+      data: requestData,
+      success: function(response) {
+        // If the API call is successful, resolve the Promise
+        resolve(response);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        // If the API call fails, reject the Promise with the error message
+        reject(new Error(errorThrown));
+      }
+    });
+  });
+}
+
 </script>
 
 <!-- ChartJS -->
