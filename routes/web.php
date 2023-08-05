@@ -38,6 +38,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/test-table', [HomeController::class, 'table'])->name('home');
 
+Route::get('/testing-table', [HomeController::class, 'table'])->name('home');
+
 Route::get('/assignment-help', [AssignmentController::class, 'index'])->name('assignment.help');
 Route::get('/assignment/help/{module_data_id}', [AssignmentController::class, 'assignmentDetails'])->name('assignment.help.details')->where(['slug' => '[a-z]+']);
 
