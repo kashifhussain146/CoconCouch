@@ -296,6 +296,174 @@
                  </li>
 
 
+
+
+
+
+                 <li class="nav-item {{ in_array(\Request::route()->getName(), ['subject-create','subject-list','questions-list','questions-create','subject-category-create','subject-category-list']) ? " menu-open" : ""}}">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Solution Library
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link {{ in_array(\Request::route()->getName(), ['subject-category-create','subject-category-list']) ? " active" : ""}}">
+
+                                <p>
+                                    Category
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview ">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('subject-category-create') }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Category</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('subject-category-list') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Category</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link {{ in_array(\Request::route()->getName(), ['subject-create','subject-list']) ? " active" : ""}}">
+                                <p>
+                                    Subjects
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview {{ in_array(\Request::route()->getName(), ['subject-create','subject-list']) ? " menu-open" : ""}}">
+
+                                <li class="nav-item ">
+                                    <a href="{{ route('subject-create') }}"
+                                        class="nav-link ">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Subjects</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item {{ in_array(\Request::route()->getName(), ['subject-list']) ? " active" : ""}}">
+                                    <a href="{{ route('subject-list') }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Subjects</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Library Colleges
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview ">
+
+                                <li class="nav-item">
+                                    <a href="#"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Colleges</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Colleges</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Course Code
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="#"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Code</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Code</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Questions
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview {{ in_array(\Request::route()->getName(), ['questions-create','questions-list']) ? " menu-open" : ""}}">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('questions-create') }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Questions</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('questions-list') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Questions</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                    </ul>
+
+
+                 </li>
+
+
              </ul>
          </nav>
          <!-- /.sidebar-menu -->

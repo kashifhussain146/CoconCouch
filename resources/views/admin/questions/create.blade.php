@@ -84,6 +84,11 @@
                                 <label class="form-label">Subjects *</label>
                                 <select name="subject" id="subject" class="form-control select2">
                                     <option value="">Select Subject</option>
+                                    @if(isset($subjects))
+                                        @foreach ($subjects as $item)
+                                            <option @if(isset($loan)) @if($loan->subject==$item->id) selected @endif @endif  value="{{$item->id}}">{{$item->subject_name}}</option>                                        
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
 
@@ -99,7 +104,7 @@
                                 <textarea class="form-control" style="height: 300px;" name="answer" id="answer" placeholder="Enter answer..">{{(isset($loan))?$loan->answer:''}}</textarea>
                                 <p>
                                     Word Count : <span id="word_count"> </span> 
-                                    <input type="hidden" name="num_words" >
+                                    <input type="hidden" name="num_words" value="{{(isset($loan))?$loan->num_words:''}}">
                                 </p>
                             </div>   
 

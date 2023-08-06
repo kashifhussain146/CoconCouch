@@ -120,7 +120,7 @@ class QuestionsController extends Controller
         }
 
         $data = $request->except('_token');           
-        if($data['file_name']!='')
+        if(isset($data['file_name']))
         {
             $file_name = 'file_name_'.time().'.'.$request->file_name->extension();
             $request->file_name->move(public_path('uploads/file_name'), $file_name);
@@ -166,8 +166,10 @@ class QuestionsController extends Controller
         $colleges = Colleges::Activated()->get();
         $course  = CourseCode::Activated()->get();
         $subjectcategory = SubjectCategory::Activated()->get();
+        $subjects = Subject::where('subject_category',$loan->subject_category)->Activated()->get();
+
         $title = 'Questions';
-        return view('admin.questions.create',compact('title','loan','colleges','course','subjectcategory'));
+        return view('admin.questions.create',compact('subjects','title','loan','colleges','course','subjectcategory'));
     }
 
 
@@ -181,9 +183,16 @@ class QuestionsController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(),[
+            'question'=>'required',
+            'score' => 'required|numeric',
+            'type'=>'required',
+            'startdatetime'=>'required',
+            'enddatetime'=>'required',
+            'answer'=>'required',
+            'price'=>'required|numeric',
             'subject_category'=>'required',
-            'subject_name' => 'required|unique:subject,subject_name,'.$id,
-            'subject_desc'=>'required'
+            'subject'=>'required',
+            'file_name'=>'nullable|mimes:docx',
         ]);
 
         if ($validator->fails()) 
@@ -195,15 +204,18 @@ class QuestionsController extends Controller
         }
 
 
-        $category = Subject::find($id);
-        $category->subject_category = $request->subject_category;
-        $category->subject_name = $request->subject_name;
-        $category->subject_desc = $request->subject_desc;
-        $category->status = $request->status;
-        $category->updated_at =  date('Y-m-d H:i:s');
-        $category->save();
-
-
+        $questions = Questions::find($id);
+        $data = $request->except('_token');
+        if(isset($data['file_name']))
+        {
+            $file_name = 'file_name_'.time().'.'.$request->file_name->extension();
+            $request->file_name->move(public_path('uploads/file_name'), $file_name);
+            $data['file_name'] = $file_name;
+        }
+        $data['added_date'] = date('Y-m-d');
+        $data['addedby']    = Auth()->guard('admin')->user()->id;
+        $data['updated_at'] = date('Y-m-d H:i:s');
+        $questions->update($data);
 
         return response()->json([
             'status' => true,

@@ -194,7 +194,7 @@
                                 </li>
                                 <li class=""><a href="{{route('assignment.help')}}">Assignment Help</a></li>
                                 <li class=""><a href="#">Take My Online Class</a></li>
-                                <li class=""><a href="#">Solution Library</a></li>
+                                <li class=""><a href="{{route('solutions.library')}}">Solution Library</a></li>
                                 <li class=""><a href="#">Services</a></li>
                                 <!-- <li class=""><a href="#">Get a Quote</a></li> -->
 

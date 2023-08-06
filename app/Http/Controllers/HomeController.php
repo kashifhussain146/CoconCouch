@@ -7,6 +7,10 @@ use App\Models\Banner;
 use App\Models\Category;
 use App\Models\AssignmentCategory;
 use DB;
+use App\Models\Subject;
+use App\Models\SubjectCategory;
+use App\Models\Questions;
+
 class HomeController extends Controller
 {
     /**
@@ -38,28 +42,46 @@ class HomeController extends Controller
     }
 
     
-    public function table(Request $request){
+    public function solutionsLibrary(Request $request){
 
-        $table = DB::table('users')->get();
-        $data = [];
-
-        $sql = 'INSERT INTO `users`(`id`, `name`, `email`, `fullname`, `lastname`, `address`, `dob`, `country`, `state_id`, `city_name`, `post_code`, `reset_pass_status`, `phone_code`, `phone`, `password`, `created_at`) VALUES ';
-        foreach($table as $k=>$v){
-            $sql.=" ('{$v->id}', '{$v->fullname}','{$v->email}','{$v->fullname}','{$v->lastname}','{$v->address}','{$v->dob}','{$v->country}','{$v->state_id}','{$v->city_name}','{$v->post_code}','{$v->reset_pass_status}','{$v->phone_code}','{$v->phone}','{$v->password}','{$v->reg_date_time}'),";
-        }
-
-        echo "<pre>";print_r($sql);
-        exit;
-
-
-
-        // foreach($data as $k=>$v){
-        //     $sql.='('.;
-        // }
+        $subjectcategory = SubjectCategory::Activated()->get();
+        $questions       = Questions::latest()->Activated()->paginate(20);
         
-        DB::table('users')->insert($data);
-        dd($data);
+        return view('solutions-library.index',compact('subjectcategory','questions'));
     }
 
+    public function getSubcategory(Request $request){
+        $subject   = Subject::select('subject_name','id')->where('subject_category',$request->category_id)->Activated()->get();        
+        $questions = Questions::latest()->Activated();
+        
+        if($request->category_id!=''){
+            $questions = $questions->where('subject_category',$request->category_id);
+        }
+        $questions = $questions->paginate(20);
+
+        $view = view('sections.solution-library',compact('questions'))->render();
+        return response()->json(['subject'=>$subject,'html'=>$view]);
+    }
+
+    public function getSubjects(Request $request){
+        $questions = Questions::latest()->Activated();
+        if($request->category_id!=''){
+            $questions = $questions->where('subject_category',$request->category_id);
+        }
+        if($request->subject_id!=''){
+            $questions = $questions->where('subject',$request->subject_id);
+        }
+        if($request->search!=''){
+            $search = $request->search;
+            $questions = $questions->whereHas('subjects',function($query) use ($search){
+                            $query->where('subject_name','LIKE','%'.$search.'%');
+                        });
+        }
+        $questions = $questions->paginate(20);
+
+
+        $view = view('sections.solution-library',compact('questions'))->render();
+        return response()->json(['html'=>$view]);
+    }
 
 }

@@ -18,7 +18,7 @@ class Subject extends Model
         return $this->belongsTo(SubjectCategory::class,'subject_category','id');
      }
 
-     public function scopeActivated($query){
+   public function scopeActivated($query){
       return  $query->where('status','Y');
    }
 }

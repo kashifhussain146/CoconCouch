@@ -12,7 +12,7 @@ class Questions extends Model
      * @var array
      */
 	protected $table = 'question';
-   protected $fillable = ['question', 'collegeid', 'coursesid', 'score', 'type', 'startdatetime', 'enddatetime', 'num_words', 'answer', 'price', 'subject_category', 'subject', 'file_name', 'answer_file', 'addedby', 'answerstatus', 'status', 'views_count', 'added_date'];
+   protected $fillable = ['question', 'collegeid', 'coursesid', 'score', 'visiblity', 'type', 'startdatetime', 'enddatetime', 'num_words', 'answer', 'price', 'subject_category', 'subject', 'file_name', 'answer_file', 'addedby', 'answerstatus', 'status', 'views_count', 'added_date'];
 
    public function category(){
         return $this->belongsTo(SubjectCategory::class,'subject_category','id');
@@ -20,5 +20,9 @@ class Questions extends Model
 
    public function subjects(){
       return $this->belongsTo(Subject::class,'subject','id');
+   }
+
+   public function scopeActivated($query){
+      return  $query->where('status','Y');
    }
 }
