@@ -268,23 +268,7 @@
 
         <div class="row bg-light home-service-section position-relative">
             <img class="home-service-img3" src="{{ asset('assets/images/trial10_new.png') }}" alt="">
-            {{-- <div class="col-lg-4 col-sm-12 col-md-6 home-service-col bg-light">
-                <div class="p-4 bg-white">
-                    <div class="p-3 text-center home-service-border">
-                        <img class="w-100" src="{{ asset('assets/images/trial4.png') }}" alt="">
-                        <p class="fs-4 black mt-4 mb-0 fw-bold">Online Assignment Help</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12 col-md-6 home-service-col bg-light">
-                <div class="p-4 bg-white">
-                    <div class="p-3 text-center home-service-border">
-                        <img class="w-100" src="{{ asset('assets/images/trial5.png') }}" alt="">
-                        <p class="fs-4 black mt-4 mb-0 fw-bold">Online Homework Help</p>
-                    </div>
-                </div>
-            </div>
-             --}}
+    
              
             @foreach($category as $k=>$v)
             <div class="col-lg-4 col-sm-12 col-md-6 home-service-col bg-light">

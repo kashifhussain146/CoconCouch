@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AssignmentCategoryController;
 use App\Http\Controllers\Backend\SubjectCategoryController;
 use App\Http\Controllers\Backend\SubjectController;
+use App\Http\Controllers\Backend\QuestionsController;
 use App\Http\Controllers\AdminAuth\LoginController as AdminLoginController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\AssignmentController;
@@ -36,6 +37,10 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/test-table', [HomeController::class, 'table'])->name('home');
+
+Route::get('/solutions-library', [HomeController::class, 'solutionsLibrary'])->name('solutions.library');
+Route::get('/ajax/subcategory', [HomeController::class,'getSubcategory'])->name('get.ajax.subcategory');
+Route::get('/ajax/subjects', [HomeController::class,'getSubjects'])->name('get.ajax.subjects');
 
 Route::get('/assignment-help', [AssignmentController::class, 'index'])->name('assignment.help');
 Route::get('/assignment/help/{module_data_id}', [AssignmentController::class, 'assignmentDetails'])->name('assignment.help.details')->where(['slug' => '[a-z]+']);
@@ -121,7 +126,19 @@ Route::group(['middleware' => ['auth:admin']], function() {
     });
     
    
+    //Questions Modules
+    Route::group([], function() {
 
+        Route::get('/admin/questions', [QuestionsController::class,'index'])->name('questions-list');//->middleware(['permission:Category List']);
+        Route::get('/admin/questions/create', [QuestionsController::class,'create'])->name('questions-create');//->middleware(['permission:Category Create']);
+        Route::post('/admin/questions/store', [QuestionsController::class,'store'])->name('questions-store');//->middleware(['permission:Category Create']);
+        Route::get('/admin/questions/edit/{id}', [QuestionsController::class,'edit'])->name('questions-edit');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/questions/update/{id}', [QuestionsController::class,'update'])->name('questions-update');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/questions/delete/{id}', [QuestionsController::class,'destroy'])->name('questions-destroy');//->middleware(['permission:Category Edit']);
+        Route::get('/admin/ajax/questions/view/{id}', [QuestionsController::class,'show'])->name('questions-view');//->middleware(['permission:Category View']);
+        Route::get('/admin/ajax/subcategory', [QuestionsController::class,'getSubcategory'])->name('get.subcategory');//->middleware(['permission:Category View']);
+
+    });
 
      /*Modules Data routes Start*/
     

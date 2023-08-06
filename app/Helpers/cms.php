@@ -23,6 +23,19 @@ if (! function_exists('removeTags')) {
     }
 }
 
+if (! function_exists('masks')) {
+    function masks($inputString, $maskCharacter = '*') {
+        $words = str_word_count($inputString, 1); // Split the string into words
+        $count = count($words);
+    
+        for ($i = 1; $i < $count; $i += 2) {
+            $words[$i] = str_repeat($maskCharacter, strlen($words[$i])); // Set the mask
+        }
+    
+        return implode(' ', $words); // Join the words back into a string
+    }
+}
+
 
 function crop_image($src, $dst, $data) {
     if (!empty($src) && !empty($dst) && !empty($data)) {
