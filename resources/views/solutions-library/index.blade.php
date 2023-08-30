@@ -55,28 +55,34 @@
     <!-- Results Section  -->
 
 
+    <form action="" method="GET">
+        <div class="p-5 ">
+            <div class="position-relative">
+                <input class="w-100 mb-4 py-1 px-4 fs-6" value="{{ (isset($_GET['search']))?$_GET['search']:'' }}" style="border: 2px solid #ff7707;" name="search" id="search" placeholder="Search by name, topic or question" type="search">
+                <select style="top: 0.6rem; right: 20rem; color: grey;" class="position-absolute bg-transparent fs-6 " name="subject_category" id="subject_category">
+                    <option value="">Select Subject</option>
+                    @foreach ($subjectcategory as $item)
+                    <option @if(isset($_GET['subject_category'])) @if($_GET['subject_category']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->category_name}}</option>
+                    @endforeach
+                </select>
+                <select style="top: 0.6rem; right: 12rem; color: grey;" class="position-absolute bg-transparent fs-6" name="subject" id="subject">
+                    <option value="">Select Topic</option>
+                    @if(count($topics) > 0)
+                        @foreach ($topics as $item)
+                        <option @if(isset($_GET['subject'])) @if($_GET['subject']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->subject_name}}</option>
+                        @endforeach
+                    @endif
 
-    <div class="p-5 ">
-        <div class="position-relative">
-            <input class="w-100 mb-4 py-1 px-4 fs-6" style="border: 2px solid #ff7707;" name="search" id="search" placeholder="Search by name, topic or question" type="text">
-            <select style="top: 0.6rem; right: 20rem; color: grey;" class="position-absolute bg-transparent fs-6 " name="subject_category" id="subject_category">
-                <option value="">Select Subject</option>
-                @foreach ($subjectcategory as $item)
-                <option value="{{$item->id}}">{{$item->category_name}}</option>
-                @endforeach
-            </select>
-            <select style="top: 0.6rem; right: 12rem; color: grey;" class="position-absolute bg-transparent fs-6" name="subject" id="subject">
-                <option value="">Select Topic</option>
-                
-            </select>
-            <button style="background-color: #ff7707; padding: 0.35rem 0;" class="fs-6 px-5 searchBtn position-absolute end-0">Search</button>
-        </div>
+                </select>
+                <button style="background-color: #ff7707; padding: 0.35rem 0;" class="fs-6 px-5 searchBtn position-absolute end-0">Search</button>
+            </div>
 
-        <div id="solutions_library">
-            @include('sections.solution-library',['questions'=>$questions])
-        </div>
+            <div id="solutions_library">
+                @include('sections.solution-library',['questions'=>$questions])
+            </div>
+            {!! $questions->withQueryString() !!}
     </div>
-    
+    </form>
 
     <!-- Why Testimonials -->
     <section class="whychoose-section section-paddding bg-light">
@@ -161,7 +167,7 @@
 
 $(document).on('change','#subject_category',function(){
     
-    $.LoadingOverlay("show");
+    //$.LoadingOverlay("show");
 
     $.ajax({
         url: '{{route('get.ajax.subcategory')}}',
@@ -170,7 +176,7 @@ $(document).on('change','#subject_category',function(){
         success: function(data){
             $.LoadingOverlay("hide");
             if(data.html != ''){
-                $("#solutions_library").html(data.html);
+                //$("#solutions_library").html(data.html);
                 if(data.subject.length > 0){
                     $("#subject option").remove();
                     $("#subject").append(`<option value="">Select Subject</option>`)
@@ -188,44 +194,44 @@ $(document).on('change','#subject_category',function(){
 
 
 
-$(document).on('change','#subject',function(){
+// $(document).on('change','#subject',function(){
     
-    $.LoadingOverlay("show");
+//     $.LoadingOverlay("show");
 
-    $.ajax({
-        url: '{{route('get.ajax.subjects')}}',
-        type: 'GET',
-        data:{category_id:$("#subject_category option:selected").val(),subject_id:$("#subject option:selected").val()},
-        success: function(data){
-            $.LoadingOverlay("hide");
-            if(data.html != ''){
-                $("#solutions_library").html(data.html);
-            }else{
-                $("#solutions_library").html("<p class='text-danger'> No records found </p>");                
-            }
-        }
-    });
-});
+//     $.ajax({
+//         url: '{{route('get.ajax.subjects')}}',
+//         type: 'GET',
+//         data:{category_id:$("#subject_category option:selected").val(),subject_id:$("#subject option:selected").val()},
+//         success: function(data){
+//             $.LoadingOverlay("hide");
+//             if(data.html != ''){
+//                 $("#solutions_library").html(data.html);
+//             }else{
+//                 $("#solutions_library").html("<p class='text-danger'> No records found </p>");                
+//             }
+//         }
+//     });
+// });
 
-$(document).on('click','.searchBtn',function(){
+// $(document).on('click','.searchBtn',function(){
 
-    $.LoadingOverlay("show");
+//     $.LoadingOverlay("show");
 
-    $.ajax({
-        url: '{{route('get.ajax.subjects')}}',
-        type: 'GET',
-        data:{category_id:$("#subject_category option:selected").val(),subject_id:$("#subject option:selected").val(),'search':$("#search").val()},
-        success: function(data){
-            $.LoadingOverlay("hide");
-            if(data.html != ''){
-                $("#solutions_library").html(data.html);
-            }else{
-                $("#solutions_library").html("<p class='text-danger'> No records found </p>");                
-            }
-        }
-    });
+//     $.ajax({
+//         url: '{{route('get.ajax.subjects')}}',
+//         type: 'GET',
+//         data:{category_id:$("#subject_category option:selected").val(),subject_id:$("#subject option:selected").val(),'search':$("#search").val()},
+//         success: function(data){
+//             $.LoadingOverlay("hide");
+//             if(data.html != ''){
+//                 $("#solutions_library").html(data.html);
+//             }else{
+//                 $("#solutions_library").html("<p class='text-danger'> No records found </p>");                
+//             }
+//         }
+//     });
 
-})
+// })
 
 
 </script>

@@ -44,10 +44,31 @@ class HomeController extends Controller
     
     public function solutionsLibrary(Request $request){
 
-        $subjectcategory = SubjectCategory::Activated()->get();
-        $questions       = Questions::latest()->Activated()->paginate(20);
+        $subjectcategory = SubjectCategory::Activated();
+        $subjectcategory = $subjectcategory->get();
+        $questions       = Questions::latest()->Activated();
         
-        return view('solutions-library.index',compact('subjectcategory','questions'));
+        $topics = [];
+
+        if($request->subject_category!=''){
+            $questions = $questions->where('subject_category',$request->subject_category);
+            $topics   = Subject::select('subject_name','id')->where('subject_category',$request->subject_category)->Activated()->get();  
+        }
+        // dd($topics);
+        if($request->subject!=''){
+            $questions = $questions->where('subject',$request->subject);
+        }
+        if($request->search!=''){
+            $search = $request->search;
+            $questions = $questions->where(function($query) use ($search){
+                                $query->where('question','LIKE','%'.$search.'%')->orwhere('answer','LIKE','%'.$search.'%');
+                            });
+        }
+        $questions = $questions->paginate(20);
+
+        
+
+        return view('solutions-library.index',compact('subjectcategory','topics','questions'));
     }
 
     public function getSubcategory(Request $request){

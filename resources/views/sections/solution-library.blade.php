@@ -16,14 +16,14 @@
             </div>
         </div>
         <div class="questions">
-           Q.{{++$k}} {!! substr( strip_tags($v->question) ,0,200).'...' !!}
+            <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,500).'...' !!}
         </div>
         
         <div>
             @if($v->visiblity=='Y')
-            Ans. {!! substr(strip_tags(masks($v->answer,"x")),0,100)  !!}
+            <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}
             @else
-            Ans. {!! substr(strip_tags($v->answer,"x"),0,100)  !!}
+            <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
             @endif
 
         </div>
@@ -37,4 +37,3 @@
     </div>
 </div>
 @endforeach
-{!! $questions->withQueryString() !!}
