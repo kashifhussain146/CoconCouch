@@ -91,6 +91,11 @@
     <title>@yield('title')</title>
     <!-- Stylesheets -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+    <!-- REVOLUTION SETTINGS STYLES -->
+    <link href="{{ asset('assets/plugins/revolution/css/layers.css')}}" rel="stylesheet" type="text/css"><!-- REVOLUTION LAYERS STYLES -->
+    <link href="{{ asset('assets/plugins/revolution/css/navigation.css')}}" rel="stylesheet" type="text/css">
+    <!-- REVOLUTION NAVIGATION STYLES -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
@@ -435,6 +440,7 @@
     <script src="{{ asset('assets/js/swiper.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     @stack('js')
 </body>
 
