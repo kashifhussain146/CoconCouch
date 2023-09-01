@@ -42,46 +42,67 @@ class HomeController extends Controller
     }
 
     
-    public function solutionsLibrary(Request $request){
+    public function solutionsLibrary(Request $request,$subject_category_id=null,$topic_id=null){
 
-        $subjectcategory = SubjectCategory::Activated();
+        $subjectcategory = SubjectCategory::Activated()->orderBy('category_name','ASC');
         $subjectcategory = $subjectcategory->get();
-        $questions       = Questions::latest()->Activated();
+
+        $questions       = Questions::with(['category','subjects','college'])->whereHas('subjects')->whereHas('college')->whereHas('category')->latest()->Activated();
         
         $topics = [];
 
         if($request->subject_category!=''){
-            $questions = $questions->where('subject_category',$request->subject_category);
+            $questions = $questions->SubjectCategoryFilter($request->subject_category);
             $topics   = Subject::select('subject_name','id')->where('subject_category',$request->subject_category)->Activated()->get();  
         }
-        // dd($topics);
-        if($request->subject!=''){
-            $questions = $questions->where('subject',$request->subject);
+
+        if($subject_category_id!=''){
+            $questions = $questions->SubjectCategoryFilter($subject_category_id);
         }
+
+        if($request->subject!=''){
+            $questions = $questions->SubjectFilter($request->subject);
+        }
+        
+        if($topic_id!=''){
+            $questions = $questions->SubjectFilter($topic_id);
+        }
+
         if($request->search!=''){
             $search = $request->search;
-            $questions = $questions->where(function($query) use ($search){
-                                $query->where('question','LIKE','%'.$search.'%')->orwhere('answer','LIKE','%'.$search.'%');
-                            });
+            $questions = $questions->SearchFilter($search);
         }
-        $questions = $questions->paginate(20);
 
-        
+        if( ($request->subject_category==null && $request->subject==null && $request->search==null) && ($subject_category_id==null && $topic_id==null)){
+            $questions = $questions->take(10);
+        }
+        $questions = $questions->paginate(25)
+                                ->groupBy('category.category_name')
+                                ->map(function ($products, $categoryName) {
+                                    $data =  [
+                                        'category_name' =>$categoryName,
+                                        'questions' => $products,
+                                    ];
 
-        return view('solutions-library.index',compact('subjectcategory','topics','questions'));
+                                    return $data;
+                                })
+                                ->sortKeys()
+                                ->values();
+        //dd($questions);
+
+        $subjectsCategory = SubjectCategory::TopicsData()->get();
+        return view('solutions-library.index',compact('subject_category_id','topic_id','subjectcategory','topics','questions','subjectsCategory'));
     }
 
     public function getSubcategory(Request $request){
         $subject   = Subject::select('subject_name','id')->where('subject_category',$request->category_id)->Activated()->get();        
-        $questions = Questions::latest()->Activated();
-        
-        if($request->category_id!=''){
-            $questions = $questions->where('subject_category',$request->category_id);
-        }
-        $questions = $questions->paginate(20);
+        return response()->json(['subject'=>$subject]);
+    }
 
-        $view = view('sections.solution-library',compact('questions'))->render();
-        return response()->json(['subject'=>$subject,'html'=>$view]);
+    public function solutionsLibrarySubjectPage(Request $request){
+        
+        $subjectsCategory = SubjectCategory::TopicsData()->get();
+
     }
 
     public function getSubjects(Request $request){
@@ -103,6 +124,12 @@ class HomeController extends Controller
 
         $view = view('sections.solution-library',compact('questions'))->render();
         return response()->json(['html'=>$view]);
+    }
+
+    public function questionDetails(Request  $request,$question_id){
+        $question = Questions::FindOrFail($question_id);
+        $relatedQuestions = Questions::select('id','question','answer')->where('subject_category',$question->subject_category)->where('id','!=',$question_id)->get();
+        return view('solutions-library.question',compact('question','relatedQuestions'));
     }
 
 }

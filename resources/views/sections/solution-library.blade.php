@@ -15,6 +15,9 @@
                 <p style="background-color: #ff7707; font-size: small;" class="text-white text-center rounded-pill"> Solutions ID {{ $v->id }}</p>
             </div>
         </div>
+
+        <p class="fs-6 mb-1">{{$v->college->name}} </p>
+        
         <div class="questions">
             <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,500).'...' !!}
         </div>
@@ -28,10 +31,22 @@
 
         </div>
 
+        <div class="row mt-3 mb-3">
+            <ul class="col-6 d-flex">
+                <li class="list-items">{{$v->num_words}} words</li>
+                <li class="ms-3 list-items">{{$v->views_count}} views</li>
+                <li class="ms-3 list-items">ID {{$v->id}}</li>
+            </ul>
+        </div>
+
+
         <div class="row">
-            <p style="color: #ff7707;" class="col-6 fs-6">Published on {{ date('d M Y',strtotime($v->added_date)) }}</p>
-            <div style="text-align: right;" class="col-6">
-                <button style="background-color: #ff7707;" class="w-25 fs-6 fw-bold text-white">${{$v->price}} | Buy Now</button>
+            <div class="col-12">
+                <div>
+                    <button style="background-color: #ff7707;float:right;margin-right:10px" class="fs-6 px-3 fw-bold text-white">${{$v->price}} | Buy Now</button>
+                    <button style="background-color: #ff7707;float:right;margin-right:10px" class="fs-6 px-3 fw-bold text-white">Get an Original Solution</button>
+                </div>
+
             </div>
         </div>
     </div>

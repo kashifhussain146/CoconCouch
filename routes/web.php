@@ -39,6 +39,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/test-table', [HomeController::class, 'table'])->name('home');
 
 Route::get('/solutions-library', [HomeController::class, 'solutionsLibrary'])->name('solutions.library');
+
+Route::get('/solutions-library/question/{question_id}', [HomeController::class, 'questionDetails'])->name('solutions.library.question.page');
+Route::get('/solutions-library/subject-topics/{subject_id}/{topic_id?}', [HomeController::class, 'solutionsLibrary'])->name('solutions.library.subject.page');
+
+
 Route::get('/ajax/subcategory', [HomeController::class,'getSubcategory'])->name('get.ajax.subcategory');
 Route::get('/ajax/subjects', [HomeController::class,'getSubjects'])->name('get.ajax.subjects');
 

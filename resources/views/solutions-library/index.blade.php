@@ -30,6 +30,7 @@
 @section('content')
 
     <!-- Start main-content -->
+    @if($subject_category_id==null)
     <section class="page-title" style="background-image: url({{asset('assets/images/contact-bnnr.png')}});">
 
         <div class="auto-container">
@@ -49,110 +50,61 @@
         </div>
 
     </section>
+    @else
+    <section class="page-title " style="min-height: 50px"></section>
+    @endif
     <!-- end main-content -->
 
 
     <!-- Results Section  -->
 
+    <div class="row">
+        <div class="col-9">
+                <form action="" method="GET">
+                    <div class="p-5 ">
+                        <div class="position-relative">
+                            <input class="w-100 mb-4 py-1 px-4 fs-6" value="{{ (isset($_GET['search']))?$_GET['search']:'' }}" style="border: 2px solid #ff7707;" name="search" id="search" placeholder="Search by name, topic or question" type="search">
+                            <select style="top: 0.6rem; right: 20rem; color: grey;" class="position-absolute bg-transparent fs-6 " name="subject_category" id="subject_category">
+                                <option value="">Select Subject</option>
+                                @foreach ($subjectcategory as $item)
+                                <option @if(isset($_GET['subject_category'])) @if($_GET['subject_category']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->category_name}}</option>
+                                @endforeach
+                            </select>
+                            <select style="top: 0.6rem; right: 12rem; color: grey;" class="position-absolute bg-transparent fs-6" name="subject" id="subject">
+                                <option value="">Select Topic</option>
+                                @if(count($topics) > 0)
+                                    @foreach ($topics as $item)
+                                    <option @if(isset($_GET['subject'])) @if($_GET['subject']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->subject_name}}</option>
+                                    @endforeach
+                                @endif
 
-    <form action="" method="GET">
-        <div class="p-5 ">
-            <div class="position-relative">
-                <input class="w-100 mb-4 py-1 px-4 fs-6" value="{{ (isset($_GET['search']))?$_GET['search']:'' }}" style="border: 2px solid #ff7707;" name="search" id="search" placeholder="Search by name, topic or question" type="search">
-                <select style="top: 0.6rem; right: 20rem; color: grey;" class="position-absolute bg-transparent fs-6 " name="subject_category" id="subject_category">
-                    <option value="">Select Subject</option>
-                    @foreach ($subjectcategory as $item)
-                    <option @if(isset($_GET['subject_category'])) @if($_GET['subject_category']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->category_name}}</option>
-                    @endforeach
-                </select>
-                <select style="top: 0.6rem; right: 12rem; color: grey;" class="position-absolute bg-transparent fs-6" name="subject" id="subject">
-                    <option value="">Select Topic</option>
-                    @if(count($topics) > 0)
-                        @foreach ($topics as $item)
-                        <option @if(isset($_GET['subject'])) @if($_GET['subject']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->subject_name}}</option>
-                        @endforeach
-                    @endif
-
-                </select>
-                <button style="background-color: #ff7707; padding: 0.35rem 0;" class="fs-6 px-5 searchBtn position-absolute end-0">Search</button>
-            </div>
-
-            <div id="solutions_library">
-                @include('sections.solution-library',['questions'=>$questions])
-            </div>
-            {!! $questions->withQueryString() !!}
-    </div>
-    </form>
-
-    <!-- Why Testimonials -->
-    <section class="whychoose-section section-paddding bg-light">
-        <div class="auto-container">
-            <div class="row">
-                <div class="sec-title text-center">
-                    <span class="sub-title">TAGLINE</span>
-                    <h2>Testimonials</h2>
-                </div>
-            </div>
-            <div class="row">
-                <!-- whychoose Block -->
-                <div class="why-block col-lg-4 col-md-6 col-sm-6 wow fadeInUp">
-                    <div class="testimonial wow fadeInLeft" data-wow-delay="150ms" data-wow-duration="1500ms">
-                        <div style="transform: skewY(-2deg); border-radius: 5px; left: 0px !important; border-color: black; bottom: -30px !important;" class="border-layer"></div>
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe laborum eaque explicabo harum quod a delectus, distinctio veniam culpa! Illo obcaecati ratione perferendis eos magnam assumenda illum aut consequuntur!
+                            </select>
+                            <button style="background-color: #ff7707; padding: 0.35rem 0;" class="fs-6 px-5 searchBtn position-absolute end-0">Search</button>
                         </div>
-                        <div style="z-index: 1;" class="row pt-4 position-relative">
-                            <img style="height: 4rem; width: 6rem; border-radius: 100%;" class="col-4"
-                                src="https://1.bp.blogspot.com/-bo50-jrhUoA/XpWrJsMPVFI/AAAAAAAATRU/D5KtkduEKqIgzxA4KSjRPbZIKwmPPZH2wCLcBGAsYHQ/s400/krishna.jpg"
-                                alt="">
-                            <div class="col-8">
-                                <p style="margin-bottom: 0 !important;" class="black fw-bold fs-6">Martha Maldonado
-                                </p>
-                                <p style="margin-bottom: 0 !important; color: #ff7707;" class="fs-6">Designation</p>
-                            </div>
+
+                        <div id="solutions_library">
+                            @if(count($questions) > 0)
+                                @include('sections.solution-library-landing',['questions'=>$questions,'subject_category_id'=>$subject_category_id])
+                            @else
+                                <h2 class="text-center" >No  records found</h2>
+                            @endif
                         </div>
+
                     </div>
-                </div>
-                <!-- whychoose Block -->
-                <div class="why-block col-lg-4 col-md-6 col-sm-6 wow fadeInUp">
-                    <div class="testimonial wow fadeInLeft" data-wow-delay="150ms" data-wow-duration="1500ms">
-                        <div style="transform: skewY(-2deg); border-radius: 5px; left: 0px !important; border-color: black; bottom: -30px !important;" class="border-layer"></div>
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe laborum eaque explicabo harum quod a delectus, distinctio veniam culpa! Illo obcaecati ratione perferendis eos magnam assumenda illum aut consequuntur!
-                        </div>
-                        <div style="z-index: 1;" class="row pt-4 position-relative">
-                            <img style="height: 4rem; width: 6rem; border-radius: 100%;" class="col-4"
-                                src="https://1.bp.blogspot.com/-bo50-jrhUoA/XpWrJsMPVFI/AAAAAAAATRU/D5KtkduEKqIgzxA4KSjRPbZIKwmPPZH2wCLcBGAsYHQ/s400/krishna.jpg"
-                                alt="">
-                            <div class="col-8">
-                                <p style="margin-bottom: 0 !important;" class="black fw-bold fs-6">Martha Maldonado
-                                </p>
-                                <p style="margin-bottom: 0 !important; color: #ff7707;" class="fs-6">Designation</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- whychoose Block -->
-                <div class="why-block col-lg-4 col-md-6 col-sm-6 wow fadeInUp">
-                    <div class="testimonial wow fadeInLeft" data-wow-delay="150ms" data-wow-duration="1500ms">
-                        <div style="transform: skewY(-2deg); border-radius: 5px; left: 0px !important; border-color: black; bottom: -30px !important;" class="border-layer"></div>
-                        <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium saepe laborum eaque explicabo harum quod a delectus, distinctio veniam culpa! Illo obcaecati ratione perferendis eos magnam assumenda illum aut consequuntur!
-                        </div>
-                        <div style="z-index: 1;" class="row pt-4 position-relative">
-                            <img style="height: 4rem; width: 6rem; border-radius: 100%;" class="col-4"
-                                src="https://1.bp.blogspot.com/-bo50-jrhUoA/XpWrJsMPVFI/AAAAAAAATRU/D5KtkduEKqIgzxA4KSjRPbZIKwmPPZH2wCLcBGAsYHQ/s400/krishna.jpg"
-                                alt="">
-                            <div class="col-8">
-                                <p style="margin-bottom: 0 !important;" class="black fw-bold fs-6">Martha Maldonado
-                                </p>
-                                <p style="margin-bottom: 0 !important; color: #ff7707;" class="fs-6">Designation</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </form>
         </div>
-    </section>
-    <!-- End Why Testimonials-->
+
+
+        <div class="col-3 pe-5 border-start border-3 border-light-subtle">
+            @if(count($subjectsCategory) > 0)
+                @include('sections.sidebar-subjects',['subjectsCategory'=>$subjectsCategory,'subject_category_id'=>$subject_category_id,'topic_id'=>$topic_id])
+            @else
+                <h2 class="text-center" >No  records found</h2>
+            @endif
+        </div>
+
+    </div>
+
 
 @endsection
 
