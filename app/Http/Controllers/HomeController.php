@@ -46,8 +46,8 @@ class HomeController extends Controller
 
         $subjectcategory = SubjectCategory::Activated()->orderBy('category_name','ASC');
         $subjectcategory = $subjectcategory->get();
-
-        $questions       = Questions::with(['category','subjects','college'])->whereHas('subjects')->whereHas('college')->whereHas('category')->latest()->Activated();
+        $courseCode      = \App\Models\CourseCode::Activated()->get();
+        $questions       = Questions::with(['category','subjects','college'])->whereHas('subjects')->whereHas('category')->latest()->Activated();
         
         $topics = [];
 
@@ -58,6 +58,11 @@ class HomeController extends Controller
 
         if($subject_category_id!=''){
             $questions = $questions->SubjectCategoryFilter($subject_category_id);
+        }
+
+        if($request->subject_code!=''){
+            $subject_code = $request->subject_code;
+            $questions = $questions->where('coursesid',$subject_code);
         }
 
         if($request->subject!=''){
@@ -91,7 +96,7 @@ class HomeController extends Controller
         //dd($questions);
 
         $subjectsCategory = SubjectCategory::TopicsData()->get();
-        return view('solutions-library.index',compact('subject_category_id','topic_id','subjectcategory','topics','questions','subjectsCategory'));
+        return view('solutions-library.index',compact('courseCode','subject_category_id','topic_id','subjectcategory','topics','questions','subjectsCategory'));
     }
 
     public function getSubcategory(Request $request){

@@ -1,4 +1,4 @@
-<div class="my-5 list-items">
+<div class="form-group my-5 list-items">
     <input style="border: 2px solid #ff7707; padding: 0.2rem 1rem;" class="w-100" placeholder="Search Keyword" type="text">
 </div>
 <p class="black fw-bold fs-5 mx-3">Subjects</p>

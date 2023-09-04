@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Http\Request;
 class RegisterController extends Controller
 {
     /*
@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -66,8 +66,36 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'fullname' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function register(Request $request){
+
+        $validator = Validator::make($request->all(),[
+                        'name' => 'required|string',
+                        'email' => 'required|email|unique:users',
+                        'password' => 'required|confirmed'
+                    ]);
+
+        if($validator->fails()){
+
+            return response()->json(['status'=>false,'errors'=>$validator->errors()]);
+            
+        }
+
+        $user = User::create([
+                    'name' => $request->name,
+                    'fullname' =>$request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                ]);
+        
+        auth()->login($user);
+        
+        return response()->json(['status'=>true,'message'=>'Sign up successfully']);
+    }
+    
 }

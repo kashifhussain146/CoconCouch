@@ -13,7 +13,8 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\FilerController;
-
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Backend\ModulesDataController;
 use App\Http\Controllers\Backend\ModulesController;
 use App\Http\Controllers\Backend\WidgetPagesController;
@@ -51,6 +52,17 @@ Route::get('/assignment-help', [AssignmentController::class, 'index'])->name('as
 Route::get('/assignment/help/{module_data_id}', [AssignmentController::class, 'assignmentDetails'])->name('assignment.help.details')->where(['slug' => '[a-z]+']);
 
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/cart', [CartController::class,'index'])->name('cart.index');
+    Route::post('/cart/add',[CartController::class,'addToCart'])->name('cart.addToCart');
+    Route::post('/cart/remove/{cart}',[CartController::class,'removeFromCart'])->name('cart.removeFromCart');
+    Route::get('/checkout', [CartController::class,'index'])->name('checkout.index');
+
+
+    Route::post('/payment',[PaymentController::class,'createPayment'])->name('payment.create');
+    Route::get('/order-success/{payment_id}', [PaymentController::class,'success'])->name('payment.success');
+
+});
 Route::post('ckeditor/upload',[CKEditorController::class, 'upload'])->name('ckeditor.image-upload');
 Route::post('ajax_upload_file',[FilerController::class, 'upload'])->name('filer.image-upload');
 Route::post('ajax_remove_file',[FilerController::class, 'fileDestroy'])->name('filer.image-remove');

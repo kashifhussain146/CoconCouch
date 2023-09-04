@@ -26,18 +26,37 @@
                                         <p style="background-color: #ff7707; font-size: small;" class="text-white text-center rounded-pill"> Solutions ID {{ $v->id }}</p>
                                     </div>
                                 </div>
-                                <p class="fs-6 mb-1">{{$v->college->name}} </p>
+                                <p class="fs-6 mb-1">{{($v->college!='')?$v->college->name:'N/A'}} </p>
                                 <div class="black fw-bold">
-                                    <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}
+                                    @auth
+                                            @if(!in_array($v->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
+                                            <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}
+                                            @else
+                                            <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! strip_tags($v->question)  !!}</p>
+                                            @endif
+                                    @endauth
+
+                                    @guest
+                                    <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}                                     
+                                    @endguest                                    
                                 </div>
                                 
                                 <div>
-                                    @if($v->visiblity=='Y')
-                                    <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}
-                                    @else
-                                    <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
-                                    @endif
+                                    @auth
+                                        @if(!in_array($v->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
+                                        @if($v->visiblity=='Y')
+                                        <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}
+                                        @else
+                                        <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
+                                        @endif
+                                        @else
+                                        <p style="text-align: justify;"><strong>Ans.</strong> {!! substr(strip_tags($v->answer),0,1000).'.......'    !!}</p><br />
+                                        @endif
+                                    @endauth
 
+                                    @guest
+                                    <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}                                    
+                                    @endguest
                                 </div>
 
                                 <div class="row mt-3 mb-3">

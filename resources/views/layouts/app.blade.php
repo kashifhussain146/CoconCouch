@@ -1,110 +1,94 @@
-{{-- <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <!-- Scripts -->
-    
-</head>
-<body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
-</body>
-</html> --}}
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>@yield('title')</title>
-    <!-- Stylesheets -->
-    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <!-- REVOLUTION SETTINGS STYLES -->
     <link href="{{ asset('assets/plugins/revolution/css/layers.css')}}" rel="stylesheet" type="text/css"><!-- REVOLUTION LAYERS STYLES -->
     <link href="{{ asset('assets/plugins/revolution/css/navigation.css')}}" rel="stylesheet" type="text/css">
-    <!-- REVOLUTION NAVIGATION STYLES -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/style.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     @stack('css')
-    <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <style>
+
+.form-control, .input-text {
+    height: calc(1.5rem + 23px);
+    padding: 8px 6px;
+}
+
+  .credentials .modal-body {
+    padding: 0;
+  }
+  .credentials  .btn-close {
+    position: absolute;
+    right: 0;
+    padding: 1em;
+  }
+  .credentials  h1 {
+    font-size: 2.3em;
+    font-weight: bold;
+  }
+  .credentials .myform {
+    padding: 2em;
+    max-width: 100%;
+    color: #fff;
+    box-shadow: 0 4px 6px 0 rgba(22, 22, 26, 0.18);
+  }
+  @media (max-width: 576px) {
+    .credentials  .myform {
+      max-width: 100%;
+      margin: 0 auto;
+    }
+  }
+  .credentials  .form-control:focus {
+    box-shadow: inset 0 -1px 0 #7e7e7e;
+  }
+  .credentials .form-control {
+    background-color: inherit;
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 1px solid #fff;
+  }
+  .credentials .myform .btn {
+    width: 100%;
+    font-weight: 800;
+    background-color: #fff;
+    border-radius: 0;
+    padding: 0.5em 0;
+  }
+  .credentials .myform .btn:hover {
+    background-color: inherit;
+    color: #fff;
+    border-color: #fff;
+  }
+  .credentials  p {
+    text-align: center;
+    padding-top: 2em;
+    color: grey;
+  }
+  .credentials p a {
+    color: #e1e1e1;
+    text-decoration: none;
+  }
+  .credentials  p a:hover {
+    color: #fff;
+  } 
+
+  .modal-backdrop{
+    --bs-backdrop-bg: #000000bf;
+    background-color: #000000bf;
+  }
+      </style>
+
 </head>
 
 <body>
@@ -123,9 +107,11 @@
                     </div>
 
                     <div class="top-right">
+                        @guest('web')
                         <ul class="useful-links">
-                            <li><a href="#">Login</a></li>
+                            <li><a href="javascript:void(0)"  data-bs-toggle="modal" data-bs-target="#LoginForm" >Login</a></li>
                         </ul>
+                        @endguest
 
                         <ul class="social-icon-one light">
                             <li><a href="#"><span class="fab fa-twitter"></span></a></li>
@@ -422,13 +408,81 @@
             </div>
         </div>
     </footer>
-    <!--End Main Footer -->
+   
 
 
+    <div class="modal fade credentials" id="LoginForm" tabindex="-1" aria-labelledby="LoginFormLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="myform bg-dark">
+                    <h1 class="text-center">Login Form</h1>
+                    <form method="POST" action="{{ route('login') }}" id="LoginFormData">
+                        @csrf
+                        <div class="mb-3 mt-4">
+                            <label for="email" class="form-label">Email address</label>
+                            <input id="email" type="email" class="form-control" name="email" required autocomplete="off" autofocus>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input id="password" type="password" class="form-control" name="password" required autocomplete="off">
+
+                        </div>
+                        <button type="submit"  id="submitButton" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Signing..." data-rest-text="Sign In"  class="btn btn-light mt-3">Sign In</button>
+                        <p>Not a member? <a href="#" class="signupform">Signup now</a></p>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade credentials" id="SignUpForm" tabindex="-1" aria-labelledby="SignUpFormLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="myform bg-dark">
+                    <h1 class="text-center">Signup Form</h1>
+                    <form method="POST" action="{{ route('register') }}" id="registerForm">
+                        @csrf
+                        <div class="mb-3 mt-4">
+                            <label for="name" class="form-label">{{ __('Name') }}</label>
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        </div>
+
+                        <div class="mb-3 mt-4">
+                            <label for="email" class="form-label">{{ __('Email Address') }}</label>
+                            
+                                <input id="email" type="email" class="form-control" name="email" required autocomplete="off">
+                            
+                        </div>
+
+                        <div class="mb-3 mt-4">
+                            <label for="password" class="form-label">{{ __('Password') }}</label>
+                            <input id="password" type="password" class="form-control" name="password" required autocomplete="off">
+                        </div>
+
+                        <div class="mb-3 mt-4">
+                            <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="off">
+                        </div>
+
+                        <button type="submit" class="btn btn-light mt-3">SignUp</button>
+                        <p>Not a member? <a href="#" class="loginform">Login now</a></p>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('assets/index.js') }}"></script>
     <script src="https://kit.fontawesome.com/0172345ae2.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('assets/js/jquery.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.fancybox.js') }}"></script>
@@ -440,8 +494,118 @@
     <script src="{{ asset('assets/js/swiper.min.js') }}"></script>
     <script src="{{ asset('assets/js/owl.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     @stack('js')
 </body>
+<script>
+    $(document).on('click','.signupform',function(){
+        $('#LoginForm').modal('hide');
+        $('#SignUpForm').modal('show');
+    })
 
+    $(document).on('click','.loginform',function(){
+        $('#LoginForm').modal('show');
+        $('#SignUpForm').modal('hide');
+    })
+
+
+$('#LoginFormData').submit(function(){
+    var $this = $('#LoginFormData #submitButton');
+    buttonLoading('loading', $this);
+    $('.is-invalid').removeClass('is-invalid state-invalid');
+    $('.invalid-feedback').remove();
+    $.ajax({
+        url: $('#LoginFormData').attr('action'),
+        type: "POST",
+        processData: false,  // Important!
+        contentType: false,
+        cache: false,
+        data: new FormData($('#LoginFormData')[0]),
+        success: function(data) {
+            if(data.status){
+                
+                $("#LoginFormData").prepend(`<div class="alert alert-success">${data.message}</div>`)
+
+               setTimeout(function(){
+                    $('#LoginForm').modal('hide');
+                    location.reload();
+               },1300);
+
+            }else{
+                $.each(data.errors, function(fieldName, field){
+                    $.each(field, function(index, msg){
+                        $('#LoginFormData #'+fieldName).addClass('is-invalid state-invalid');
+                        errorDiv = $('#LoginFormData #'+fieldName).parent('div');
+                        errorDiv.append('<div class="invalid-feedback">'+msg+'</div>');
+                    });
+                });
+                
+            }
+            buttonLoading('reset', $this);
+
+        }
+    });
+
+    return false;
+});
+
+
+$('#registerForm').submit(function(){
+    var $this = $('#registerForm #submitButton');
+    buttonLoading('loading', $this);
+    $('.is-invalid').removeClass('is-invalid state-invalid');
+    $('.invalid-feedback').remove();
+    $.ajax({
+        url: $('#registerForm').attr('action'),
+        type: "POST",
+        processData: false,  // Important!
+        contentType: false,
+        cache: false,
+        data: new FormData($('#registerForm')[0]),
+        success: function(data) {
+            if(data.status){
+                
+                $("#registerForm").prepend(`<div class="alert alert-success">${data.message}</div>`)
+
+               setTimeout(function(){
+                    $('#LoginForm').modal('hide');
+                    location.reload();
+               },1300);
+
+            }else{
+                $.each(data.errors, function(fieldName, field){
+                    $.each(field, function(index, msg){
+                        $('#registerForm #'+fieldName).addClass('is-invalid state-invalid');
+                        errorDiv = $('#registerForm #'+fieldName).parent('div');
+                        errorDiv.append('<div class="invalid-feedback">'+msg+'</div>');
+                    });
+                });
+                
+            }
+            buttonLoading('reset', $this);
+
+        }
+    });
+
+    return false;
+});
+
+    function buttonLoading(processType, ele){
+        if(processType == 'loading'){
+            ele.html(ele.attr('data-loading-text'));
+            ele.attr('disabled', true);
+        }else{
+            ele.html(ele.attr('data-rest-text'));
+            ele.attr('disabled', false);
+        }
+    }
+
+    function successMsg(heading,message, html = ""){
+        box = $('<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>'+heading+'</strong><hr class="message-inner-separator"><p>'+message+'</p>'+html+'</div>');
+        $('.alert-messages-box').append(box);
+    }
+    function errorMsg(heading,message){
+        box = $('<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong>'+heading+'</strong><hr class="message-inner-separator"><p>'+message+'</p></div>');
+        $('.alert-messages-box').append(box);
+    }
+</script>
 </html>

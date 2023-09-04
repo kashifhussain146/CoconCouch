@@ -14,7 +14,7 @@
 @section('content')
 
        <!-- Start main-content -->
-       <section class="page-title">
+       <section class="">
         <div class="sol-pad">
             <div class="text-end mb-5 list-items">
                 <input style="background-color: gainsboro; padding: 0.5rem 1rem;" class="rounded-pill w-25"
@@ -26,39 +26,77 @@
                 <li class="ms-3">{{$question->num_words}} Words</li>
             </ul>
             <div>
-                <p class="mb-2 black"></strong> {!! substr( strip_tags($question->question) ,0,500).'...' !!}</p>
-                <p class="list-items" style="text-align: justify;">
-                    
-                        <span>{!! substr(strip_tags($question->answer,"x"),0,500)  !!}/span><br />
-                            @if($question->visiblity=='Y')
-                            <span  class="blur">{!! substr(strip_tags(masks($question->answer,"x")),0,500)  !!}       </span>
-                            @endif
+                @auth
+                    @if(!in_array($question->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
+                    <p class="mb-2 black"><strong>Q.{{$question->id}} </strong> {!! substr( strip_tags($question->question) ,0,500).'...' !!}</p>
+                    @else
+                    <p class="mb-2 black"><strong>Q.{{$question->id}} </strong> {!! strip_tags($question->question)  !!}</p>
+                    @endif
+                @endauth
 
-                </p>
+                @guest
+                <p class="mb-2 black"><strong>Q.{{$question->id}} </strong> {!! substr( strip_tags($question->question) ,0,500).'...' !!}</p>
+                @endguest
+
+                @auth
+                    @if(!in_array($question->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
+                    <p class="list-items" style="text-align: justify;">
+                        @if($question->visiblity=='Y')
+                            <span  class="blur">{!! substr(strip_tags(masks($question->answer,"x")),0,500)  !!}       </span>
+                        @else
+                            <span>{!! substr(strip_tags($question->answer,"x"),0,500)  !!}</span><br />
+                        @endif
+                    </p>
+                    @else
+                    <p style="text-align: justify;"><strong>Ans.</strong> {!! $question->answer   !!}</p><br />
+                    @endif
+                @endauth
+
+                @guest
+                <span  class="blur">{!! substr(strip_tags(masks($question->answer,"x")),0,500)  !!}       </span>
+                @endguest
+
             </div>
             
             <div class="my-3 text-center">
                 <!-- Button trigger modal -->
-                <button type="button" style="background-color: #ff7707; z-index: 10;" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                data-bs-whatever="@mdo" class="fs-6 px-4 py-1 text-white rounded-pill position-relative">Buy this  Article for $5</button>                
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
+
+                @auth('web')
+                    @if(!in_array($question->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
+                    <button type="button" style="background-color: #ff7707; z-index: 10;" data-bs-toggle="modal" data-bs-target="#BuyQuestionModal" class="fs-6 px-4 py-1 text-white rounded-pill position-relative">Buy this  Article for ${{$question->price}}</button>
+                    @else
+                    <button class="btn btn-success"> <i class="fa fa-check" aria-hidden="true"></i> Already Paided </button>
+                    @endif
+                @endauth
+
+                @guest('web')
+                <button type="button" style="background-color: #ff7707; z-index: 10;" data-bs-toggle="modal" data-bs-target="#LoginForm"  class="fs-6 px-4 py-1 text-white rounded-pill position-relative">Buy this  Article for  ${{$question->price}}</button>
+                @endguest
+
+                <div class="modal fade" id="BuyQuestionModal" tabindex="-1" aria-labelledby="BuyQuestionModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                        <form method="POST" action="{{ route('cart.addToCart') }}">
+                            @csrf
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-start">
+                                    <p style="font-size: 1rem; line-height: 1.5;" class="mb-3 black fw-bold">The order has been purchased multiple times hence originality is not assured.</p>
+                                    <p style="font-size: 0.9rem; line-height: 1.5;">If you wish to receive and original solution that is plagarism adn AI free click on order and original solution,  Or else click Continue</p>
+                                </div>
+                                <div class="modal-footer">                                    
+                                    <button style="background-color: black;" type="button" class="btn text-white" >Continue</button>
+                                    <button style="background-color: #ff7707;" type="submit" class="btn btn-primary">Order an original Solution</button>
+                                </div>
                             </div>
-                            <div class="modal-body text-start">
-                                <p style="font-size: 1rem; line-height: 1.5;" class="mb-3 black fw-bold">The order has been purchased multiple times hence originality is not assured.</p>
-                                <p style="font-size: 0.9rem; line-height: 1.5;">If you wish to receive and original solution that is plagarism adn AI free click on order and original solution,  Or else click Continue</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button style="background-color: black;" type="button" class="btn text-white" data-bs-dismiss="modal">Continue</button>
-                                <button style="background-color: #ff7707;" type="button" class="btn btn-primary">Order an original Solution</button>
-                            </div>
-                        </div>
+                            <input type="hidden" name="question_id" value="{{$question->id}}" />
+                            <input type="hidden" name="question" value="{{$question->question}}" />
+                            <input type="hidden" name="subject_category_id" value="{{$question->subject_category}}" />
+                            <input type="hidden" name="subject_id" value="{{$question->subject}}" />
+                            <input type="hidden" name="price" value="{{$question->price}}" />
+                        </form>
                     </div>
                 </div>
 
@@ -136,7 +174,6 @@
 @endsection
 
 @push('js')
-<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
 <script>
 
 </script>

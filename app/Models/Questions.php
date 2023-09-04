@@ -26,6 +26,10 @@ class Questions extends Model
       return $this->belongsTo(Colleges::class,'collegeid','id')->Activated();
    }
 
+   public function course_code(){
+      return $this->belongsTo(CourseCode::class,'coursesid','id')->Activated();
+   }
+
    public function scopeActivated($query){
       return  $query->where('status','Y');
    }
@@ -36,6 +40,10 @@ class Questions extends Model
 
    public function scopeSubjectFilter($query,$subject){
       return  $query->where('subject',$subject);
+   }
+
+   public function SubjectCodeFilter($query,$coursesid){
+      return  $query->where('coursesid',$coursesid);
    }
 
    public function scopeSearchFilter($query,$search){
