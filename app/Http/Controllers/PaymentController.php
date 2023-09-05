@@ -16,16 +16,16 @@ class PaymentController extends Controller
     public function createPayment(Request $request){
 
         $input = $request->all();
-       
+    //    dd($input);
         $api = new Api (env('RAZORPAY_KEY_ID'), env('RAZORPAY_KEY_SECRET'));
         try{
-            $payment = $api->payment->fetch($input['razorpay_payment_id']);
-        
+            // $payment = $api->payment->fetch($input['razorpay_payment_id']);
+            
             // echo "<pre>";print_r($payment);
             // exit;
             if(count($input) && !empty($input['razorpay_payment_id'])) {
                 try {
-                    $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount']));
+                    $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' =>$input['amount'],'currency' => 'USD'));
                     $user = auth()->guard('web')->user();
                     $cart = Cart::where('user_id', $user->id)->first();
                 
@@ -45,7 +45,9 @@ class PaymentController extends Controller
                         'contact' => $response['contact'],
                         'card_id' => $response['card_id'],
                     ]);
-
+                    
+                    Cart::where('user_id', $user->id)->delete();
+                    
                     \Session::put('success','Order done successfully ! Now you can access this question');
                     return redirect()->route('payment.success',['payment_id'=>$response['id']]);
 

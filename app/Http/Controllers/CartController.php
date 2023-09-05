@@ -20,7 +20,7 @@ class CartController extends Controller
             $subjects = Subject::Activated()->orderBy('subject_name','ASC')->get();
             return view('cart.index',compact('cart','user','subjects'));            
         }else{
-            $cart = $cart->get();
+            $cart = $cart->where('is_checkout',0)->get();
             return view('cart.index',compact('cart','user'));
         }
     }
@@ -46,6 +46,31 @@ class CartController extends Controller
 
         // Redirect to the cart page or product page
         return redirect()->route('cart.index')->with('success', 'Question added to cart successfully');
+    }
+
+    public function checkoutPost(Request $request){
+
+        // Get the currently authenticated user
+        $user = auth()->guard('web')->user();
+
+        // Check if the product is already in the user's cart
+        $cartItem = Cart::where('user_id', $user->id)->delete();
+
+        $cartItem = new Cart([
+            'user_id' => $user->id,
+            'question_id' => $request->question_id,
+            'subject_category_id' =>$request->subject_category_id, // You can adjust the quantity as needed
+            'subject_id' => $request->subject_id,
+            'price'=>$request->price,
+            'is_checkout'=>1,
+            'questions'=>$request->question
+        ]);
+        
+        $cartItem->save();
+
+        // Redirect to the cart page or product page
+        return redirect()->route('checkout.index')->with('success', 'Question added to cart successfully');
+
     }
 
 }

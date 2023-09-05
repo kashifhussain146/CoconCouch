@@ -70,10 +70,25 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div>
-                                            <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" class="fs-6 px-3 fw-bold text-white">${{$v->price}} | Buy Now</button>
+                                            @auth('web')
+                                            <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" class="BuyQuestionModal fs-6 px-3 fw-bold text-white"
+                                                    data-question_id="{{$v->id}}"
+                                                    data-question="{{$v->question}}"
+                                                    data-subject_category_id="{{$v->subject_category}}"
+                                                    data-subject_id="{{$v->subject}}"
+                                                    data-price="{{$v->price}}"
+                                            >${{$v->price}} | Buy Now
+                                            </button>
+                                            @endauth
+
+                                            @guest('web')
+                                            <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" data-bs-toggle="modal" data-bs-target="#LoginForm"  class="fs-6 px-3 fw-bold text-white">Buy this  Article for  ${{$v->price}}</button>                                          
+                                            @endguest
+
                                             <a href="{{route('solutions.library.question.page',['question_id'=>$v->id])}}">
                                                 <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" class="fs-6 px-3 fw-bold text-white">Get an Original Solution</button>
                                             </a>
+
                                         </div>
                                     </div>
                                 </div>

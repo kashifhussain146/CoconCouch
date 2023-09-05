@@ -210,7 +210,7 @@
                         data-theme.color="#ff7707"
                         >
                 </script>
-               
+               <input type="hidden" name="amount" value="{{$cart->price*100}}">
             </form>
         </section>
 
