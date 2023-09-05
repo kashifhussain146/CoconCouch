@@ -43,7 +43,7 @@
     <section style="padding: 5rem 11rem;">
         <div style="background-color: #ff7707;" class="auto-container w-100 mt-5">
             <p class="fs-6 text-white py-2">
-                ({{$cart->count()}}) ITEM ADDED TO THE CART
+                (1) ITEM ADDED TO THE CART
             </p>
         </div>
 

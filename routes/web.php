@@ -37,7 +37,6 @@ use App\Http\Controllers\Backend\WidgetDataController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/test-table', [HomeController::class, 'table'])->name('home');
 
 Route::get('/solutions-library', [HomeController::class, 'solutionsLibrary'])->name('solutions.library');
 

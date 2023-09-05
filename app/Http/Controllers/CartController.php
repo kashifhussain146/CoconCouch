@@ -12,17 +12,27 @@ class CartController extends Controller
 {
     
     public function index(Request $request){
-        $user = auth()->guard('web')->user();
-        $cart = Cart::with(['question','category','subjects'])->where('user_id', $user->id);
-        // dd($cart);
-        if(\Route::is('checkout.index')){
-            $cart = $cart->first();
-            $subjects = Subject::Activated()->orderBy('subject_name','ASC')->get();
-            return view('cart.index',compact('cart','user','subjects'));            
-        }else{
-            $cart = $cart->where('is_checkout',0)->get();
-            return view('cart.index',compact('cart','user'));
+        try{
+            $user = auth()->guard('web')->user();
+            $cart = Cart::with(['question','category','subjects'])->where('user_id', $user->id);
+            if(\Route::is('checkout.index')){
+                $cart = $cart->first();
+                if(!$cart){
+                    return redirect()->route('home');
+                }
+                $subjects = Subject::Activated()->orderBy('subject_name','ASC')->get();
+                return view('cart.index',compact('cart','user','subjects'));            
+            }else{
+                $cart = $cart->where('is_checkout',0)->get();
+                if(count($cart)==0){
+                    return redirect()->route('home');
+                }
+                return view('cart.index',compact('cart','user'));
+            }
+        }catch(\Exception $e){
+            return redirect()->route('home');
         }
+
     }
 
     public function addToCart(Request $request){
