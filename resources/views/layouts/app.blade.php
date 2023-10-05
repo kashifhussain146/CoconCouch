@@ -480,6 +480,32 @@
     </div>
     
 
+    <div class="modal fade" id="BuyQuestionModal" tabindex="-1" aria-labelledby="BuyQuestionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form method="POST" action="{{ route('cart.addToCart') }}">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-start">
+                        <p style="font-size: 1rem; line-height: 1.5;" class="mb-3 black fw-bold">The order has been purchased multiple times hence originality is not assured.</p>
+                        <p style="font-size: 0.9rem; line-height: 1.5;">If you wish to receive and original solution that is plagarism adn AI free click on order and original solution,  Or else click Continue</p>
+                    </div>
+                    <div class="modal-footer">                                    
+                        <button style="background-color: black;" type="submit"  formaction="{{ route('cart.addToCart') }}" class="btn text-white" >Continue</button>
+                        <button style="background-color: #ff7707;" type="submit" formaction="{{ route('checkout.question') }}" class="btn btn-primary">Order an original Solution</button>
+                    </div>
+                </div>
+                <input type="hidden" name="question_id" id="question_id" />
+                <input type="hidden" name="question" id="question" />
+                <input type="hidden" name="subject_category_id" id="subject_category_id" />
+                <input type="hidden" name="subject_id" id="subject_id"  />
+                <input type="hidden" name="price" id="price" />
+            </form>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="{{ asset('assets/index.js') }}"></script>
     <script src="https://kit.fontawesome.com/0172345ae2.js" crossorigin="anonymous"></script>
@@ -497,6 +523,27 @@
     @stack('js')
 </body>
 <script>
+
+
+$(document).on('click','.BuyQuestionModal',function(){
+
+    var question_id = $(this).attr('data-question_id');
+    var question = $(this).attr('data-question');
+    var subject_category_id = $(this).attr('data-subject_category_id');
+    var subject_id = $(this).attr('data-subject_id');
+    var price = $(this).attr('data-price');
+
+    $("#BuyQuestionModal").modal("show");
+
+    $("#BuyQuestionModal #question_id").val(question_id);
+    $("#BuyQuestionModal #question").val(question);
+    $("#BuyQuestionModal #subject_category_id").val(subject_category_id);
+    $("#BuyQuestionModal #subject_id").val(subject_id);
+    $("#BuyQuestionModal #price").val(price);
+
+});
+
+
     $(document).on('click','.signupform',function(){
         $('#LoginForm').modal('hide');
         $('#SignUpForm').modal('show');

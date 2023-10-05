@@ -37,7 +37,6 @@ use App\Http\Controllers\Backend\WidgetDataController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/test-table', [HomeController::class, 'table'])->name('home');
 
 Route::get('/solutions-library', [HomeController::class, 'solutionsLibrary'])->name('solutions.library');
 
@@ -57,6 +56,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/cart/add',[CartController::class,'addToCart'])->name('cart.addToCart');
     Route::post('/cart/remove/{cart}',[CartController::class,'removeFromCart'])->name('cart.removeFromCart');
     Route::get('/checkout', [CartController::class,'index'])->name('checkout.index');
+    Route::post('/checkout', [CartController::class,'checkoutPost'])->name('checkout.question');
 
 
     Route::post('/payment',[PaymentController::class,'createPayment'])->name('payment.create');

@@ -14,7 +14,7 @@
 @section('content')
 
        <!-- Start main-content -->
-       <section class="container">
+       <section class="page-title">
         <div class="sol-pad">
             <div class="text-end mb-5 list-items">
                 <input style="background-color: gainsboro; padding: 0.5rem 1rem;" class="rounded-pill w-25"
@@ -64,7 +64,14 @@
 
                 @auth('web')
                     @if(!in_array($question->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
-                    <button type="button" style="background-color: #ff7707; z-index: 10;" data-bs-toggle="modal" data-bs-target="#BuyQuestionModal" class="fs-6 px-4 py-1 text-white rounded-pill position-relative">Buy this  Article for ${{$question->price}}</button>
+                    {{-- data-bs-toggle="modal" data-bs-target="#BuyQuestionModal" --}}
+                    <button 
+                    data-question_id="{{$question->id}}"
+                    data-question="{{$question->question}}"
+                    data-subject_category_id="{{$question->subject_category}}"
+                    data-subject_id="{{$question->subject}}"
+                    data-price="{{$question->price}}"
+                    type="button" style="background-color: #ff7707; z-index: 10;" class="BuyQuestionModal fs-6 px-4 py-1 text-white rounded-pill position-relative">Buy this  Article for ${{$question->price}}</button>
                     @else
                     <button class="btn btn-success"> <i class="fa fa-check" aria-hidden="true"></i> Already Paided </button>
                     @endif
@@ -87,8 +94,8 @@
                                     <p style="font-size: 0.9rem; line-height: 1.5;">If you wish to receive and original solution that is plagarism adn AI free click on order and original solution,  Or else click Continue</p>
                                 </div>
                                 <div class="modal-footer">                                    
-                                    <button style="background-color: black;" type="button" class="btn text-white" >Continue</button>
-                                    <button style="background-color: #ff7707;" type="submit" class="btn btn-primary">Order an original Solution</button>
+                                    <button style="background-color: black;" type="submit"  formaction="{{ route('cart.addToCart') }}" class="btn text-white" >Continue</button>
+                                    <button style="background-color: #ff7707;" type="submit" formaction="{{ route('checkout.question') }}" class="btn btn-primary">Order an original Solution</button>
                                 </div>
                             </div>
                             <input type="hidden" name="question_id" value="{{$question->id}}" />

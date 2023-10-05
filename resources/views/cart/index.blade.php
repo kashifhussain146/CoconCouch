@@ -43,73 +43,11 @@
     <section style="padding: 5rem 11rem;">
         <div style="background-color: #ff7707;" class="auto-container w-100 mt-5">
             <p class="fs-6 text-white py-2">
-                ({{$cart->count()}}) ITEM ADDED TO THE CART
+                (1) ITEM ADDED TO THE CART
             </p>
         </div>
 
-        @if(\Route::is('cart.index'))
-        @php
-            $total = 0;
-           
-        @endphp
-        @foreach ($cart as $item)
-            @php 
-                $total = $total+$item->price;
-            @endphp
-            <div class="row">
-            
-                <div class="col-5">
-                    <p class="black fs-6 fw-bold">DESCRIPTION</p>
-                    <p class="pe-4" style="text-align: justify;">
-                        @if($item->question->visiblity=='Y')
-                        <span  class="blur">{!! substr(strip_tags(masks($item->question->answer,"x")),0,500)  !!}       </span>
-                        @else
-                        <span>{!! substr(strip_tags($item->question->answer,"x"),0,500)  !!}</span><br />
-                        @endif
-                    </p>
-                </div>
-                <div class="col-3">
-                    <p class="black fs-6 fw-bold">SUBJECT</p>
-                    <p>{{$item->category->category_name}}</p>
-                </div>
-                <div class="col-2">
-                    <p class="black fs-6 fw-bold">SOLUTION ID</p>
-                    <p>{{$item->question->id}}</p>
-                </div>
-                <div class="col-2">
-                    <p class="black fs-6 fw-bold">PRICE</p>
-                    <p>{{$item->question->price}}</p>
-                </div>
-            </div>
-        @endforeach
-
-        
-        <hr style="height: 4px;">
-        <div class="row">
-            <div class="col-5">
-            </div>
-
-            <div class="col-3">
-            </div>
-            <div class="col-2">
-                <p class="fs-6 fw-bold black">Amount Payable</p>
-            </div>
-            <div class="col-2">
-                <p>${{$total}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-5">
-            </div>
-
-            <div class="col-3">
-            </div>
-            <div class="col-4 text-center">
-                <button style="background-color: #ff7707;" class="checkout fs-6 px-5 py-1 text-white rounded-1 text-uppercase position-relative">Checkout</button>                
-            </div>
-        </div>
-        @else
-
+        @if(\Route::is('checkout.index'))      
         <section class="acc-sec5-pad text-center">
             <h2 class="mt-4">UPLOAD ASSIGNMENT</h2>
             <form action="{{ route('payment.create') }}" method="POST">
@@ -210,9 +148,88 @@
                         data-theme.color="#ff7707"
                         >
                 </script>
-               
+               <input type="hidden" name="amount" value="{{$cart->price*100}}">
             </form>
         </section>
+        @else
+        @php
+            $total = 0;
+            $firstCart = $cart->first();
+
+        @endphp
+        
+        @foreach ($cart as $item)
+            @php     $total = $total+$item->price;  @endphp
+            <div class="row">
+            
+                <div class="col-5">
+                    <p class="black fs-6 fw-bold">DESCRIPTION</p>
+                    <p class="pe-4" style="text-align: justify;">
+                        @if($item->question->visiblity=='Y')
+                        <span  class="blur">{!! substr(strip_tags(masks($item->question->answer,"x")),0,500)  !!}       </span>
+                        @else
+                        <span>{!! substr(strip_tags($item->question->answer,"x"),0,500)  !!}</span><br />
+                        @endif
+                    </p>
+                </div>
+                <div class="col-3">
+                    <p class="black fs-6 fw-bold">SUBJECT</p>
+                    <p>{{$item->category->category_name}}</p>
+                </div>
+                <div class="col-2">
+                    <p class="black fs-6 fw-bold">SOLUTION ID</p>
+                    <p>{{$item->question->id}}</p>
+                </div>
+                <div class="col-2">
+                    <p class="black fs-6 fw-bold">PRICE</p>
+                    <p>{{$item->question->price}}</p>
+                </div>
+            </div>
+        @endforeach
+
+    
+    <hr style="height: 4px;">
+    <div class="row">
+        <div class="col-5">
+        </div>
+
+        <div class="col-3">
+        </div>
+        <div class="col-2">
+            <p class="fs-6 fw-bold black">Amount Payable</p>
+        </div>
+        <div class="col-2">
+            <p>${{$total}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+        </div>
+
+        <div class="col-3">
+        </div>
+        <div class="col-4 text-center">
+            <form action="{{ route('payment.create') }}" method="POST">
+                @csrf
+            <script
+                    src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key="{{ env('RAZORPAY_KEY_ID') }}"
+                    data-amount="{{ $total*100 }}"
+                    data-buttontext="Pay {{ $total }} USD"
+                    data-name="Coach on Coach"
+                    data-currency="USD"
+                    data-description="Razorpay payment"
+                    data-image="{{asset('assets/images/logo.png')}}"
+                    data-prefill.name="{{auth()->guard('web')->user()->fullname}}"
+                    data-prefill.email="{{auth()->guard('web')->user()->email}}"
+                    data-theme.color="#ff7707"
+                    >
+            </script>
+           <input type="hidden" name="amount" value="{{$total*100}}">
+            </form>
+            {{-- <button style="background-color: #ff7707;" class="checkout fs-6 px-5 py-1 text-white rounded-1 text-uppercase position-relative">Checkout</button>                 --}}
+        </div>
+    </div>
 
         @endif
     </section>
