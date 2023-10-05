@@ -27,15 +27,48 @@
                  <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
 
 
-                 <li class="nav-item">
+                 <li class="nav-item {{ in_array(\Request::route()->getName(), 
+                    ['category-create','category-list','questions-list','questions-create','subject-category-create','subject-category-list']
+                    ) ? " menu-open" : ""}}">
                      <a href="#" class="nav-link">
                          <i class="nav-icon fas fa-circle"></i>
                          <p>
-                             Site Management
+                             Home Page
                              <i class="right fas fa-angle-left"></i>
                          </p>
                      </a>
-                     <ul class="nav nav-treeview">
+                     <ul class="nav nav-treeview ">
+
+                        
+                        <li class="nav-item {{ in_array(\Request::route()->getName(), ['category-create','category-list']) ? " menu-open" : ""}}">
+                            <a href="#" class="nav-link  {{ in_array(\Request::route()->getName(), ['category-create','category-list']) ? "active" : ""}}">
+  
+                                <p>
+                                    Service Management
+                                    <i class="fas fa-angle-left right"></i>
+  
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+  
+                                <li class="nav-item">
+                                    <a href="{{ route('category-create') }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Service</p>
+                                    </a>
+                                </li>
+  
+                                <li class="nav-item">
+                                    <a href="{{ route('category-list') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Service</p>
+                                    </a>
+                                </li>
+  
+                            </ul>
+  
+                          </li>
 
                         <li class="nav-item">
                           <a href="#" class="nav-link">

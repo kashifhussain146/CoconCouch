@@ -91,12 +91,12 @@ Route::group(['middleware' => ['auth:admin']], function() {
     // Category Master
     Route::group([], function() {
 
-        Route::get('/admin/category', [CategoryController::class,'index'])->name('category-list');//->middleware(['permission:Category List']);
-        Route::get('/admin/category/create', [CategoryController::class,'create'])->name('category-create');//->middleware(['permission:Category Create']);
-        Route::post('/admin/category/store', [CategoryController::class,'store'])->name('category-store');//->middleware(['permission:Category Create']);
-        Route::get('/admin/category/edit/{id}', [CategoryController::class,'edit'])->name('category-edit');//->middleware(['permission:Category Edit']);
-        Route::post('/admin/category/update/{id}', [CategoryController::class,'update'])->name('category-update');//->middleware(['permission:Category Edit']);
-        Route::get('/admin/ajax/category/view/{id}', [CategoryController::class,'show'])->name('category-view');//->middleware(['permission:Category View']);
+        Route::get('/admin/service', [CategoryController::class,'index'])->name('category-list');//->middleware(['permission:Category List']);
+        Route::get('/admin/service/create', [CategoryController::class,'create'])->name('category-create');//->middleware(['permission:Category Create']);
+        Route::post('/admin/service/store', [CategoryController::class,'store'])->name('category-store');//->middleware(['permission:Category Create']);
+        Route::get('/admin/service/edit/{id}', [CategoryController::class,'create'])->name('category-edit');//->middleware(['permission:Category Edit']);
+        Route::post('/admin/service/update/{id}', [CategoryController::class,'update'])->name('category-update');//->middleware(['permission:Category Edit']);
+        Route::get('/admin/ajax/service/view/{id}', [CategoryController::class,'show'])->name('category-view');//->middleware(['permission:Category View']);
 
     });
 

@@ -32,21 +32,21 @@ class CategoryController extends Controller
                     ->addColumn('action', function($row)
                     {
                         $btn =' ';
-                        if(Auth()->user()->can('Category Edit'))
-                        {
+                        //if(Auth()->user()->can('Category Edit'))
+                        //{
                             $btn .= '<a href="'.route("category-edit", $row->id).'" class="edit btn btn-primary btn-sm">Edit</a>';
-                        }
+                        //}
 
-                        if(Auth()->user()->can('Category View')){
-                        $btn .= ' <button type="button" data-url="'.route('category-view', $row->id).'" class="edit btn btn-primary btn-sm viewDetail">View</a>';
-                        }
+                        //if(Auth()->user()->can('Category View')){
+                        //$btn .= ' <button type="button" data-url="'.route('category-view', $row->id).'" class="edit btn btn-primary btn-sm viewDetail">View</a>';
+                        //}
                         return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        $data = Category::latest()->get();
-        return view('admin.category.category',compact('data'));
+        $title = 'Services';
+        return view('admin.category.category',compact('title'));
     }
 
 
@@ -55,10 +55,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request,$id=null)
     {
-        $industry = Industry::get();
-        return view('admin.category.category-create',compact('industry'));
+        $title = 'Create services';
+        $loan = null;
+        if($id!=null){
+            $title = 'Edit services';
+            $loan = Category::findorfail($id);
+        }
+        return view('admin.category.category-create',compact('loan','title'));
     }
 
 
@@ -100,7 +105,7 @@ class CategoryController extends Controller
             $image = "/uploads/category/".$image;
             $category->image = $image ;
         }
-        $category->status = 'active';
+        $category->status = $request->status;
         $category->description = $request->description;
         // $category->sort_order = $request->sort_order;
         $category->created_at = date('Y-m-d H:i:s');
@@ -139,8 +144,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $loan = Category::find($id);
-        $industry = Industry::get();
-        return view('admin.category.category-edit',compact('loan','industry'));
+        return view('admin.category.category-edit',compact('loan'));
     }
 
 
@@ -155,7 +159,7 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(),[
             'title' => 'required|unique:category,title,'.$id,
-            'image'=>'required|mimes:jpg,jpeg,png,svg',
+            'image'=>'nullable|mimes:jpg,jpeg,png,svg',
         ]);
 
         if ($validator->fails()) 
@@ -177,7 +181,7 @@ class CategoryController extends Controller
             $image = "/uploads/category/".$image;
             $category->image = $image ;
         }
-        $category->status = 1;
+        $category->status = $request->status;
         $category->description = $request->description;
         // $category->sort_order = $request->sort_order;
         $category->created_at = date('Y-m-d H:i:s');
