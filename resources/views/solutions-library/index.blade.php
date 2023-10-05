@@ -60,41 +60,42 @@
 
     <div class="row">
         <div class="col-9">
-                <form action="" method="GET">
+                
                     <div class="p-5 ">
-                        <div class="position-relative">
-                            <input class="w-100 mb-4 py-1 px-4 fs-6" value="{{ (isset($_GET['search']))?$_GET['search']:'' }}" style="border: 2px solid #ff7707;" name="search" id="search" placeholder="Search by name, topic or question" type="search">
-                            <select style="top: 0.6rem;right: 38rem;color: grey;width: 21%;" class="position-absolute bg-transparent fs-6 " name="subject_category" id="subject_category">
-                                <option value="">Select Subject</option>
-                                @foreach ($subjectcategory as $item)
-                                <option @if(isset($_GET['subject_category'])) @if($_GET['subject_category']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->category_name}}</option>
-                                @endforeach
-                            </select>
-                            <select style="top: 0.6rem; right: 22rem;color: grey;width: 17%;" class="position-absolute bg-transparent fs-6" name="subject" id="subject">
-                                <option value="">Select Topic</option>
-                                @if(count($topics) > 0)
-                                    @foreach ($topics as $item)
-                                    <option @if(isset($_GET['subject'])) @if($_GET['subject']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->subject_name}}</option>
+                        <form action="" method="GET">
+                            <div class="position-relative">
+                                <input class="w-100 mb-4 py-1 px-4 fs-6" value="{{ (isset($_GET['search']))?$_GET['search']:'' }}" style="border: 2px solid #ff7707;" name="search" id="search" placeholder="Search by name" type="search">
+                                <select style="top: 0.6rem;right: 35rem;color: grey;width: 15%;" class="position-absolute bg-transparent fs-6 " name="subject_category" id="subject_category">
+                                    <option value="">Select Subject</option>
+                                    @foreach ($subjectcategory as $item)
+                                    <option @if(isset($_GET['subject_category'])) @if($_GET['subject_category']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->category_name}}</option>
                                     @endforeach
-                                @endif
+                                </select>
+                                <select style="top: 0.6rem; right: 22rem;color: grey;width: 17%;" class="position-absolute bg-transparent fs-6" name="subject" id="subject">
+                                    <option value="">Select Topic</option>
+                                    @if(count($topics) > 0)
+                                        @foreach ($topics as $item)
+                                        <option @if(isset($_GET['subject'])) @if($_GET['subject']==$item->id) selected @endif @endif value="{{$item->id}}">{{$item->subject_name}}</option>
+                                        @endforeach
+                                    @endif
 
-                            </select>
+                                </select>
 
-                           
-                            <select style="    top: 0.6rem;
-                            right: 10rem;
-                            color: grey;
-                            width: 15%" class="position-absolute bg-transparent fs-6" name="subject_code" id="subject_code">
-                                <option value="">Select Code</option>
-                                @foreach ($courseCode as $item)
-                                <option value="{{$item->id}}">{{$item->code}}</option>
-                                @endforeach
-                            </select>
+                            
+                                <select style="    top: 0.6rem;
+                                right: 10rem;
+                                color: grey;
+                                width: 15%" class="position-absolute bg-transparent fs-6" name="subject_code" id="subject_code">
+                                    <option value="">Select Code</option>
+                                    @foreach ($courseCode as $item)
+                                    <option value="{{$item->id}}">{{$item->code}}</option>
+                                    @endforeach
+                                </select>
 
 
-                            <button style="background-color: #ff7707; padding: 0.35rem 0;" class="fs-6 px-5 searchBtn position-absolute end-0">Search</button>
-                        </div>
-
+                                <button type="submit" style="background-color: #ff7707; padding: 0.35rem 0;" class="fs-6 px-5 searchBtn position-absolute end-0">Search</button>
+                            </div>
+                        </form>
                         <div id="solutions_library">
                             @if(count($questions) > 0)
                                 @include('sections.solution-library-landing',['courseCode'=>$courseCode,'questions'=>$questions,'subject_category_id'=>$subject_category_id])
@@ -104,7 +105,7 @@
                         </div>
 
                     </div>
-                </form>
+               
         </div>
 
 
@@ -128,7 +129,6 @@
     $(document).ready(function() {
     $('.select2').select2();
 });
-
 
 $(document).on('change','#subject_category',function(){
     

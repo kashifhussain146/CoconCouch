@@ -55,7 +55,12 @@ class CartController extends Controller
         $cartItem->save();
 
         // Redirect to the cart page or product page
-        return redirect()->route('cart.index')->with('success', 'Question added to cart successfully');
+        if(isset($request->is_cart)){
+            return redirect()->route('checkout.index');
+        }else{
+            return redirect()->route('cart.index')->with('success', 'Question added to cart successfully');
+        }
+
     }
 
     public function checkoutPost(Request $request){

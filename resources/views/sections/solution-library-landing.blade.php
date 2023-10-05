@@ -30,14 +30,18 @@
                                 <div class="black fw-bold">
                                     @auth
                                             @if(!in_array($v->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
-                                            <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}
+                                            <a href="{{route('solutions.library.question.page',['question_id'=>$v->id])}}">
+                                                    <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}
+                                            </a>
                                             @else
                                             <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! strip_tags($v->question)  !!}</p>
                                             @endif
                                     @endauth
 
                                     @guest
-                                    <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}                                     
+                                    <a href="{{route('solutions.library.question.page',['question_id'=>$v->id])}}">
+                                        <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}
+                                    </a>
                                     @endguest                                    
                                 </div>
                                 
@@ -82,13 +86,29 @@
                                             @endauth
 
                                             @guest('web')
-                                            <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" data-bs-toggle="modal" data-bs-target="#LoginForm"  class="fs-6 px-3 fw-bold text-white">Buy this  Article for  ${{$v->price}}</button>                                          
+                                            <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" data-bs-toggle="modal" data-bs-target="#LoginForm"  class="fs-6 px-3 fw-bold text-white">Buy this  Article for  ${{$v->price}}</button>
                                             @endguest
 
-                                            <a href="{{route('solutions.library.question.page',['question_id'=>$v->id])}}">
-                                                <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" class="fs-6 px-3 fw-bold text-white">Get an Original Solution</button>
-                                            </a>
+                                            @auth('web')
+                                            <form method="POST" action="{{ route('cart.addToCart') }}" id="solutionLibraryForm{{$v->id}}">
+                                                @csrf
 
+                                                <input type="hidden" name="question_id" id="question_id" value="{{$v->id}}"/>
+                                                <input type="hidden" name="question" id="question" value="{{$v->question}}"/>
+                                                <input type="hidden" name="subject_category_id" id="subject_category_id" value="{{$v->subject_category}}"/>
+                                                <input type="hidden" name="subject_id" id="subject_id" value="{{$v->subject}}" />
+                                                <input type="hidden" name="price" id="price" value="{{$v->price}}"/>
+                                                <input type="hidden" name="is_cart" id="is_cart" value="1"/>
+
+                                                <button class="" type="submit" style="background-color: #ff7707;color: white;float:right;margin-right:10px;padding-right: 1rem!important;padding-left: 1rem!important;" class="fs-6 px-3 fw-bold text-white">Get an Original Solution</button>
+
+                                            </form>
+                                            @endauth
+
+                                            @guest('web')
+                                            <button type="button" style="background-color: #ff7707;float:right;margin-right:10px" data-bs-toggle="modal" data-bs-target="#LoginForm"  class="fs-6 px-3 fw-bold text-white">Get an Original Solution</button>
+                                            @endguest
+                                            
                                         </div>
                                     </div>
                                 </div>
