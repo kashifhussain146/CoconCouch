@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $banner = module(18);
-        $category = Category::where('status','active')->latest()->limit(3)->get();
+        $category = Category::where('status','active')->latest()->get();
         $testimonial = module(12);
         $howWork =   module(10);
         $chooseUs =    module(20);
