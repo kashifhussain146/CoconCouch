@@ -35,7 +35,7 @@ class HomeController extends Controller
         $testimonial = module(12);
         $howWork =   module(10);
         $chooseUs =    module(20);
-        $helpFaqs =    module(19);
+        $helpFaqs =    module(23);
 
 
         return view('home',compact('banner','category','testimonial','howWork','chooseUs','helpFaqs'));

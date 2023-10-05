@@ -97,9 +97,39 @@
                              </ul>
                          </li>
 
+
+                         <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                   Faq
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'home-page-faqs']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Faq</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'home-page-faqs']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Faq</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
                      </ul>
                  </li>
-
 
 
                  <li class="nav-item">
@@ -243,7 +273,7 @@
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data.add', ['module' => 'faqs']) }}"
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'help-faqs']) }}"
                                         class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Add Faq</p>
@@ -251,7 +281,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data', ['module' => 'faqs']) }}" class="nav-link">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'help-faqs']) }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>List Faq</p>
                                     </a>
@@ -294,10 +324,6 @@
 
 
                  </li>
-
-
-
-
 
 
                  <li class="nav-item {{ in_array(\Request::route()->getName(), ['subject-create','subject-list','questions-list','questions-create','subject-category-create','subject-category-list']) ? " menu-open" : ""}}">
@@ -464,6 +490,43 @@
                  </li>
 
 
+                 <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Faq
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.modules.data.add', ['module' => 'faqs']) }}"
+                                class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Faq</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.modules.data', ['module' => 'faqs']) }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Faq</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('admin.widgets_data',['page'=>'home-page-content'])}}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Home page settings
+                        </p>
+                    </a>
+                   
+                </li>
              </ul>
          </nav>
          <!-- /.sidebar-menu -->

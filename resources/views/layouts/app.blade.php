@@ -114,10 +114,10 @@
                         @endguest
 
                         <ul class="social-icon-one light">
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-facebook-square"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>
+                            <li><a target="_blank" href="{{widget(6)->extra_field_5}}"><span class="fab fa-twitter"></span></a></li>
+                            <li><a target="_blank" href="{{widget(6)->extra_field_6}}"><span class="fab fa-facebook-square"></span></a></li>
+                            <li><a target="_blank" href="{{widget(6)->extra_field_7}}"><span class="fab fa-pinterest-p"></span></a></li>
+                            <li><a target="_blank" href="{{widget(6)->extra_field_8}}"><span class="fab fa-instagram"></span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                             <div class="contact-info-box">
                                 <i class="icon lnr-icon-phone-handset"></i>
                                 <span class="title">Call Anytime</span>
-                                <a href="tel:+919748093320" class="text">+91 9748093320</a>
+                                <a href="tel:{{widget(6)->extra_field_2}}" class="text">{{widget(6)->extra_field_2}}</a>
                             </div>
                         </li>
                         <li>
@@ -148,15 +148,14 @@
                             <div class="contact-info-box">
                                 <i class="icon lnr-icon-envelope"></i>
                                 <span class="title">Send Email</span>
-                                <a href="mailto:learn@coachoncouch.com" class="text">learn@coachoncouch.com</a>
+                                <a href="mailto:{{widget(6)->extra_field_3}}" class="text">{{widget(6)->extra_field_3}}</a>
                             </div>
                         </li>
                         <li>
                             <!-- Contact Info Box -->
                             <div class="contact-info-box">
                                 <i class="icon lnr-icon-map"></i>
-                                <span class="title"> 12th Cross, Wilson Garden</span>
-                                <div class="text"> Bangalore, Karnataka</div>
+                                <div class="text"> {{widget(6)->extra_field_4}}</div>
                             </div>
                         </li>
                     </ul>
@@ -314,11 +313,12 @@
                             </div>
 
                             <ul class="social-icon-two">
-                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                <li><a target="_blank" href="{{widget(6)->extra_field_5}}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a target="_blank" href="{{widget(6)->extra_field_6}}"><i class="fab fa-facebook-square"></i></a></li>
+                                <li><a target="_blank" href="{{widget(6)->extra_field_7}}"><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a target="_blank" href="{{widget(6)->extra_field_8}}"><i class="fab fa-instagram"></i></a></li>
                             </ul>
+
                             <div class="btn-box">
                                 <a href="" class="theme-btn btn-style-one footer-btn"><span
                                         class="btn-title">Contact
