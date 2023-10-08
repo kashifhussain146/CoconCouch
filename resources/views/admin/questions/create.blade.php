@@ -165,6 +165,11 @@
                                 </select>
                             </div>
 
+                            <div class="form-group col-md-6">
+                                <label class="form-label">Start Date & Time *</label>
+                                <input type="date" class="form-control" value="{{(isset($loan))?$loan->expiry_date:''}}" name="expiry_date" id="expiry_date"  >
+                            </div>
+                            
 
                             <div class="form-group col-md-6">
                                 <label class="form-label">Status *</label>

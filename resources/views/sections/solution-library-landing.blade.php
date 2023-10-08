@@ -42,24 +42,32 @@
                                     <a href="{{route('solutions.library.question.page',['question_id'=>$v->id])}}">
                                         <strong style="font-weight: 700">Q.{{++$k}} </strong> {!! substr( strip_tags($v->question) ,0,100).'...' !!}
                                     </a>
-                                    @endguest                                    
+                                    @endguest
                                 </div>
                                 
                                 <div>
                                     @auth
                                         @if(!in_array($v->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
-                                        @if($v->visiblity=='Y')
-                                        <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}
-                                        @else
-                                        <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
-                                        @endif
+                                            @if( strtotime($v->expiry_date) < strtotime(date('Y-m-d')))
+                                                @if($v->visiblity=='Y')
+                                                <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}
+                                                @else
+                                                <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
+                                                @endif
+                                            @else
+                                                <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
+                                            @endif
                                         @else
                                         <p style="text-align: justify;"><strong>Ans.</strong> {!! substr(strip_tags($v->answer),0,1000).'.......'    !!}</p><br />
                                         @endif
                                     @endauth
 
                                     @guest
+                                    @if( strtotime($v->expiry_date) < strtotime(date('Y-m-d')))
+                                    <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer),0,500)  !!}
+                                    @else
                                     <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}                                    
+                                    @endif
                                     @endguest
                                 </div>
 

@@ -335,7 +335,7 @@
                             <ul class="user-links">
                                 <li><a href="#">Gallery</a></li>
                                 <li><a href="#">News & Articles</a></li>
-                                <li><a href="#">FAQ's</a></li>
+                                <li><a href="{{route('pages.faq')}}">FAQ's</a></li>
                                 <li><a href="#">Sign In/Registration</a></li>
                                 <li><a href="#">Coming Soon</a></li>
                                 <li><a href="#">Contacts</a></li>

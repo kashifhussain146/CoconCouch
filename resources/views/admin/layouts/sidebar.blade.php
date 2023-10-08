@@ -169,7 +169,7 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle"></i>
                         <p>
-                            Assignment Mngmt
+                            Assignment Management
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>

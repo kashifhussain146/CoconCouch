@@ -12,7 +12,7 @@ class Questions extends Model
      * @var array
      */
 	protected $table = 'question';
-   protected $fillable = ['question', 'collegeid', 'coursesid', 'score', 'visiblity', 'type', 'startdatetime', 'enddatetime', 'num_words', 'answer', 'price', 'subject_category', 'subject', 'file_name', 'answer_file', 'addedby', 'answerstatus', 'status', 'views_count', 'added_date'];
+   protected $fillable = ['question','expiry_date', 'collegeid', 'coursesid', 'score', 'visiblity', 'type', 'startdatetime', 'enddatetime', 'num_words', 'answer', 'price', 'subject_category', 'subject', 'file_name', 'answer_file', 'addedby', 'answerstatus', 'status', 'views_count', 'added_date'];
 
    public function category(){
         return $this->belongsTo(SubjectCategory::class,'subject_category','id')->Activated();

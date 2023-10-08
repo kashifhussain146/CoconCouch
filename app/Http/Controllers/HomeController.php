@@ -41,6 +41,16 @@ class HomeController extends Controller
         return view('home',compact('banner','category','testimonial','howWork','chooseUs','helpFaqs'));
     }
 
+    public function faq(Request $request){
+
+        $categopry = DB::table('modules_data')->where('module_id',17);
+        $array = $categopry->pluck('id')->toArray();
+        $faqData = DB::table('modules_data')->whereIn('category',$array)->get();
+        $categopry = $categopry->get();
+        //dd($categopry);
+        return view('faq',compact('faqData','categopry'));
+    }
+
     
     public function solutionsLibrary(Request $request,$subject_category_id=null,$topic_id=null){
 
