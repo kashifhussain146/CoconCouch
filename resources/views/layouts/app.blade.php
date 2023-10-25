@@ -130,7 +130,7 @@
             <div class="auto-container">
                 <div class="inner-container">
                     <div class="logo-box">
-                        <div class="logo"><a href="index.html"><img src="{{ asset('assets/images/logo.png') }}"
+                        <div class="logo"><a href="index.html"><img src="{{ asset('images/'.widget(6)->extra_image_1) }}"
                                     alt="" title="Tronis"></a></div>
                     </div>
 
@@ -183,7 +183,7 @@
                                 <li class=""><a href="#">About Us</a>
                                 </li>
                                 <li class=""><a href="{{route('assignment.help')}}">Assignment Help</a></li>
-                                <li class=""><a href="#">Take My Online Class</a></li>
+                                <li class=""><a href="{{route('take.my.online.class')}}">Take My Online Class</a></li>
                                 <li class=""><a href="{{route('solutions.library')}}">Solution Library</a></li>
                                 <li class=""><a href="#">Services</a></li>
                                 <!-- <li class=""><a href="#">Get a Quote</a></li> -->
@@ -306,23 +306,19 @@
                     <div class="footer-column col-xl-4 col-lg-12 col-md-6 col-sm-12">
                         <div class="footer-widget about-widget">
                             <div class="logo"><a href="{{ route('home') }}"><img
-                                        src="{{ asset('assets/images/logo.png') }}" alt=""></a>
+                                        src="{{ asset('images/'.widget(7)->extra_image_1) }}" alt=""></a>
                             </div>
-                            <div class="text">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry.Lorem Ipsum is simply dummy text of the printing .
-                            </div>
+                            <div class="text">{!!widget(7)->description!!}</div>
 
                             <ul class="social-icon-two">
-                                <li><a target="_blank" href="{{widget(6)->extra_field_5}}"><i class="fab fa-twitter"></i></a></li>
-                                <li><a target="_blank" href="{{widget(6)->extra_field_6}}"><i class="fab fa-facebook-square"></i></a></li>
-                                <li><a target="_blank" href="{{widget(6)->extra_field_7}}"><i class="fab fa-pinterest-p"></i></a></li>
-                                <li><a target="_blank" href="{{widget(6)->extra_field_8}}"><i class="fab fa-instagram"></i></a></li>
+                                <li><a target="_blank" href="{{widget(7)->extra_field_5}}"><i class="fab fa-twitter"></i></a></li>
+                                <li><a target="_blank" href="{{widget(7)->extra_field_6}}"><i class="fab fa-facebook-square"></i></a></li>
+                                <li><a target="_blank" href="{{widget(7)->extra_field_7}}"><i class="fab fa-pinterest-p"></i></a></li>
+                                <li><a target="_blank" href="{{widget(7)->extra_field_8}}"><i class="fab fa-instagram"></i></a></li>
                             </ul>
 
                             <div class="btn-box">
-                                <a href="" class="theme-btn btn-style-one footer-btn"><span
-                                        class="btn-title">Contact
-                                        With Us</span></a>
+                                <a href="" class="theme-btn btn-style-one footer-btn"><span class="btn-title">Contact With Us</span></a>
                                 <span class="float-icon icon-arrow"></span>
                             </div>
                         </div>
@@ -364,11 +360,11 @@
                             <div class="widget-content">
                                 <ul class="contact-info">
                                     <li>
-                                        <p>Phone:</p> <a href="tel:++919748093320">+91 9748093320</a>
+                                        <p>Phone:</p> <a href="tel:{{widget(7)->extra_field_2}}">{{widget(7)->extra_field_2}}</a>
                                     </li>
                                     <li>
                                         <p>Email:</p> <a
-                                            href="mailto:learn@coachoncouch.com">learn@coachoncouch.com</a>
+                                            href="mailto:{{widget(7)->extra_field_3}}">{{widget(7)->extra_field_3}}</a>
                                     </li>
                                 </ul>
                                 <div class="subscribe-form">
@@ -401,8 +397,8 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-right">
-                        <a class="bottom-link">Terms of Use |</a>
-                        <a class="bottom-link">Privacy Policy</a>
+                        <a class="bottom-link" href="{{route('pages.termsconditions')}}">Terms of Use |</a>
+                        <a class="bottom-link" href="{{route('pages.policy')}}">Privacy Policy</a>
                     </div>
                 </div>
             </div>

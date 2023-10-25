@@ -12,4 +12,8 @@ class Modules extends Model
         return $this->hasMany('App\Models\ModulesData','module_id');
     }
 
+    public function modules_data_single()
+    {
+        return $this->hasOne('App\Models\ModulesData','module_id');
+    }
 }

@@ -1,17 +1,13 @@
-<!-- Clients Section   -->
 <section class="clients-section">
+    <img style="position: absolute; top: 1rem; right: -6rem;"  src="{{asset('/assets/images/trial11_new.png')}}" alt="">
+    <img style="position: absolute; bottom: 0; left: -7.5rem;"  src="{{asset('/assets/images/trial11_new.png')}}" alt="">
     <div class="auto-container">
-        <!-- Sponsors Outer -->
         <div class="sponsors-outer">
-            <!--clients carousel-->
             <ul class="clients-carousel owl-carousel owl-theme">
-                <li class="slide-item"> <a href="#"><img src="assets/images/client-1.png" alt=""></a> </li>
-                <li class="slide-item"> <a href="#"><img src="assets/images/client-2.png" alt=""></a> </li>
-                <li class="slide-item"> <a href="#"><img src="assets/images/client-3.png" alt=""></a> </li>
-                <li class="slide-item"> <a href="#"><img src="assets/images/client-4.png" alt=""></a> </li>
-                <li class="slide-item"> <a href="#"><img src="assets/images/client-5.png" alt=""></a> </li>
+                @foreach ($data as $item)
+                <li class="slide-item"> <a href="#"><img src="{{asset('images/'.$item->image)}}" alt=""></a> </li>
+                @endforeach
             </ul>
         </div>
     </div>
 </section>
-<!--End Clients Section -->

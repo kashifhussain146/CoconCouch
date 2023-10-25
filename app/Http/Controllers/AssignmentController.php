@@ -32,9 +32,9 @@ class AssignmentController extends Controller
 
         $amenities =    module(8);
         
-        $helpFaqs =    module(19);
+        $helpFaqs =    module(27);
         
-        $testimonial = module(12);
+        $testimonial = module(28);
         
         return view('assignment.category',compact('work','testimonial','category','amenities','helpFaqs'));
 

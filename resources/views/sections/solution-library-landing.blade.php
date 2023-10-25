@@ -48,14 +48,14 @@
                                 <div>
                                     @auth
                                         @if(!in_array($v->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
-                                            @if( strtotime($v->expiry_date) < strtotime(date('Y-m-d')))
+                                             @if(strtotime(date('Y-m-d')) <= strtotime($v->expiry_date))
                                                 @if($v->visiblity=='Y')
                                                 <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}
                                                 @else
                                                 <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
                                                 @endif
                                             @else
-                                                <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer,"x"),0,500)  !!}
+                                                <strong style="font-weight: 700">Ans.</strong>  {!! $v->answer   !!}
                                             @endif
                                         @else
                                         <p style="text-align: justify;"><strong>Ans.</strong> {!! substr(strip_tags($v->answer),0,1000).'.......'    !!}</p><br />
@@ -63,10 +63,10 @@
                                     @endauth
 
                                     @guest
-                                    @if( strtotime($v->expiry_date) < strtotime(date('Y-m-d')))
-                                    <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags($v->answer),0,500)  !!}
+                                    @if(strtotime(date('Y-m-d')) <= strtotime($v->expiry_date))
+                                    <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)   !!}
                                     @else
-                                    <strong style="font-weight: 700">Ans.</strong> {!! substr(strip_tags(masks($v->answer,"x")),0,500)  !!}                                    
+                                    <strong style="font-weight: 700">Ans.</strong> {!! $v->answer   !!}                                  
                                     @endif
                                     @endguest
                                 </div>

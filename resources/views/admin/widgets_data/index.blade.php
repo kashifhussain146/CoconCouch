@@ -33,17 +33,18 @@
 <div class="content-header">
    <div class="side-app">
         <div class="col-lg-8">
-           <div class="card">
-              <div class="card-header">
-                 <h3 class="card-title">{{$page->title}}</h3>
-              </div>
+           
 
-                   <div class="card-body">
+                  
 
                      @if(null!==($widgets))
 
                         @foreach($widgets as $wid)
-
+                        <div class="card">
+                           <div class="card-header">
+                              <h3 class="card-title">{{$wid->title}}</h3>
+                           </div>
+                        <div class="card-body">
                         <?php $widget_data = null; ?>
 
                         <div class="page-body" id="widget_{{$wid->id}}">
@@ -98,12 +99,12 @@
                            </div>
 
                         </div>
-
+                     </div>
+                        </div>
                         @endforeach
 
-                  @endif
-
-                   </div>
+                   @endif
+                  
 
            </div>
         </div>

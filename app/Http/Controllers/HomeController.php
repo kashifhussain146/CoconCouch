@@ -10,6 +10,8 @@ use DB;
 use App\Models\Subject;
 use App\Models\SubjectCategory;
 use App\Models\Questions;
+use App\Models\ModulesData;
+use App\Models\Modules;
 
 class HomeController extends Controller
 {
@@ -51,6 +53,67 @@ class HomeController extends Controller
         return view('faq',compact('faqData','categopry'));
     }
 
+    public function privacypolicy(Request $request){
+        $privacypolicy = DB::table('widgets_data')->where('widget_id',9)->first();
+        return view('privacy',compact('privacypolicy'));
+    }
+
+    public function termsconditions(Request $request){
+        $termsconditions = DB::table('widgets_data')->where('widget_id',8)->first();
+        return view('terms-conditions',compact('termsconditions'));
+    }
+
+    public function takeMyOnlineClass(Request $request){
+
+        //$module_data_id = Modules::findorfail(29)->id;
+
+        $category = ModulesData::where('module_id',29)->first();
+        $modules = explode(',',$category->module_ids);
+        $works = array();
+        $services = array();
+        $faqs = array();
+        $testimonials = array();
+        $colleges = array();
+
+        if(count($modules) > 0){
+            $modulesIDS = json_decode($category->category_ids);
+            foreach($modules as $k=>$v){
+               
+                $modDataId = $modulesIDS->{$modules[$k]};
+                
+                switch ($v) {
+
+                    case '30':
+                        //->whereIn('id',$modDataId)
+                        $works = ModulesData::select('id','title','module_id','description','image')->where('status','active')->where('module_id',30)->get();
+                    break;
+
+                    case '31':
+                        //->whereIn('id',$modDataId)
+                        $services = ModulesData::select('id','title','module_id','description','image')->where('status','active')->where('module_id',31)->get();
+                    break;
+
+                    case '32':
+                        //->whereIn('id',$modDataId)
+                        $faqs = ModulesData::select('id','title','module_id','description','image')->where('status','active')->where('module_id',32)->get();
+                    break;
+
+                    case '33':
+                        //->whereIn('id',$modDataId)
+                        $testimonials = ModulesData::select('id','title','module_id','description','image')->where('status','active')->where('module_id',33)->get();
+                    break;
+
+                    case '35':
+                        //->whereIn('id',$modDataId)
+                        $colleges = ModulesData::select('id','title','module_id','description','image')->where('status','active')->where('module_id',35)->get();
+                    break;
+                }
+            }
+        }
+        //dd($portfolio);
+
+        return view('online-class.index',compact('category','works','services','faqs','testimonials','colleges'));
+    }
     
     public function solutionsLibrary(Request $request,$subject_category_id=null,$topic_id=null){
 

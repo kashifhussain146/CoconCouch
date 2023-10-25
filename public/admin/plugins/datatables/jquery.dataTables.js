@@ -10410,7 +10410,7 @@
 		 *     <li>a string - class name will be matched on the TH for the column</li>
 		 *     <li>0 or a positive integer - column index counting from the left</li>
 		 *     <li>a negative integer - column index counting from the right</li>
-		 *     <li>the string "_all" - all columns (i.e. assign a default)</li>
+		 *     <li>the string "_all" - all columns (i.e. assign a default</li>
 		 *   </ul>
 		 *  @member
 		 *
@@ -11310,7 +11310,7 @@
 		 * has elapsed the state will be returned to the default.
 		 * Value is given in seconds.
 		 *  @type int
-		 *  @default 7200 <i>(2 hours)</i>
+		 *  @default 7200 <i>(2 hours</i>
 		 *
 		 *  @dtopt Options
 		 *  @name DataTable.defaults.stateDuration
@@ -12044,8 +12044,8 @@
 		 *     </li>
 		 *     <li>The following constants are allowed:
 		 *       <ul>
-		 *         <li>'H' - jQueryUI theme "header" classes ('fg-toolbar ui-widget-header ui-corner-tl ui-corner-tr ui-helper-clearfix')</li>
-		 *         <li>'F' - jQueryUI theme "footer" classes ('fg-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix')</li>
+		 *         <li>'H' - jQueryUI theme "header" classes ('fg-toolbar ui-widget-header ui-corner-tl ui-corner-tr ui-helper-clearfix'</li>
+		 *         <li>'F' - jQueryUI theme "footer" classes ('fg-toolbar ui-widget-header ui-corner-bl ui-corner-br ui-helper-clearfix'</li>
 		 *       </ul>
 		 *     </li>
 		 *     <li>The following syntax is expected:
@@ -12063,8 +12063,8 @@
 		 *     </li>
 		 *   </ul>
 		 *  @type string
-		 *  @default lfrtip <i>(when `jQueryUI` is false)</i> <b>or</b>
-		 *    <"H"lfr>t<"F"ip> <i>(when `jQueryUI` is true)</i>
+		 *  @default lfrtip <i>(when `jQueryUI` is false</i> <b>or</b>
+		 *    <"H"lfr>t<"F"ip> <i>(when `jQueryUI` is true</i>
 		 *
 		 *  @dtopt Options
 		 *  @name DataTable.defaults.dom
@@ -13680,7 +13680,7 @@
 		 *     <li>function:fn - function to call. Takes two parameters, oSettings
 		 *       and the JSON string to save that has been thus far created. Returns
 		 *       a JSON string to be inserted into a json object
-		 *       (i.e. '"param": [ 0, 1, 2]')</li>
+		 *       (i.e. '"param": [ 0, 1, 2]'</li>
 		 *     <li>string:sName - name of callback</li>
 		 *   </ul>
 		 *  @type array

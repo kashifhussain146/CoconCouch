@@ -7,6 +7,8 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\AssignmentCategoryController;
 use App\Http\Controllers\Backend\SubjectCategoryController;
 use App\Http\Controllers\Backend\SubjectController;
+use App\Http\Controllers\Backend\OnlineClassesController;
+
 use App\Http\Controllers\Backend\QuestionsController;
 use App\Http\Controllers\AdminAuth\LoginController as AdminLoginController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -39,11 +41,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 Route::get('/solutions-library', [HomeController::class, 'solutionsLibrary'])->name('solutions.library');
-
+Route::get('/take-my-online-class', [HomeController::class, 'takeMyOnlineClass'])->name('take.my.online.class');
 Route::get('/solutions-library/question/{question_id}', [HomeController::class, 'questionDetails'])->name('solutions.library.question.page');
 Route::get('/solutions-library/subject-topics/{subject_id}/{topic_id?}', [HomeController::class, 'solutionsLibrary'])->name('solutions.library.subject.page');
 
 Route::get('/pages/faq', [HomeController::class, 'faq'])->name('pages.faq');
+Route::get('/pages/privacy-policy', [HomeController::class, 'privacypolicy'])->name('pages.policy');
+Route::get('/pages/terms-conditions', [HomeController::class, 'termsconditions'])->name('pages.termsconditions');
 
 Route::get('/ajax/subcategory', [HomeController::class,'getSubcategory'])->name('get.ajax.subcategory');
 Route::get('/ajax/subjects', [HomeController::class,'getSubjects'])->name('get.ajax.subjects');
@@ -157,6 +161,16 @@ Route::group(['middleware' => ['auth:admin']], function() {
         Route::get('/admin/ajax/subcategory', [QuestionsController::class,'getSubcategory'])->name('get.subcategory');//->middleware(['permission:Category View']);
 
     });
+
+
+
+    //Questions Modules
+    // Route::group([], function() {
+    //     Route::get('/admin/{slug}/create', [OnlineClassesController::class,'create'])->name('online-classes-create');//->middleware(['permission:Category Create']);
+    //     Route::post('/admin/online-class/store', [OnlineClassesController::class,'store'])->name('online-classes-store');//->middleware(['permission:Category Create']);
+    //     Route::get('/admin/online-class/edit/{slug}/{id}', [OnlineClassesController::class,'edit'])->name('online-classes-edit');//->middleware(['permission:Category Edit']);
+    //     Route::post('/admin/online-class/update', [OnlineClassesController::class,'update'])->name('online-classes-update');//->middleware(['permission:Category Edit']);
+    // });    
 
      /*Modules Data routes Start*/
     

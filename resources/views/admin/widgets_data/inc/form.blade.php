@@ -113,12 +113,12 @@
       </div> 
   </div>
          
-  {{-- </div>
-  </div> --}}
+  {{--  --}}
   @endif
 
+</div>
 
-{{-- </div> --}}
+{{--  --}}
 @push('js')
 <script type="text/javascript">
   

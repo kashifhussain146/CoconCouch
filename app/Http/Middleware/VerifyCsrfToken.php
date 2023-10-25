@@ -16,5 +16,6 @@ class VerifyCsrfToken extends Middleware
         'order/status',
         'ajax_upload_file',
         'ajax_remove_file',
+        'api/login'
     ];
 }

@@ -76,7 +76,7 @@
 
                      @if($module->is_image)
 
-                     <td width="12%""><img style="height: 50px" src="{{asset('/images/'.$data->image)}}" alt=""></td>
+                     <td width="12%"><img style="height: 50px" src="{{asset('/images/'.$data->image)}}" alt=""></td>
 
                      @endif
 

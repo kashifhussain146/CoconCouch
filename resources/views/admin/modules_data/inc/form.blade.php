@@ -37,55 +37,7 @@
  @endif
 
 
-  @if($module->category_module_id!='')
-  <div class="col-md-12">
-     <div class="form-group">
-        @php
-              $category_ids = explode(',',$module->category_module_id);
-              $modules = \App\Models\Modules::whereHas('modules_data')->with('modules_data')->whereIn('id',$category_ids)->get();
-            //   dd($modules);
-            $categoriesids = [];
-
-            if(isset($module_data)){
-                if($module_data->category_ids!=''){
-                    foreach(json_decode($module_data->category_ids) as $k=>$v){
-                        foreach($v as $k2=>$v3){
-                            $categoriesids[] = $v3;                             
-                        }
-                    }
-                }
-            }
-        @endphp
-      
-      @foreach($modules as $k1=>$v1)
-        <label class='font-weight-bold' for="{{$v1->name}}">{{$v1->name}}</label>
-        
-        <input type="hidden" name="module_ids[]" value="{{$v1->id}}" />
-
-        <select name="category_ids[{{$v1->id}}][]" class="form-control select2" id="{{$v1->name}}" multiple>
-            @foreach($v1->modules_data as $k2=>$v2)
-                @php 
-                    $category = null;
-
-                    if($v2->category_data!=''){
-                        $category = $v2->category_data->title;
-                    }                    
-
-                @endphp
-            <option @if( in_array($v2->id,$categoriesids) ) selected @endif value="{{$v2->id}}">{{$v2->title}} {{ ($category!='')?'('.$category.')':'' }} </option>
-            @endforeach
-        </select>
-      @endforeach
-
-
-
-        {{-- {!! Form::label('category_ids', $module->term.' Categories', ['class' => 'font-weight-bold']) !!}
-        {!! Form::select('category_ids[]', $categories, isset($category_ids)?$category_ids:null, array('class'=>'js-example-basic-multiple col-sm-12 select2-hidden-accessible', 'id'=>'category_ids', 'multiple'=>'multiple')) !!} --}}
-        {!! APFrmErrHelp::showErrors($errors, 'category_ids') !!}
-     </div>
-  </div>
-
-  @endif
+ 
 
 
 
@@ -240,6 +192,56 @@
   </div>
   @endif
 
+
+  @if($module->category_module_id!='')
+  <div class="col-md-12">
+     <div class="form-group">
+        @php
+              $category_ids = explode(',',$module->category_module_id);
+              $modules = \App\Models\Modules::whereHas('modules_data')->with('modules_data')->whereIn('id',$category_ids)->get();
+            //   dd($modules);
+            $categoriesids = [];
+
+            if(isset($module_data)){
+                if($module_data->category_ids!=''){
+                    foreach(json_decode($module_data->category_ids) as $k=>$v){
+                        foreach($v as $k2=>$v3){
+                            $categoriesids[] = $v3;                             
+                        }
+                    }
+                }
+            }
+        @endphp
+      
+      @foreach($modules as $k1=>$v1)
+        <label class='font-weight-bold' for="{{$v1->name}}">{{$v1->name}}</label>
+        
+        <input type="hidden" name="module_ids[]" value="{{$v1->id}}" />
+
+        <select name="category_ids[{{$v1->id}}][]" class="form-control select2" id="{{$v1->name}}" multiple>
+            @foreach($v1->modules_data as $k2=>$v2)
+                @php 
+                    $category = null;
+
+                    if($v2->category_data!=''){
+                        $category = $v2->category_data->title;
+                    }                    
+
+                @endphp
+            <option @if( in_array($v2->id,$categoriesids) ) selected @endif value="{{$v2->id}}">{{$v2->title}} {{ ($category!='')?'('.$category.')':'' }} </option>
+            @endforeach
+        </select>
+      @endforeach
+
+
+
+        {{-- {!! Form::label('category_ids', $module->term.' Categories', ['class' => 'font-weight-bold']) !!}
+        {!! Form::select('category_ids[]', $categories, isset($category_ids)?$category_ids:null, array('class'=>'js-example-basic-multiple col-sm-12 select2-hidden-accessible', 'id'=>'category_ids', 'multiple'=>'multiple')) !!} --}}
+        {!! APFrmErrHelp::showErrors($errors, 'category_ids') !!}
+     </div>
+  </div>
+  @endif
+  
 </div>
 @push('js')
 {{-- <script src="{{asset('admin/bower_components/ckeditor/ckeditor.js')}}"></script> --}}

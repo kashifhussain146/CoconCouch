@@ -98,8 +98,8 @@
 
                           </ul>
 
-                        </li>
-                      
+                        </li>       
+
                          <li class="nav-item">
                              <a href="#" class="nav-link">
 
@@ -176,36 +176,9 @@
 
                     <ul class="nav nav-treeview">
                         
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
+                        
 
-                                <p>
-                                    Assignment
-                                    <i class="fas fa-angle-left right"></i>
-
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment']) }}"
-                                        class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Assignment</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment']) }}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>List Assignment</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
+                       <li class="nav-item">
                             <a href="#" class="nav-link">
 
                                 <p>
@@ -229,6 +202,127 @@
                                         class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>List Work</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        
+                         <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Category
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'assignment-categories']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Category</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment-categories']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Category</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Experts
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'experts']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Experts</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'experts']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Experts</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Services
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'services']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Services</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'services']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Services</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Portfolio
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'portfolio']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Portfolio</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'portfolio']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Portfolio</p>
                                     </a>
                                 </li>
 
@@ -264,11 +358,15 @@
                             </ul>
                         </li>
                         
+                       
+                        
+                        
+                        
                         <li class="nav-item">
                             <a href="#" class="nav-link">
 
                                 <p>
-                                    Category
+                                    Subjects
                                     <i class="fas fa-angle-left right"></i>
 
                                 </p>
@@ -276,17 +374,17 @@
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data.add', ['module' => 'assignment-categories']) }}"
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'subjects']) }}"
                                         class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Category</p>
+                                        <p>Add Subjects</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment-categories']) }}" class="nav-link">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'subjects']) }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>List Category</p>
+                                        <p>List Subjects</p>
                                     </a>
                                 </li>
 
@@ -294,6 +392,36 @@
                         </li>
 
 
+                         <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Testimonials
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'testimonials']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Testimonials</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'testimonials']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Testimonials</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
                         <li class="nav-item">
                             <a href="#" class="nav-link">
 
@@ -323,11 +451,12 @@
                             </ul>
                         </li>
 
+
                         <li class="nav-item">
                             <a href="#" class="nav-link">
 
                                 <p>
-                                    Testimonials
+                                    Assignment Page Faq
                                     <i class="fas fa-angle-left right"></i>
 
                                 </p>
@@ -335,18 +464,77 @@
                             <ul class="nav nav-treeview">
 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data.add', ['module' => 'testimonials']) }}"
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'assignment-faqs']) }}"
                                         class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Testimonials</p>
+                                        <p>Add Faq</p>
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.modules.data', ['module' => 'testimonials']) }}"
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment-faqs']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Faq</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                       
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Assignment Page Testimonials
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'assignment-testimonials']) }}"
                                         class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>List Testimonials</p>
+                                        <p>Add Faq</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment-testimonials']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Faq</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Assignment
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Assignment</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Assignment</p>
                                     </a>
                                 </li>
 
@@ -523,6 +711,541 @@
                  </li>
 
 
+
+
+
+
+                <!--- Take my online class Module-->
+
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Online Class Management
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        
+                        
+{{-- 
+                       <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    How we Work
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'how-work']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Work</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'how-work']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Work</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        
+                         <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Category
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'assignment-categories']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Category</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment-categories']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Category</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Experts
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'experts']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Experts</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'experts']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Experts</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Services
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'services']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Services</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'services']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Services</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Portfolio
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'portfolio']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Portfolio</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'portfolio']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Portfolio</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Colleges
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'collegess']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Colleges</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'collegess']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Colleges</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Subjects
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'subjects']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Subjects</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'subjects']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Subjects</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                         <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Testimonials
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'testimonials']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Testimonials</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'testimonials']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Testimonials</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Faq
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'help-faqs']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Faq</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'help-faqs']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Faq</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Assignment Page Faq
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'assignment-faqs']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Faq</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment-faqs']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Faq</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                       
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Assignment Page Testimonials
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'assignment-testimonials']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Faq</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'assignment-testimonials']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Faq</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li> --}}
+                        
+                        @php 
+                        $check = \App\Models\ModulesData::where('module_id',29)->first();
+                        if(!$check){
+                            $route = route('admin.modules.data.add','online-class');
+                        }else{
+                            $route = route('admin.modules.data.edit',['module'=>'online-class','id'=>$check->id]);
+                        }
+                    @endphp 
+                    
+                    
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Work Master
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'works']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Work</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'works']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Work</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Services Master
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'help-service']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Services</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'help-service']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Services</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Faq Master
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'take-my-online-Faq']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Faq</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'take-my-online-Faq']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Faq</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Testimonials Master
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'help-my-online-testimonials']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Testimonials</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'help-my-online-testimonials']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Testimonials</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+                        
+
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+
+                                <p>
+                                    Colleges Master
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data.add', ['module' => 'online-colleges']) }}"
+                                        class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Colleges</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.modules.data', ['module' => 'online-colleges']) }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>List Colleges</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ $route }}" class="nav-link">
+
+                                <p>
+                                   Manage Online Classe Page
+                                    <i class="fas fa-angle-left right"></i>
+
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+
+                 </li>
+
+
+
+
+
+
+
+
+
+
+
+
                  <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-circle"></i>
@@ -560,6 +1283,28 @@
                     </a>
                    
                 </li>
+
+
+                <li class="nav-item">
+                    <a href="{{route('admin.widgets_data',['page'=>'terms-conditions'])}}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Terms Conditions
+                        </p>
+                    </a>
+                   
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{route('admin.widgets_data',['page'=>'privacy-policy'])}}" class="nav-link">
+                        <i class="nav-icon fas fa-circle"></i>
+                        <p>
+                            Privacy Policy
+                        </p>
+                    </a>
+                   
+                </li>
+
              </ul>
          </nav>
          <!-- /.sidebar-menu -->

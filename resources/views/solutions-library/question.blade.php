@@ -35,16 +35,20 @@
                 @endauth
 
                 @guest
-                <p class="mb-2 black"><strong>Q.{{$question->id}} </strong> {!! substr( strip_tags($question->question) ,0,500).'...' !!}</p>
+                    <p class="mb-2 black"><strong>Q.{{$question->id}} </strong> {!! substr( strip_tags($question->question) ,0,500).'...' !!}</p>
                 @endguest
 
                 @auth
                     @if(!in_array($question->id,Auth::guard('web')->user()->isPaidQuestions()->pluck('question_id')->toArray()))
                     <p class="list-items" style="text-align: justify;">
-                        @if($question->visiblity=='Y')
-                            <span  class="blur">{!! substr(strip_tags(masks($question->answer,"x")),0,500)  !!}       </span>
+                        @if(strtotime(date('Y-m-d')) < strtotime($question->expiry_date))
+                            @if($question->visiblity=='Y')
+                                <span  class="blur">{!! substr(strip_tags(masks($question->answer,"x")),0,500)  !!}       </span>
+                            @else
+                                <span>{!! substr(strip_tags($question->answer,"x"),0,500)  !!}</span><br />
+                            @endif
                         @else
-                            <span>{!! substr(strip_tags($question->answer,"x"),0,500)  !!}</span><br />
+                                <span> {!! $question->answer   !!}</span><br />
                         @endif
                     </p>
                     @else
@@ -53,7 +57,13 @@
                 @endauth
 
                 @guest
-                <span  class="blur">{!! substr(strip_tags(masks($question->answer,"x")),0,500)  !!}       </span>
+
+                @if(strtotime(date('Y-m-d')) < strtotime($question->expiry_date))
+                    <span  class="blur">{!! substr(strip_tags(masks($question->answer,"x")),0,500)  !!}       </span>
+                @else
+                    <span  class="">{!! $question->answer   !!}       </span>                
+                @endif
+                
                 @endguest
 
             </div>
