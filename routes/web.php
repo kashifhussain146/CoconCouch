@@ -22,7 +22,7 @@ use App\Http\Controllers\Backend\ModulesController;
 use App\Http\Controllers\Backend\WidgetPagesController;
 use App\Http\Controllers\Backend\WidgetsController;
 use App\Http\Controllers\Backend\WidgetDataController;
-
+use App\Http\Controllers\BlogsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +55,8 @@ Route::get('/ajax/subjects', [HomeController::class,'getSubjects'])->name('get.a
 Route::get('/assignment-help', [AssignmentController::class, 'index'])->name('assignment.help');
 Route::get('/assignment/help/{module_data_id}', [AssignmentController::class, 'assignmentDetails'])->name('assignment.help.details')->where(['slug' => '[a-z]+']);
 
+Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs');
+Route::get('/blogs/{slug}/{id}', [BlogsController::class, 'show'])->name('blogs.details');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/cart', [CartController::class,'index'])->name('cart.index');
